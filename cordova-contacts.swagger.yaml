@@ -1,0 +1,247 @@
+swagger:                              "2.0"
+info:
+  description:                        "The `Contact` object represents a user's contact information that can be created, stored, or removed from a mobile device's contacts database.
+
+
+  **IMPORTANT Privacy Considerations**
+
+
+  Collection and use of contact data raises important privacy issues. Your app's privacy policy should declare how it uses contact data and whether it is shared with any other parties. Contact information is considered sensitive because it reveals the people with whom a person communicates. Therefore, in addition to the app's privacy policy, you should strongly consider providing a just-in-time notice before the app accesses or uses contact data, if the device operating system doesn't do so already. That notice should provide the same information noted above, as well as obtaining the user's permission (e.g., by presenting choices for OK and No Thanks). Note that some app marketplaces may require the app to provide a just-in-time notice and obtain the user's permission before accessing contact data. A clear and easy-to-understand user experience surrounding the use of contact data helps avoid user confusion and perceived misuse of contact data.
+
+
+  For more information, please see the Privacy Guide."
+
+  version:                            "1.0.0"
+  title:                              "Cordova Contacts"
+  termsOfService:                     "https://oneapi.verizon.com/terms-of-service/"
+  contact:
+    email:                            "oneapi-team@verizon.com"
+  license:
+    name:                             "Apache 2.0"
+    url:                              "http://www.apache.org/licenses/LICENSE-2.0.html"
+host:                                 "digitalvzfabricproxy-dev.ebiz.verizon.com:443"
+basePath:                             "/cordova/v6"
+tags:
+- name:                               "cordova-plugin-contacts"
+  description:                        "The official Apache Cordova documentation"
+  externalDocs:
+    description:                      "Read the cordova-plugin-contacts docs"
+    url:                              "https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html"
+schemes:
+- "https"
+paths:
+  /contacts/me:
+    get:
+      tags:
+      - "contacts"
+      summary:                        "Retrieve your own contact info"
+      description:                    "Returns one's own Contact information"
+      operationId:                    "getMe"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description:                "successful operation"
+          schema:
+            $ref:                     "#/definitions/Contact"
+        404:
+          description:                "Contact not found"
+      security:
+        - api_key:                    []
+  /contacts/{id}:
+    get:
+      tags:
+      - "contacts"
+      summary:                        "Find a person by ID"
+      description:                    "Returns a person's Contact information"
+      operationId:                    "getById"
+      produces:
+      - "application/json"
+      parameters:
+      - name:                         "id"
+        in:                           "path"
+        description:                  "ID of Contact to return"
+        required:                     true
+        type:                         "string"
+      - name:                         "type"
+        in:                           "query"
+        description:                  "The type of identifier provided in the path"
+        required:                     false
+        type:                         "string"
+        default:                      "eid"
+        enum:
+            - "eid"
+            - "vzid"
+            - "oneworld"
+            - "emplid"
+      responses:
+        200:
+          description:                "successful operation"
+          schema:
+            $ref:                     "#/definitions/Contact"
+        400:
+          description:                "Invalid ID or type supplied"
+        404:
+          description:                "Contact not found"
+      security:
+        - api_key:                      []
+  /contacts:
+    get:
+      tags:
+      - "contacts"
+      summary:                        "Find one or more Contacts based on filtered criteria"
+      description:                    "Returns one or more Contacts that match the search criteria"
+      operationId:                    "find"
+      produces:
+      - "application/json"
+      parameters:
+      - name:                         "fields"
+        in:                           "query"
+        description:                  "Contact fields to use as a search qualifier"
+        required:                     true
+        type:                         "string"
+      - name:                         "filter"
+        in:                           "query"
+        description:                  "The search string used to find Contacts"
+        required:                     false
+        type:                         "string"
+      - name:                         "multiple"
+        in:                           "query"
+        description:                  "Whether to return multiple Contacts"
+        required:                     false
+        type:                         "boolean"
+      - name:                         "desiredFields"
+        in:                           "query"
+        description:                  "Contact fields to be returned. If specified, the resulting Contact object only features values for these fields."
+        required:                     false
+        type:                         "string"
+      responses:
+        200:
+          description:                "successful operation"
+          schema:
+            $ref:                     "#/definitions/Contact"
+        400:
+          description:                "Invalid query parameters"
+        404:
+          description:                "No contacts found"
+      security:
+      - api_key:                      []
+securityDefinitions:
+  cordova-contacts-auth:
+    type:                             "oauth2"
+    authorizationUrl:                 "https://oneapi.verizon.com/oauth/cordova-contacts-auth/dialog"
+    flow:                             "implicit"
+    scopes:
+      read:contacts:                  "Retrieve Verizon employees' contact information"
+  api_key:
+    type:                             "apiKey"
+    name:                             "api_key"
+    in:                               "header"
+definitions:
+  ContactField:
+    type:                             "object"
+    properties:
+      value:
+        type:                         "string"
+      type:
+        type:                         "string"
+      perf:
+          type:                       "boolean"
+  ContactName:
+    type:                             "object"
+    properties:
+      formatted:
+          type:                       "string"
+      familyName:
+          type:                       "string"
+      givenName:
+          type:                       "string"
+      middleName:
+          type:                       "string"
+      honorificPrefix:
+          type:                       "string"
+      honorificSuffix:
+          type:                       "string"
+  ContactAddress:
+    type:                             "object"
+    properties:
+      pref:
+          type:                       "boolean"
+      type:
+          type:                       "string"
+      formatted:
+          type:                       "string"
+      streetAddress:
+          type:                       "string"
+      locality:
+          type:                       "string"
+      region:
+          type:                       "string"
+      postalCode:
+          type:                       "string"
+      country:
+          type:                       "string"
+  ContactOrganization:
+      type:                           "object"
+      properties:
+          perf:
+              type:                   "boolean"
+          type:
+              type:                   "string"
+          name:
+              type:                   "string"
+          department:
+              type:                   "string"
+          title:
+              type:                   "string"
+  Contact:
+    type:                             "object"
+    required:
+      - "name"
+      - "emails"
+      - "phoneNumbers"
+    properties:
+      id:
+        type:                         "string"
+      addresses:
+          type:                       "array"
+          items:
+              $ref:                   "#/definitions/ContactAddress"
+      birthday:
+          type:                       "string"
+          format:                     "date"
+      categories:
+          type:                       "array"
+          items:
+              $ref:                   "#/definitions/ContactField"
+      displayName:
+          type:                       "string"
+      emails:
+          type:                       "array"
+          items:
+              $ref:                   "#/definitions/ContactField"
+      ims:
+          type:                       "array"
+          items:
+              $ref:                   "#/definitions/ContactField"
+      name:
+          $ref:                       "#/definitions/ContactName"
+      nickname:
+          type:                       "string"
+      note:
+          type:                       "string"
+      organizations:
+          type:                       "array"
+          items:
+              $ref:                   "#/definitions/ContactOrganization"
+      phoneNumbers:
+          type:                       "array"
+          items:
+              $ref:                   "#/definitions/ContactField"
+      photos:
+          type:                       "array"
+          items:
+              $ref:                   "#/definitions/ContactField"
+externalDocs:
+    description:                      "Cordova Plugin API for cordova-plugin-contacts"
+    url:                              "https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html"
