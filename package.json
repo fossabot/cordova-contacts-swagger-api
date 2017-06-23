@@ -1,0 +1,69 @@
+{
+    "name": "cordova-contacts-swagger-api",
+    "version": "1.0.0",
+    "description": "A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation",
+    "main": "index.js",
+    "scripts": {
+        "eslint:html": "./node_modules/.bin/eslint --quiet -c ./.eslintrc.yml -o ./reports/eslint.html -f html --ext .json,.js,.yaml,.yml lib/**",
+        "eslint:stylish": "./node_modules/.bin/eslint -c ./.eslintrc.yml --ext .json,.js,.yaml,.yml lib/** --fix",
+        "security": "nsp check --output summary",
+        "pretest": "npm run eslint:html && npm run eslint:stylish",
+        "test": "jest --config=jest.config.json",
+        "posttest": "npm run security"
+    },
+    "repository": {
+        "type": "git",
+        "url": "ssh://git@onestash.verizon.com:7999/gtsap/cordova-contacts-swagger-api.git"
+    },
+    "keywords": [
+        "apigee",
+        "api",
+        "api-proxy",
+        "api-mocks",
+        "api-proxy-mocks",
+        "ci",
+        "cd",
+        "automation",
+        "swagger",
+        "openapi",
+        "open-api",
+        "best-practices",
+        "qa",
+        "testing"
+    ],
+    "author": {
+        "name": "Greg Swindle",
+        "email": "greg@swindle.net",
+        "url": "https://github.com/gregswindle"
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/gregswindle/cordova-contacts-swagger-api/issues"
+    },
+    "homepage": "https://github.com/gregswindle/cordova-contacts-swagger-api#readme",
+    "devDependencies": {
+        "commitplease": "^2.7.10",
+        "coveralls": "^2.13.1",
+        "eslint": "^4.0.0",
+        "eslint-plugin-security": "^1.4.0",
+        "nsp": "^2.6.3",
+        "standard-version": "^4.2.0"
+    },
+    "commitplease": {
+        "style": "angular",
+        "types": [
+            "build",
+            "chore",
+            "ci",
+            "docs",
+            "feat",
+            "fix",
+            "perf",
+            "refactor",
+            "revert",
+            "style",
+            "test"
+        ],
+        "scope": "\\S+.*"
+    }
+}
