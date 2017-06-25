@@ -1,20 +1,20 @@
 {
-  "name": "cordova-contacts-swagger-api",
-  "version": "1.0.0",
-  "description": "A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation",
-  "main": "index.js",
-  "scripts": {
-    "eslint:stylish": "./node_modules/.bin/eslint -c ./.eslintrc.yml apiproxy/resources/jsc/*.js --fix",
-    "security": "nsp check --output summary",
-    "pretest": "npm run eslint:stylish",
-    "test": "jest --config=jest.config.json",
-    "posttest": "npm run security"
+  "name":"cordova-contacts-swagger-api",
+  "version":"1.0.0",
+  "description":"A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation",
+  "main":"index.js",
+  "scripts":{
+    "eslint:stylish":"./node_modules/.bin/eslint -c ./.eslintrc.yml apiproxy/resources/jsc/*.js --fix",
+    "security":"nsp check --output summary",
+    "pretest":"npm run eslint:stylish",
+    "test":"jest --config=jest.config.json",
+    "posttest":"npm run security"
   },
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@onestash.verizon.com:7999/gtsap/cordova-contacts-swagger-api.git"
+  "repository":{
+    "type":"git",
+    "url":"ssh://git@onestash.verizon.com:7999/gtsap/cordova-contacts-swagger-api.git"
   },
-  "keywords": [
+  "keywords":[
     "apigee",
     "api",
     "api-proxy",
@@ -30,28 +30,31 @@
     "qa",
     "testing"
   ],
-  "author": {
-    "name": "Greg Swindle",
-    "email": "greg@swindle.net",
-    "url": "https://github.com/gregswindle"
+  "author":{
+    "name":"Greg Swindle",
+    "email":"greg@swindle.net",
+    "url":"https://github.com/gregswindle"
   },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/gregswindle/cordova-contacts-swagger-api/issues"
+  "license":"Apache-2.0",
+  "bugs":{
+    "url":"https://github.com/gregswindle/cordova-contacts-swagger-api/issues"
   },
-  "homepage": "https://github.com/gregswindle/cordova-contacts-swagger-api#readme",
-  "devDependencies": {
-    "commitplease": "^2.7.10",
-    "coveralls": "^2.13.1",
-    "eslint": "^4.0.0",
-    "eslint-plugin-security": "^1.4.0",
-    "jest": "^20.0.4",
-    "nsp": "^2.6.3",
-    "standard-version": "^4.2.0"
+  "homepage":"https://github.com/gregswindle/cordova-contacts-swagger-api#readme",
+  "dependencies":{
+    "lodash":"^4.17.4"
   },
-  "commitplease": {
-    "style": "angular",
-    "types": [
+  "devDependencies":{
+    "commitplease":"^2.7.10",
+    "coveralls":"^2.13.1",
+    "eslint":"^4.1.0",
+    "eslint-plugin-security":"^1.4.0",
+    "jest":"^20.0.4",
+    "nsp":"^2.6.3",
+    "standard-version":"^4.2.0"
+  },
+  "commitplease":{
+    "style":"angular",
+    "types":[
       "build",
       "chore",
       "ci",
@@ -64,9 +67,13 @@
       "style",
       "test"
     ],
-    "scope": "\\S+.*"
+    "scope":"\\S+.*"
   },
-  "dependencies": {
-    "lodash": "^4.17.4"
+  "eslintConfig":{
+    "extends":"xo-space",
+    "env":{
+      "jest":true,
+      "node":true
+    }
   }
 }
