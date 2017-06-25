@@ -1,6 +1,10 @@
 {
     "collectCoverage": true,
     "coverageDirectory": "./coverage",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/lib/cordova/"
+    ],
     "coverageThreshold": {
         "global": {
             "branches": 90,

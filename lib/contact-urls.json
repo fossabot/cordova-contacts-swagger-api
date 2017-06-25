@@ -1,0 +1,22 @@
+[
+  {
+    "type": "e-directory-profile",
+    "value": "https://edirectory.verizon.com/eDirectory/CorpDirServlet?page=people&eid={VZEID}",
+    "pref": true
+  },
+  {
+    "type": "crowd-around-profile",
+    "value": "https://crowdaround.verizon.com/people/{VZEID}",
+    "pref": false
+  },
+  {
+    "type": "one-confluence-profile",
+    "value": "https://oneconfluence.verizon.com/display/~{VZID}",
+    "pref": false
+  },
+  {
+    "type": "one-jira-profile",
+    "value": "https://onejira.verizon.com/secure/ViewProfile.jspa?name={VZID}",
+    "pref": false
+  }
+]
