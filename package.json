@@ -1,87 +1,90 @@
 {
-  "name": "cordova-contacts-swagger-api",
-  "version": "1.0.0",
-  "description": "A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation",
-  "main": "index.js",
-  "scripts": {
-    "build": "browserify lib/index.js -t babelify --outfile apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js && npm run minify",
-    "eslint:stylish": "./node_modules/.bin/eslint -c ./.eslintrc.yml lib/**/*.js --fix",
-    "minify": "uglifyjs apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js  --compress -o apiproxy/resources/jsc/profile-pantry-adaptor.min.js",
-    "security": "nsp check --output summary",
-    "pretest": "npm run eslint:stylish",
-    "test": "jest --config=jest.config.json",
-    "posttest": "npm run security"
-  },
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@onestash.verizon.com:7999/gtsap/cordova-contacts-swagger-api.git"
-  },
-  "keywords": [
-    "apigee",
-    "api",
-    "api-proxy",
-    "api-mocks",
-    "api-proxy-mocks",
-    "ci",
-    "cd",
-    "automation",
-    "swagger",
-    "openapi",
-    "open-api",
-    "best-practices",
-    "qa",
-    "testing"
-  ],
-  "author": {
-    "name": "Greg Swindle",
-    "email": "greg@swindle.net",
-    "url": "https://github.com/gregswindle"
-  },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/gregswindle/cordova-contacts-swagger-api/issues"
-  },
-  "homepage": "https://github.com/gregswindle/cordova-contacts-swagger-api#readme",
-  "dependencies": {
-    "lodash": "^4.17.4"
-  },
-  "devDependencies": {
-    "babel-preset-env": "^1.5.2",
-    "babelify": "^7.3.0",
-    "browserify": "^14.4.0",
-    "commitplease": "^2.7.10",
-    "coveralls": "^2.13.1",
-    "eslint": "^4.1.0",
-    "eslint-plugin-filenames": "^1.2.0",
-    "eslint-plugin-json": "^1.2.0",
-    "eslint-plugin-security": "^1.4.0",
-    "jest": "^20.0.4",
-    "nsp": "^2.6.3",
-    "standard-version": "^4.2.0",
-    "uglify-js": "^3.0.20"
-  },
-  "commitplease": {
-    "style": "angular",
-    "types": [
-      "build",
-      "chore",
-      "ci",
-      "docs",
-      "feat",
-      "fix",
-      "perf",
-      "refactor",
-      "revert",
-      "style",
-      "test"
+    "name": "cordova-contacts-swagger-api",
+    "version": "1.0.0",
+    "description": "A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation",
+    "main": "index.js",
+    "scripts": {
+        "build": "browserify lib/index.js -t babelify --outfile apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js && npm run minify",
+        "eslint:stylish": "./node_modules/.bin/eslint -c ./.eslintrc.yml lib/**/*.js --fix",
+        "minify": "uglifyjs apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js  --compress -o apiproxy/resources/jsc/profile-pantry-adaptor.min.js",
+        "security": "nsp check --output summary",
+        "complexity:plato": "plato -r -d reports -x .spec.js -t \"cordova-contacts-swagger-api\" lib",
+        "pretest": "npm run eslint:stylish",
+        "test": "jest --config=jest.config.json",
+        "posttest": "npm run security"
+    },
+    "repository": {
+        "type": "git",
+        "url": "ssh://git@onestash.verizon.com:7999/gtsap/cordova-contacts-swagger-api.git"
+    },
+    "keywords": [
+        "apigee",
+        "api",
+        "api-proxy",
+        "api-mocks",
+        "api-proxy-mocks",
+        "ci",
+        "cd",
+        "automation",
+        "swagger",
+        "openapi",
+        "open-api",
+        "best-practices",
+        "qa",
+        "testing"
     ],
-    "scope": "\\S+.*"
-  },
-  "eslintConfig": {
-    "extends": "xo-space",
-    "env": {
-      "jest": true,
-      "node": true
+    "author": {
+        "name": "Greg Swindle",
+        "email": "greg@swindle.net",
+        "url": "https://github.com/gregswindle"
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/gregswindle/cordova-contacts-swagger-api/issues"
+    },
+    "homepage": "https://github.com/gregswindle/cordova-contacts-swagger-api#readme",
+    "dependencies": {
+        "lodash": "^4.17.4"
+    },
+    "devDependencies": {
+        "babel-preset-env": "^1.5.2",
+        "babelify": "^7.3.0",
+        "browserify": "^14.4.0",
+        "commitplease": "^2.7.10",
+        "complexity-report": "^2.0.0-alpha",
+        "coveralls": "^2.13.1",
+        "eslint": "^4.1.0",
+        "eslint-plugin-filenames": "^1.2.0",
+        "eslint-plugin-json": "^1.2.0",
+        "eslint-plugin-security": "^1.4.0",
+        "jest": "^20.0.4",
+        "nsp": "^2.6.3",
+        "plato": "^1.7.0",
+        "standard-version": "^4.2.0",
+        "uglify-js": "^3.0.20"
+    },
+    "commitplease": {
+        "style": "angular",
+        "types": [
+            "build",
+            "chore",
+            "ci",
+            "docs",
+            "feat",
+            "fix",
+            "perf",
+            "refactor",
+            "revert",
+            "style",
+            "test"
+        ],
+        "scope": "\\S+.*"
+    },
+    "eslintConfig": {
+        "extends": "xo-space",
+        "env": {
+            "jest": true,
+            "node": true
+        }
     }
-  }
 }
