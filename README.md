@@ -1,5 +1,5 @@
 # `cordova-contacts-swagger-api`
-> A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation.
+> [![Swagger Logo][swagger-logo-20-img]][swagger-io-url] A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation.
 
 [![Build Status][travis-ci-img]][travis-ci-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Codacy Badge][codacy-img]][codacy-url]<br>
 [![NSP Status][nsp-img]][nsp-url] [![bitHound Dependencies][bithound-dep-img]][bithound-dep-url] [![bitHound Dev Dependencies][bithound-dev-dep-img]][bithound-dev-dep-url]<br>[![License][license-image]][license-url]  [![Readme Score][readme-score-img]][readme-score-url] [![Inline docs][inch-ci-img]][inch-ci-url]
@@ -171,5 +171,7 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 [rules-backlog-wiki-url]: https://github.com/gregswindle/cordova-contacts-swagger-api/wiki/Rules-backlog
 [stackshare-img]: https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat
 [stackshare-url]: https://stackshare.io/gregswindle/cordova-contacts-swagger-api
+[swagger-io-url]: http://swagger.io
+[swagger-logo-20-img]: ./.github/assets/img/swagger-logo-20.png
 [travis-ci-img]: https://travis-ci.org/gregswindle/cordova-contacts-swagger-api.svg?branch=master&style=flat-square
 [travis-ci-url]:  https://travis-ci.org/gregswindle/cordova-contacts-swagger-api
