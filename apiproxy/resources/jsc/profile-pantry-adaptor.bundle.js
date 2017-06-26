@@ -1,55 +1,54 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports=[
-  {
-    "type": "e-directory-profile",
-    "value": "https://edirectory.verizon.com/eDirectory/CorpDirServlet?page=people&eid={VZEID}",
-    "pref": true
-  },
-  {
-    "type": "crowd-around-profile",
-    "value": "https://crowdaround.verizon.com/people/{VZEID}",
-    "pref": false
-  },
-  {
-    "type": "one-confluence-profile",
-    "value": "https://oneconfluence.verizon.com/display/~{VZID}",
-    "pref": false
-  },
-  {
-    "type": "one-jira-profile",
-    "value": "https://onejira.verizon.com/secure/ViewProfile.jspa?name={VZID}",
-    "pref": false
-  },
-  {
-    "type": "one-stash-profile",
-    "value": "https://onestash.verizon.com/display/~{VZID}",
-    "pref": false
-  },
-  {
-    "type": "profile-picture",
-    "value": "https://profilepicture.verizon.com/aps/photoap/ImageServlet?eid={VZEID}",
-    "pref": false
-  }
+module.exports=[{
+        "type": "e-directory-profile",
+        "value": "https://edirectory.verizon.com/eDirectory/CorpDirServlet?page=people&eid={VZEID}",
+        "pref": true
+    },
+    {
+        "type": "crowd-around-profile",
+        "value": "https://crowdaround.verizon.com/people/{VZEID}",
+        "pref": false
+    },
+    {
+        "type": "one-confluence-profile",
+        "value": "https://oneconfluence.verizon.com/display/~{VZID}",
+        "pref": false
+    },
+    {
+        "type": "one-jira-profile",
+        "value": "https://onejira.verizon.com/secure/ViewProfile.jspa?name={VZID}",
+        "pref": false
+    },
+    {
+        "type": "one-stash-profile",
+        "value": "https://onestash.verizon.com/display/~{VZID}",
+        "pref": false
+    },
+    {
+        "type": "profile-picture",
+        "value": "https://profilepicture.verizon.com/aps/photoap/ImageServlet?eid={VZEID}",
+        "pref": false
+    }
 ]
 
 },{}],2:[function(require,module,exports){
-"use strict";
+'use strict';
 
 var CordovaContactType = {};
 (function (CordovaContactType) {
-    CordovaContactType[CordovaContactType["CROWD_AROUND_PROFILE"] = 1] = "CROWD_AROUND_PROFILE";
-    CordovaContactType[CordovaContactType["E_DIRECTORY_PROFILE"] = 0] = "E_DIRECTORY_PROFILE";
-    CordovaContactType[CordovaContactType["MOBILE"] = 1] = "MOBILE";
-    CordovaContactType[CordovaContactType["ONE_CONFLUENCE_PROFILE"] = 3] = "ONE_CONFLUENCE_PROFILE";
-    CordovaContactType[CordovaContactType["ONE_JIRA_PROFILE"] = 2] = "ONE_JIRA_PROFILE";
-    CordovaContactType[CordovaContactType["ONE_STASH_PROFILE"] = 4] = "ONE_STASH_PROFILE";
-    CordovaContactType[CordovaContactType["VZEID"] = 0] = "VZEID";
-    CordovaContactType[CordovaContactType["VZEID_DIRECT_REPORTS"] = 2] = "VZEID_DIRECT_REPORTS";
-    CordovaContactType[CordovaContactType["VZEID_MANAGER"] = 1] = "VZEID_MANAGER";
-    CordovaContactType[CordovaContactType["VZID"] = 0] = "VZID";
-    CordovaContactType[CordovaContactType["WORK"] = 0] = "WORK";
-    CordovaContactType[CordovaContactType["WORK_EXTERNAL"] = 0] = "WORK_EXTERNAL";
-    CordovaContactType[CordovaContactType["WORK_INTERNAL"] = 1] = "WORK_INTERNAL";
+    CordovaContactType[CordovaContactType['CROWD_AROUND_PROFILE'] = 1] = 'CROWD_AROUND_PROFILE';
+    CordovaContactType[CordovaContactType['E_DIRECTORY_PROFILE'] = 0] = 'E_DIRECTORY_PROFILE';
+    CordovaContactType[CordovaContactType['MOBILE'] = 1] = 'MOBILE';
+    CordovaContactType[CordovaContactType['ONE_CONFLUENCE_PROFILE'] = 3] = 'ONE_CONFLUENCE_PROFILE';
+    CordovaContactType[CordovaContactType['ONE_JIRA_PROFILE'] = 2] = 'ONE_JIRA_PROFILE';
+    CordovaContactType[CordovaContactType['ONE_STASH_PROFILE'] = 4] = 'ONE_STASH_PROFILE';
+    CordovaContactType[CordovaContactType['VZEID'] = 0] = 'VZEID';
+    CordovaContactType[CordovaContactType['VZEID_DIRECT_REPORTS'] = 2] = 'VZEID_DIRECT_REPORTS';
+    CordovaContactType[CordovaContactType['VZEID_MANAGER'] = 1] = 'VZEID_MANAGER';
+    CordovaContactType[CordovaContactType['VZID'] = 0] = 'VZID';
+    CordovaContactType[CordovaContactType['WORK'] = 0] = 'WORK';
+    CordovaContactType[CordovaContactType['WORK_EXTERNAL'] = 0] = 'WORK_EXTERNAL';
+    CordovaContactType[CordovaContactType['WORK_INTERNAL'] = 1] = 'WORK_INTERNAL';
 })(CordovaContactType);
 
 module.exports = CordovaContactType;
@@ -57,128 +56,128 @@ module.exports = CordovaContactType;
 },{}],3:[function(require,module,exports){
 'use strict';
 
-var CordovaContactType = require('./cordova-contact-type.enum');
-var profilePantry2CordovaContact = require('./profile-pantry-2-cordova-contact');
+var CordovaContactType = require('./cordova-contact-type');
+var profilePantryToCordovaContact = require('./profile-pantry-to-cordova-contact');
 
 module.exports = {
-  CordovaContactType: CordovaContactType,
-  CordovaContactAdaptor: profilePantry2CordovaContact
+    CordovaContactType: CordovaContactType,
+    CordovaContactAdaptor: profilePantryToCordovaContact
 };
 
-},{"./cordova-contact-type.enum":2,"./profile-pantry-2-cordova-contact":5}],4:[function(require,module,exports){
+},{"./cordova-contact-type":2,"./profile-pantry-to-cordova-contact":5}],4:[function(require,module,exports){
 module.exports={
-  "id": null,
-  "displayName": null,
-  "name": {
-    "formatted": null,
-    "familyName": null,
-    "givenName": null,
-    "middleName": null,
-    "honorificPrefix": null,
-    "honorificSuffix": null
-  },
-  "nickname": null,
-  "phoneNumbers": [{
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    },
-    {
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    }
-  ],
-  "emails": [{
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    },
-    {
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    }
-  ],
-  "addresses": [{
     "id": null,
-    "pref": false,
-    "type": null,
-    "formatted": null,
-    "streetAddress": null,
-    "locality": null,
-    "region": null,
-    "postalCode": null,
-    "country": null
-  }],
-  "ims": [
+    "displayName": null,
+    "name": {
+        "formatted": null,
+        "familyName": null,
+        "givenName": null,
+        "middleName": null,
+        "honorificPrefix": null,
+        "honorificSuffix": null
+    },
+    "nickname": null,
+    "phoneNumbers": [{
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        },
+        {
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        }
+    ],
+    "emails": [{
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        },
+        {
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        }
+    ],
+    "addresses": [{
+        "id": null,
+        "pref": false,
+        "type": null,
+        "formatted": null,
+        "streetAddress": null,
+        "locality": null,
+        "region": null,
+        "postalCode": null,
+        "country": null
+    }],
+    "ims": [
 
-  ],
-  "organizations": [{
-    "id": null,
-    "pref": false,
-    "type": null,
-    "name": null,
-    "department": null,
-    "title": null
-  }],
-  "birthday": null,
-  "note": null,
-  "photos": [],
-  "categories": [{
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    },
-    {
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    },
-    {
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    }
-  ],
-  "urls": [{
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    },
-    {
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    },
-    {
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    },
-    {
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    },
-    {
-      "id": null,
-      "type": null,
-      "value": null,
-      "pref": false
-    }
-  ]
+    ],
+    "organizations": [{
+        "id": null,
+        "pref": false,
+        "type": null,
+        "name": null,
+        "department": null,
+        "title": null
+    }],
+    "birthday": null,
+    "note": null,
+    "photos": [],
+    "categories": [{
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        },
+        {
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        },
+        {
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        }
+    ],
+    "urls": [{
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        },
+        {
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        },
+        {
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        },
+        {
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        },
+        {
+            "id": null,
+            "type": null,
+            "value": null,
+            "pref": false
+        }
+    ]
 }
 
 },{}],5:[function(require,module,exports){
@@ -190,7 +189,7 @@ var _require = require('lodash'),
     startCase = _require.startCase,
     toLower = _require.toLower;
 
-var CordovaContactType = require('./cordova-contact-type.enum');
+var CordovaContactType = require('./cordova-contact-type');
 var nullCordovaContact = require('./null-cordova-contact');
 var WORK = 'work';
 var contactUrls = require('./contact-urls');
@@ -205,14 +204,14 @@ var contactUrls = require('./contact-urls');
  * @returns {void}
  */
 var assignAddresses = function assignAddresses(contact, profilePantry) {
-  contact.addresses[CordovaContactType.WORK].type = WORK;
-  contact.addresses[CordovaContactType.WORK].country = profilePantry.workCountry;
-  contact.addresses[CordovaContactType.WORK].formatted = profilePantry.workStreet + ' ' + profilePantry.mailCode + ', ' + profilePantry.workCity + ', ' + profilePantry.workState + ' ' + profilePantry.workPostalCode + ' ' + profilePantry.workCountry;
-  contact.addresses[CordovaContactType.WORK].locality = profilePantry.workCity;
-  contact.addresses[CordovaContactType.WORK].postalCode = profilePantry.workPostalCode;
-  contact.addresses[CordovaContactType.WORK].pref = true;
-  contact.addresses[CordovaContactType.WORK].region = profilePantry.workState;
-  contact.addresses[CordovaContactType.WORK].streetAddress = profilePantry.workStreet + ' ' + profilePantry.mailCode;
+    contact.addresses[CordovaContactType.WORK].type = WORK;
+    contact.addresses[CordovaContactType.WORK].country = profilePantry.workCountry;
+    contact.addresses[CordovaContactType.WORK].formatted = profilePantry.workStreet + ' ' + profilePantry.mailCode + ', ' + profilePantry.workCity + ', ' + profilePantry.workState + ' ' + profilePantry.workPostalCode + ' ' + profilePantry.workCountry;
+    contact.addresses[CordovaContactType.WORK].locality = profilePantry.workCity;
+    contact.addresses[CordovaContactType.WORK].postalCode = profilePantry.workPostalCode;
+    contact.addresses[CordovaContactType.WORK].pref = true;
+    contact.addresses[CordovaContactType.WORK].region = profilePantry.workState;
+    contact.addresses[CordovaContactType.WORK].streetAddress = profilePantry.workStreet + ' ' + profilePantry.mailCode;
 };
 
 /**
@@ -225,13 +224,13 @@ var assignAddresses = function assignAddresses(contact, profilePantry) {
  * @returns {void}
  */
 var assignCategories = function assignCategories(contact, profilePantry) {
-  contact.categories[CordovaContactType.VZEID].pref = true;
-  contact.categories[CordovaContactType.VZEID].type = 'id:vzeid';
-  contact.categories[CordovaContactType.VZEID].value = profilePantry.vzeid;
-  contact.categories[CordovaContactType.VZEID_MANAGER].type = 'id:vzeid:manager';
-  contact.categories[CordovaContactType.VZEID_MANAGER].value = profilePantry.managerEid;
-  contact.categories[CordovaContactType.VZEID_DIRECT_REPORTS].type = 'id:vzeid:direct-reports';
-  contact.categories[CordovaContactType.VZEID_DIRECT_REPORTS].value = profilePantry.directReportsEIDs;
+    contact.categories[CordovaContactType.VZEID].pref = true;
+    contact.categories[CordovaContactType.VZEID].type = 'id:vzeid';
+    contact.categories[CordovaContactType.VZEID].value = profilePantry.vzeid;
+    contact.categories[CordovaContactType.VZEID_MANAGER].type = 'id:vzeid:manager';
+    contact.categories[CordovaContactType.VZEID_MANAGER].value = profilePantry.managerEid;
+    contact.categories[CordovaContactType.VZEID_DIRECT_REPORTS].type = 'id:vzeid:direct-reports';
+    contact.categories[CordovaContactType.VZEID_DIRECT_REPORTS].value = profilePantry.directReportsEIDs;
 };
 
 /**
@@ -244,11 +243,11 @@ var assignCategories = function assignCategories(contact, profilePantry) {
  * @returns {void}
  */
 var assignEmails = function assignEmails(contact, profilePantry) {
-  contact.emails[CordovaContactType.WORK_INTERNAL].type = 'work:internal';
-  contact.emails[CordovaContactType.WORK_INTERNAL].value = profilePantry.internalEmail;
-  contact.emails[CordovaContactType.WORK_EXTERNAL].pref = true;
-  contact.emails[CordovaContactType.WORK_EXTERNAL].type = 'work:external';
-  contact.emails[CordovaContactType.WORK_EXTERNAL].value = profilePantry.externalEmail;
+    contact.emails[CordovaContactType.WORK_INTERNAL].type = 'work:internal';
+    contact.emails[CordovaContactType.WORK_INTERNAL].value = profilePantry.internalEmail;
+    contact.emails[CordovaContactType.WORK_EXTERNAL].pref = true;
+    contact.emails[CordovaContactType.WORK_EXTERNAL].type = 'work:external';
+    contact.emails[CordovaContactType.WORK_EXTERNAL].value = profilePantry.externalEmail;
 };
 
 /**
@@ -261,9 +260,9 @@ var assignEmails = function assignEmails(contact, profilePantry) {
  * @returns {void}
  */
 var assignName = function assignName(contact, profilePantry) {
-  contact.name.familyName = profilePantry.lastName;
-  contact.name.formatted = profilePantry.fullName;
-  contact.name.givenName = profilePantry.firstName;
+    contact.name.familyName = profilePantry.lastName;
+    contact.name.formatted = profilePantry.fullName;
+    contact.name.givenName = profilePantry.firstName;
 };
 
 /**
@@ -276,11 +275,11 @@ var assignName = function assignName(contact, profilePantry) {
  * @returns {void}
  */
 var assignOrganizations = function assignOrganizations(contact, profilePantry) {
-  contact.organizations[CordovaContactType.WORK].department = startCase(toLower(profilePantry.financeLobName));
-  contact.organizations[CordovaContactType.WORK].name = profilePantry.treeLobName + ', ' + profilePantry.organization;
-  contact.organizations[CordovaContactType.WORK].pref = true;
-  contact.organizations[CordovaContactType.WORK].title = profilePantry.jobTitle;
-  contact.organizations[CordovaContactType.WORK].type = WORK;
+    contact.organizations[CordovaContactType.WORK].department = startCase(toLower(profilePantry.financeLobName));
+    contact.organizations[CordovaContactType.WORK].name = profilePantry.treeLobName + ', ' + profilePantry.organization;
+    contact.organizations[CordovaContactType.WORK].pref = true;
+    contact.organizations[CordovaContactType.WORK].title = profilePantry.jobTitle;
+    contact.organizations[CordovaContactType.WORK].type = WORK;
 };
 
 /**
@@ -293,11 +292,11 @@ var assignOrganizations = function assignOrganizations(contact, profilePantry) {
  * @returns {void}
  */
 var assignPhoneNumbers = function assignPhoneNumbers(contact, profilePantry) {
-  contact.phoneNumbers[CordovaContactType.WORK].pref = true;
-  contact.phoneNumbers[CordovaContactType.WORK].type = WORK;
-  contact.phoneNumbers[CordovaContactType.WORK].value = profilePantry.officePhoneNumber;
-  contact.phoneNumbers[CordovaContactType.MOBILE].type = 'mobile';
-  contact.phoneNumbers[CordovaContactType.MOBILE].value = profilePantry.mobile;
+    contact.phoneNumbers[CordovaContactType.WORK].pref = true;
+    contact.phoneNumbers[CordovaContactType.WORK].type = WORK;
+    contact.phoneNumbers[CordovaContactType.WORK].value = profilePantry.officePhoneNumber;
+    contact.phoneNumbers[CordovaContactType.MOBILE].type = 'mobile';
+    contact.phoneNumbers[CordovaContactType.MOBILE].value = profilePantry.mobile;
 };
 
 /**
@@ -315,44 +314,44 @@ var assignPhoneNumbers = function assignPhoneNumbers(contact, profilePantry) {
  * @returns {void}
  */
 var assignUrls = function assignUrls(contact, profilePantry) {
-  contact.urls = map(contactUrls, function (url) {
-    url.value = url.value.replace('{VZEID}', profilePantry.vzeid).replace('{VZID}', profilePantry.vzid);
-    return url;
-  });
+    contact.urls = map(contactUrls, function (url) {
+        url.value = url.value.replace('{VZEID}', profilePantry.vzeid).replace('{VZID}', profilePantry.vzid);
+        return url;
+    });
 };
 
 /**
  * Adapts Profile Pantry attributes to the Cordova Contact interface
  * @class
  */
-var profilePantry2CordovaContact = {
+var profilePantryToCordovaContact = {
 
-  /**
-   * Transform profile pantry JSON to an Contact object.
-   *
-   * @param {object} profilePantry Profile Pantry attributes
-   *
-   * @returns {Contact} A Cordova Contact object.
-   */
-  adapt: function adapt(profilePantry) {
-    var contact = clone(nullCordovaContact);
-    contact.birthday = profilePantry.birthday;
-    assignAddresses(contact, profilePantry);
-    assignCategories(contact, profilePantry);
-    contact.displayName = profilePantry.fullName;
-    assignEmails(contact, profilePantry);
-    assignName(contact, profilePantry);
-    contact.nickname = profilePantry.nickname;
-    assignOrganizations(contact, profilePantry);
-    assignPhoneNumbers(contact, profilePantry);
-    assignUrls(contact, profilePantry);
-    return contact;
-  }
+    /**
+     * Transform profile pantry JSON to an Contact object.
+     *
+     * @param {object} profilePantry Profile Pantry attributes
+     *
+     * @returns {Contact} A Cordova Contact object.
+     */
+    adapt: function adapt(profilePantry) {
+        var contact = clone(nullCordovaContact);
+        contact.birthday = profilePantry.birthday;
+        assignAddresses(contact, profilePantry);
+        assignCategories(contact, profilePantry);
+        contact.displayName = profilePantry.fullName;
+        assignEmails(contact, profilePantry);
+        assignName(contact, profilePantry);
+        contact.nickname = profilePantry.nickname;
+        assignOrganizations(contact, profilePantry);
+        assignPhoneNumbers(contact, profilePantry);
+        assignUrls(contact, profilePantry);
+        return contact;
+    }
 };
 
-module.exports = profilePantry2CordovaContact;
+module.exports = profilePantryToCordovaContact;
 
-},{"./contact-urls":1,"./cordova-contact-type.enum":2,"./null-cordova-contact":4,"lodash":6}],6:[function(require,module,exports){
+},{"./contact-urls":1,"./cordova-contact-type":2,"./null-cordova-contact":4,"lodash":6}],6:[function(require,module,exports){
 (function (global){
 /**
  * @license

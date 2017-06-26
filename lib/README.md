@@ -1,4 +1,10 @@
-# `cordova-contacts-swagger-api` API docs
+---
+
+###### Menu: [API docs](README.md) | [Complexity Report](COMPLEXITY.md)
+
+---
+
+# `cordova-contacts-swagger-api` API Policy docs
 > [![Swagger Logo][swagger-logo-20-img]][swagger-io-url] A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation.
 
 <a name="profilePantryToCordovaContact"></a>
@@ -20,13 +26,17 @@ Adapts Profile Pantry attributes to the Cordova Contact interface
 ### profilePantryToCordovaContact.adapt(profilePantry) ⇒ <code>Contact</code>
 Transform profile pantry JSON to an Contact object.
 
-**Kind**: static method of <code>[profilePantryToCordovaContact](#profilePantryToCordovaContact)</code>  
+**Kind**: static method of [<code>profilePantryToCordovaContact</code>](#profilePantryToCordovaContact)  
 **Returns**: <code>Contact</code> - A Cordova Contact object.  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | profilePantry | <code>object</code> | Profile Pantry attributes |
 
+
+---
+
+###### Menu: [API docs](README.md) | [Complexity Report](COMPLEXITY.md)
 
 ---
 [Apache 2.0][license-url] :copyright: [Greg Swindle][author-url].
