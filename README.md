@@ -1,8 +1,8 @@
 # `cordova-contacts-swagger-api`
 > A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation.
 
-[![License][license-image]][license-url] [![Build Status][travis-ci-img]][travis-ci-url] [![Codacy Badge][codacy-img]][codacy-url] [![Coverage Status][coveralls-img]][coveralls-url]<br>
-[![NSP Status][nsp-img]][nsp-url] [![bitHound Dependencies][bithound-dep-img]][bithound-dep-url] [![bitHound Dev Dependencies][bithound-dev-dep-img]][bithound-dev-dep-url]<br>[![Readme Score][readme-score-img]][readme-score-url] [![Inline docs][inch-ci-img]][inch-ci-url]
+[![Build Status][travis-ci-img]][travis-ci-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Codacy Badge][codacy-img]][codacy-url]<br>
+[![NSP Status][nsp-img]][nsp-url] [![bitHound Dependencies][bithound-dep-img]][bithound-dep-url] [![bitHound Dev Dependencies][bithound-dev-dep-img]][bithound-dev-dep-url]<br>[![License][license-image]][license-url]  [![Readme Score][readme-score-img]][readme-score-url] [![Inline docs][inch-ci-img]][inch-ci-url]
 
 ## 1. Table of contents
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
