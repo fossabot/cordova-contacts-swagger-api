@@ -10,6 +10,8 @@ node_js:
   - 7
   - 6
   - node
+before_install:
+  - npm install -g jsdoc-to-markdown
 before_script:
   - npm prune
 script:
@@ -17,7 +19,6 @@ script:
   - npm test
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-    # - ./node_modules/.bin/bithound check git@github.com:gregswindle/generator-android-lib.git
 after_success:
   # - npm run semantic-release
 branches:
