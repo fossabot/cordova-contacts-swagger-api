@@ -4,7 +4,7 @@
     "description": "A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation",
     "main": "index.js",
     "scripts": {
-        "build": "browserify lib/index.js -t babelify --outfile apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js && npm run minify && npm run docs:api",
+        "build": "browserify lib/index.js -t babelify --outfile apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js && npm run minify",
         "docs:api": "jsdoc2md --template ./.github/README.hbs --files ./lib/*.js > ./lib/README.md && npm run complexity:cr",
         "eslint:stylish": "./node_modules/.bin/eslint -c ./.eslintrc.yml lib/**/*.js --fix",
         "minify": "uglifyjs apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js  --compress -o apiproxy/resources/jsc/profile-pantry-adaptor.min.js",
