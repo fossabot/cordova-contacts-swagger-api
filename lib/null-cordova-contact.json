@@ -60,12 +60,7 @@
   }],
   "birthday": null,
   "note": null,
-  "photos": [{
-    "id": null,
-    "type": null,
-    "value": null,
-    "pref": false
-  }],
+  "photos": [],
   "categories": [{
       "id": null,
       "type": null,

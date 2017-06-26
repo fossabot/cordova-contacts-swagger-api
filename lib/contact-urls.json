@@ -18,5 +18,15 @@
     "type": "one-jira-profile",
     "value": "https://onejira.verizon.com/secure/ViewProfile.jspa?name={VZID}",
     "pref": false
+  },
+  {
+    "type": "one-stash-profile",
+    "value": "https://onestash.verizon.com/display/~{VZID}",
+    "pref": false
+  },
+  {
+    "type": "profile-picture",
+    "value": "https://profilepicture.verizon.com/aps/photoap/ImageServlet?eid={VZEID}",
+    "pref": false
   }
 ]
