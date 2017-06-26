@@ -1,8 +1,8 @@
 # `cordova-contacts-swagger-api`
 > A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation.
 
-[![License][license-image]][license-url] [![Readme Score][readme-score-img]][readme-score-url] [![Inline docs][inch-ci-img]][inch-ci-url] [![Build Status][travis-ci-img]][travis-ci-url] [![Codacy Badge][codacy-img]][codacy-url] [![Coverage Status][coveralls-img]][coveralls-url]<br>
-[![NSP Status][nsp-img]][nsp-url] [![bitHound Dependencies][bithound-dep-img]][bithound-dep-url] [![bitHound Dev Dependencies][bithound-dev-dep-img]][bithound-dev-dep-url]
+[![License][license-image]][license-url] [![Build Status][travis-ci-img]][travis-ci-url] [![Codacy Badge][codacy-img]][codacy-url] [![Coverage Status][coveralls-img]][coveralls-url]<br>
+[![NSP Status][nsp-img]][nsp-url] [![bitHound Dependencies][bithound-dep-img]][bithound-dep-url] [![bitHound Dev Dependencies][bithound-dev-dep-img]][bithound-dev-dep-url]<br>[![Readme Score][readme-score-img]][readme-score-url] [![Inline docs][inch-ci-img]][inch-ci-url]
 
 ## 1. Table of contents
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
@@ -133,7 +133,6 @@ $ npm run pretest
 
 Contributions are stories with a beginning, a middle, and an end, all told through issues and pull requests.
  * [Peruse open issues][issues-url] or
- * [View rules in the backlog][rules-backlog-wiki-url]
  * [Open a new pull request (PR)][pr-url]
 
 ## 6. License
@@ -146,18 +145,18 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 
 [author-url]: https://github.com/gregswindle
 [bithound-dep-img]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/badges/dependencies.svg
-[bithound-dep-url]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/develop/dependencies/npm
+[bithound-dep-url]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/master/dependencies/npm
 [bithound-dev-dep-img]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/badges/devDependencies.svg
-[bithound-dev-dep-url]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/develop/dependencies/npm
+[bithound-dev-dep-url]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/master/dependencies/npm
 [codacy-img]: https://api.codacy.com/project/badge/Grade/554fe390431b455a87ba6acde3ff2989?style=flat-square
 [codacy-url]: https://www.codacy.com/app/greg_7/cordova-contacts-swagger-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gregswindle/cordova-contacts-swagger-api&amp;utm_campaign=Badge_Grade
 [code-of-conduct-url]: ./.github/CODE_OF_CONDUCT.md
-[coveralls-img]: https://coveralls.io/repos/github/gregswindle/cordova-contacts-swagger-api/badge.svg?branch=develop
-[coveralls-url]: https://coveralls.io/github/gregswindle/cordova-contacts-swagger-api?branch=develop
+[coveralls-img]: https://coveralls.io/repos/github/gregswindle/cordova-contacts-swagger-api/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/gregswindle/cordova-contacts-swagger-api?branch=master
 [eslint-dev-env-url]: http://eslint.org/docs/developer-guide/development-environment
 [greenkeeper-img]: https://badges.greenkeeper.io/gregswindle/cordova-contacts-swagger-api.svg?style=flat-square
 [greenkeeper-url]: https://greenkeeper.io/
-[inch-ci-img]: http://inch-ci.org/github/gregswindle/cordova-contacts-swagger-api.svg?branch=develop&style=flat-square
+[inch-ci-img]: http://inch-ci.org/github/gregswindle/cordova-contacts-swagger-api.svg?branch=master
 [inch-ci-url]: http://inch-ci.org/github/gregswindle/cordova-contacts-swagger-api
 [issues-new-url]: https://github.com/gregswindle/cordova-contacts-swagger-api/issues/new
 [issues-url]: https://github.com/gregswindle/cordova-contacts-swagger-api/issues
@@ -174,5 +173,5 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 [rules-backlog-wiki-url]: https://github.com/gregswindle/cordova-contacts-swagger-api/wiki/Rules-backlog
 [stackshare-img]: https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat
 [stackshare-url]: https://stackshare.io/gregswindle/cordova-contacts-swagger-api
-[travis-ci-img]: https://travis-ci.org/gregswindle/cordova-contacts-swagger-api.svg?branch=develop&style=flat-square
+[travis-ci-img]: https://travis-ci.org/gregswindle/cordova-contacts-swagger-api.svg?branch=master&style=flat-square
 [travis-ci-url]:  https://travis-ci.org/gregswindle/cordova-contacts-swagger-api

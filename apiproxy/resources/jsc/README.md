@@ -1,2 +1,2 @@
 # API Resources
-> Placeholder for <resource-name>.js or <resource-name>.jar files and any noteworthy documentation.
+> Provides the bundled as well as minified JSC source files.

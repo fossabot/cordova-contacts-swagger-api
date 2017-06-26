@@ -24,7 +24,7 @@ For more information, please see the Privacy Guide.</Description>
     </ProxyEndpoints>
     <Resources>
         <Resource>openapi://association.json</Resource>
-        <Resource>jsc://profile-pantry-adaptor.js</Resource>
+        <Resource>jsc://profile-pantry-adaptor.min.js</Resource>
     </Resources>
     <Spec></Spec>
     <TargetServers/>

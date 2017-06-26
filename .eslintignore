@@ -1,0 +1,12 @@
+*.bundle.js
+*.min.js
+/apiproxy/resources/jsc/**
+/coverage/**
+/docs/**
+/jsdoc/**
+/templates/**
+/tests/bench/**
+/tests/fixtures/**
+/tests/performance/**
+/tmp/**
+test.js

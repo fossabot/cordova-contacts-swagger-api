@@ -7,12 +7,16 @@ parserOptions:
 env:
   es6: true
   node: true
-  mocha: true
-
-extends: 'eslint:recommended'
+  jest: true
 
 plugins:
+  - filenames
+  - json
   - security
+
+extends:
+  - 'eslint:recommended'
+  - 'plugin:security/recommended'
 
 # http://eslint.org/docs/rules/
 rules:
@@ -59,7 +63,7 @@ rules:
   class-methods-use-this: off
   complexity:
     - error
-    - 6
+    - 4
   consistent-return: off
   curly: off
   default-case: off
@@ -235,7 +239,7 @@ rules:
   quote-props: off
   quotes:
     - error
-    - double
+    - single
   require-jsdoc: error
   semi-spacing: off
   semi:
@@ -286,16 +290,26 @@ rules:
   symbol-description: off
   template-curly-spacing: off
   yield-star-spacing: off
+  # https://github.com/selaux/eslint-plugin-filenames
+  filenames/match-regex:
+    - warn
+    - kebab
+  filenames/match-exported:
+    - warn
+    - kebab
+  filenames/no-index: warn
+  # https://www.npmjs.com/package/eslint-plugin-json
+
   # https://github.com/nodesecurity/eslint-plugin-security#rules
-  # detect-buffer-noassert: error
-  # detect-child-process: error
-  # detect-disable-mustache-escape: error
-  # detect-eval-with-expression: error
-  # detect-no-csrf-before-method-override: error
-  # detect-non-literal-fs-filename: error
-  # detect-non-literal-regexp: error
-  # detect-non-literal-require: error
-  # detect-object-injection: error
-  # detect-possible-timing-attacks: error
-  # detect-pseudoRandomBytes: error
-  # detect-unsafe-regex: error
+  security/detect-buffer-noassert: error
+  security/detect-child-process: error
+  security/detect-disable-mustache-escape: error
+  security/detect-eval-with-expression: error
+  security/detect-no-csrf-before-method-override: error
+  security/detect-non-literal-fs-filename: error
+  security/detect-non-literal-regexp: error
+  security/detect-non-literal-require: error
+  security/detect-object-injection: error
+  security/detect-possible-timing-attacks: error
+  security/detect-pseudoRandomBytes: error
+  security/detect-unsafe-regex: error

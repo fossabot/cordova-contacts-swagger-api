@@ -1,7 +1,6 @@
 sudo: false
 language: node_js
 cache:
-  yarn: true
   directories:
     - node_modules
 notifications:
@@ -14,9 +13,10 @@ node_js:
 before_script:
   - npm prune
 script:
-    - npm test
+  - npm run build
+  - npm test
 after_script:
-    - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
     # - ./node_modules/.bin/bithound check git@github.com:gregswindle/generator-android-lib.git
 after_success:
   # - npm run semantic-release
