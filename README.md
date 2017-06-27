@@ -164,19 +164,10 @@ $ npm test
 
 ```
 
-To execute `eslint` alone, run:
-
-```bash
-
-$ npm run pretest
-
-```
-
-These commands also generate
+This generates:
 
 * Detailed code coverage reports at `{PROJECT_ROOT}/coverage/lcov-report/index.html`, as well as
-* `lcov.info` and
-* `clover.xml` files, which you can send to CI test coverage services like Coveralls.
+* `lcov.info` and `clover.xml` files, which you can send to CI test coverage services like Coveralls.
 
 ## 5. Contributions
 :family: We warmly welcome contributors. Check out the guidelines for [Contributing to `cordova-contacts-swagger-api`](./.github/CONTRIBUTING.md) and our [Contributor Covenant Code of Conduct][code-of-conduct-url].
