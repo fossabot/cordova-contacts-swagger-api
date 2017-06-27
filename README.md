@@ -1,5 +1,8 @@
 # `cordova-contacts-swagger-api`
-> [![Swagger Logo][swagger-logo-20-img]][swagger-io-url] A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation.
+> [![Swagger Logo][swagger-logo-20-img]][swagger-io-url] A _reference_ Apigee API Proxy that
+>
+> * Demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation; and
+> * Provides mock data for automated content publication in the Apigee Developer Portal.
 
 [![Build Status][travis-ci-img]][travis-ci-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Codacy Badge][codacy-img]][codacy-url]<br>
 [![NSP Status][nsp-img]][nsp-url] [![bitHound Dependencies][bithound-dep-img]][bithound-dep-url] [![bitHound Dev Dependencies][bithound-dev-dep-img]][bithound-dev-dep-url]<br>[![License][license-image]][license-url]  [![Readme Score][readme-score-img]][readme-score-url] [![Inline docs][inch-ci-img]][inch-ci-url]
@@ -17,7 +20,8 @@
 	- [4.2. Javascript API policy source code analysis](#42-javascript-api-policy-source-code-analysis)
 	- [4.3. Javascript API policy test execution and code coverage](#43-javascript-api-policy-test-execution-and-code-coverage)
 - [5. Contributions](#5-contributions)
-- [6. License](#6-license)
+- [6. Terms of service](#6-terms-of-service)
+- [7. License](#7-license)
 
 <!-- /TOC -->
 
@@ -79,11 +83,27 @@ $ npm test
 
 ```
 
-To execute Swagger quality analysis alone, run:
+or
 
 ```bash
 
 $ npm run pretest
+
+```
+
+or
+
+```bash
+
+$ npm run lint
+
+```
+
+To execute `swagger validate *.swagger.yaml --debug` alone, run:
+
+```bash
+
+$ npm run swagger:lint
 
 ```
 
@@ -100,11 +120,35 @@ $ npm test
 
 ```
 
-To execute `eslint` alone, run:
+or
 
 ```bash
 
 $ npm run pretest
+
+```
+
+or
+
+```bash
+
+$ npm run lint
+
+```
+
+To execute `eslint -c ./.eslintrc.yml lib/**/*.js --fix` alone, run:
+
+```bash
+
+$ npm run eslint:stylish
+
+```
+
+If you'd like an `eslint` report in HTML (with links to errors and warnings), run the following command to generate a `{PROJECT_ROOT}/eslint-report.html`:
+
+```bash
+
+$ npm run eslint:html
 
 ```
 
@@ -112,7 +156,7 @@ $ npm run pretest
 
 `cordova-contacts-swagger-api` uses `jest` for BDD spec execution and code coverage analysis.
 
-Code quality analysis runs before every test execution:
+Run:
 
 ```bash
 
@@ -120,13 +164,10 @@ $ npm test
 
 ```
 
-To execute `eslint` alone, run:
+This generates:
 
-```bash
-
-$ npm run pretest
-
-```
+* Detailed code coverage reports at `{PROJECT_ROOT}/coverage/lcov-report/index.html`, as well as
+* `lcov.info` and `clover.xml` files, which you can send to CI test coverage services like Coveralls.
 
 ## 5. Contributions
 :family: We warmly welcome contributors. Check out the guidelines for [Contributing to `cordova-contacts-swagger-api`](./.github/CONTRIBUTING.md) and our [Contributor Covenant Code of Conduct][code-of-conduct-url].
@@ -135,7 +176,11 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
  * [Peruse open issues][issues-url] or
  * [Open a new pull request (PR)][pr-url]
 
-## 6. License
+## 6. Terms of service
+
+Please review Verizon's [Terms of Service](TERMS_OF_SERVICE.md).
+
+## 7. License
 
 [Apache 2.0][license-url] :copyright: [Greg Swindle][author-url].
 
@@ -173,5 +218,5 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 [stackshare-url]: https://stackshare.io/gregswindle/cordova-contacts-swagger-api
 [swagger-io-url]: http://swagger.io
 [swagger-logo-20-img]: ./.github/assets/img/swagger-logo-20.png
-[travis-ci-img]: https://travis-ci.org/gregswindle/cordova-contacts-swagger-api.svg?branch=master&style=flat-square
+[travis-ci-img]: https://travis-ci.org/gregswindle/cordova-contacts-swagger-api.svg?branch=master
 [travis-ci-url]:  https://travis-ci.org/gregswindle/cordova-contacts-swagger-api

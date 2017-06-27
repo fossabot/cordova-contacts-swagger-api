@@ -10,8 +10,6 @@ node_js:
   - 7
   - 6
   - node
-before_install:
-  - npm install -g jsdoc-to-markdown
 before_script:
   - npm prune
 script:
