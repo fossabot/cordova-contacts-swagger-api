@@ -181,5 +181,5 @@ Please review Verizon's [Terms of Service](TERMS_OF_SERVICE.md).
 [stackshare-url]: https://stackshare.io/gregswindle/cordova-contacts-swagger-api
 [swagger-io-url]: http://swagger.io
 [swagger-logo-20-img]: ./.github/assets/img/swagger-logo-20.png
-[travis-ci-img]: https://travis-ci.org/gregswindle/cordova-contacts-swagger-api.svg?branch=master&style=flat-square
-[travis-ci-url]:  https://travis-ci.org/gregswindle/cordova-contacts-swagger-api?branch=master
+[travis-ci-img]: https://travis-ci.org/gregswindle/cordova-contacts-swagger-api.svg?branch=master
+[travis-ci-url]:  https://travis-ci.org/gregswindle/cordova-contacts-swagger-api
