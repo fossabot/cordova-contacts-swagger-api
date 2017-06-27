@@ -9,6 +9,7 @@
         "docs:api": "./node_modules/.bin/jsdoc2md --partial .github/assets/jsdoc2md/*.hbs --files lib/*.js > lib/README.md",
         "docs:complexity": "./node_modules/.bin/cr --format markdown lib/*.js > lib/COMPLEXITY.md",
         "docs:swagger": "./node_modules/.bin/swagger-markdown -i *.swagger.yaml -o lib/SWAGGER.md",
+        "eslint:html": "./node_modules/.bin/eslint -c ./.eslintrc.yml -f html lib/**/*.js --fix > ./eslint-report.html",
         "eslint:stylish": "./node_modules/.bin/eslint -c ./.eslintrc.yml lib/**/*.js --fix",
         "lint": "npm run eslint:stylish && npm run swagger:lint",
         "minify": "uglifyjs apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js  --compress -o apiproxy/resources/jsc/profile-pantry-adaptor.min.js",

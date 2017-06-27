@@ -83,11 +83,27 @@ $ npm test
 
 ```
 
-To execute Swagger quality analysis alone, run:
+or
 
 ```bash
 
 $ npm run pretest
+
+```
+
+or
+
+```bash
+
+$ npm run lint
+
+```
+
+To execute `swagger validate *.swagger.yaml --debug` alone, run:
+
+```bash
+
+$ npm run swagger:lint
 
 ```
 
@@ -104,7 +120,7 @@ $ npm test
 
 ```
 
-To execute `eslint` alone, run:
+or
 
 ```bash
 
@@ -112,11 +128,35 @@ $ npm run pretest
 
 ```
 
+or
+
+```bash
+
+$ npm run lint
+
+```
+
+To execute `eslint -c ./.eslintrc.yml lib/**/*.js --fix` alone, run:
+
+```bash
+
+$ npm run eslint:stylish
+
+```
+
+If you'd like an `eslint` report in HTML (with links to errors and warnings), run the following command to generate a `{PROJECT_ROOT}/eslint-report.html`:
+
+```bash
+
+$ npm run eslint:html
+
+```
+
 ### 4.3. Javascript API policy test execution and code coverage
 
 `cordova-contacts-swagger-api` uses `jest` for BDD spec execution and code coverage analysis.
 
-Code quality analysis runs before every test execution:
+Run:
 
 ```bash
 
@@ -131,6 +171,12 @@ To execute `eslint` alone, run:
 $ npm run pretest
 
 ```
+
+These commands also generate
+
+* Detailed code coverage reports at `{PROJECT_ROOT}/coverage/lcov-report/index.html`, as well as
+* `lcov.info` and
+* `clover.xml` files, which you can send to CI test coverage services like Coveralls.
 
 ## 5. Contributions
 :family: We warmly welcome contributors. Check out the guidelines for [Contributing to `cordova-contacts-swagger-api`](./.github/CONTRIBUTING.md) and our [Contributor Covenant Code of Conduct][code-of-conduct-url].
