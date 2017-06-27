@@ -1,12 +1,12 @@
-# Complexity report, 2017-6-26
+# Complexity report, 6/26/2017
 
-* Mean per-function logical LOC: 11
-* Mean per-function parameter count: 0.3333333333333333
+* Mean per-function logical LOC: 10
+* Mean per-function parameter count: 0.25
 * Mean per-function cyclomatic complexity: 1
-* Mean per-function Halstead effort: 1076.4533058938416
-* Mean per-module maintainability index: 110.54116290161198
+* Mean per-function Halstead effort: 934.6127066931085
+* Mean per-module maintainability index: 112.4460403261792
 * First-order density: 0%
-* Change cost: 33.33333333333333%
+* Change cost: 25%
 * Core size: 0%
 
 ## lib/cordova-contact-type.js
@@ -19,7 +19,7 @@
 * Maintainability index: 103.81233023153692
 * Dependency count: 0
 * Function: **&lt;anonymous>**
-    * Line No.: 2
+    * Line No.: 22
     * Physical LOC: 15
     * Logical LOC: 13
     * Parameter count: 1
@@ -31,7 +31,7 @@
 
 ## lib/index.js
 
-* Physical LOC: 7
+* Physical LOC: 11
 * Logical LOC: 5
 * Mean parameter count: 0
 * Cyclomatic complexity: 1
@@ -39,9 +39,19 @@
 * Maintainability index: 124.38271194122103
 * Dependency count: 2
 
+## lib/null-cordova-contact.js
+
+* Physical LOC: 114
+* Logical LOC: 7
+* Mean parameter count: 0
+* Cyclomatic complexity: 1
+* Cyclomatic complexity density: 14.285714285714285%
+* Maintainability index: 118.16067259988088
+* Dependency count: 1
+
 ## lib/profile-pantry-to-cordova-contact.js
 
-* Physical LOC: 170
+* Physical LOC: 198
 * Logical LOC: 15
 * Mean parameter count: 0
 * Cyclomatic complexity: 1

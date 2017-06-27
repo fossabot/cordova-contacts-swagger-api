@@ -5,15 +5,18 @@
     "main": "index.js",
     "scripts": {
         "build": "browserify lib/index.js -t babelify --outfile apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js && npm run minify && npm run docs:api",
-        "docs:api": "jsdoc2md --template ./.github/README.hbs --files ./lib/*.js > ./lib/README.md && npm run complexity:cr",
+        "docs": "npm run docs:api && npm run docs:complexity && npm run docs:swagger",
+        "docs:api": "./node_modules/.bin/jsdoc2md --partial .github/assets/jsdoc2md/*.hbs --files lib/*.js > lib/README.md",
+        "docs:complexity": "./node_modules/.bin/cr --format markdown lib/*.js > lib/COMPLEXITY.md",
+        "docs:swagger": "./node_modules/.bin/swagger-markdown -i *.swagger.yaml -o lib/SWAGGER.md",
         "eslint:stylish": "./node_modules/.bin/eslint -c ./.eslintrc.yml lib/**/*.js --fix",
+        "lint": "npm run eslint:stylish && npm run swagger:lint",
         "minify": "uglifyjs apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js  --compress -o apiproxy/resources/jsc/profile-pantry-adaptor.min.js",
         "security": "nsp check --output summary",
-        "complexity:cr": "cr --format markdown lib/*.js > lib/COMPLEXITY.md",
-        "complexity:plato": "plato -r -d reports -x .spec.js -t \"cordova-contacts-swagger-api\" lib",
-        "pretest": "npm run eslint:stylish",
+        "pretest": "npm run lint",
         "test": "jest --config=jest.config.json",
-        "posttest": "npm run security"
+        "posttest": "npm run security",
+        "swagger:lint": "./node_modules/.bin/swagger validate *.swagger.yaml --debug"
     },
     "repository": {
         "type": "git",
@@ -62,8 +65,9 @@
         "jest": "^20.0.4",
         "jsdoc-to-markdown": "^3.0.0",
         "nsp": "^2.6.3",
-        "plato": "^1.7.0",
         "standard-version": "^4.2.0",
+        "swagger-cli": "^1.0.0-beta.2",
+        "swagger-markdown": "^1.1.1",
         "uglify-js": "^3.0.20"
     },
     "commitplease": {
