@@ -4,7 +4,7 @@
 > * Demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation; and
 > * Provides mock data for automated content publication in the Apigee Developer Portal.
 
-[![Build Status][travis-ci-img]][travis-ci-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Codacy Badge][codacy-img]][codacy-url]<br>
+[![Build Status][travis-ci-img]][travis-ci-url] [![Sonar coverage][sonar-coverage-img]][sonar-coverage-url] [![Quality Gate][sonar-gate-img]][sonar-gate-url] [![Complexity][sonar-complexity-img]][sonar-complexity-url]<br>
 [![NSP Status][nsp-img]][nsp-url] [![bitHound Dependencies][bithound-dep-img]][bithound-dep-url] [![bitHound Dev Dependencies][bithound-dev-dep-img]][bithound-dev-dep-url]<br>[![License][license-image]][license-url]  [![Readme Score][readme-score-img]][readme-score-url] [![Inline docs][inch-ci-img]][inch-ci-url]
 
 ## 1. Table of contents
@@ -16,9 +16,10 @@
 	- [3.1. Design-first with Swagger/OpenAPI documents](#31-design-first-with-swaggeropenapi-documents)
 	- [3.2. Swagger document creation and edits](#32-swagger-document-creation-and-edits)
 - [4. Quality gates and tests](#4-quality-gates-and-tests)
-	- [4.1. Swagger quality analysis](#41-swagger-quality-analysis)
-	- [4.2. Javascript API policy source code analysis](#42-javascript-api-policy-source-code-analysis)
-	- [4.3. Javascript API policy test execution and code coverage](#43-javascript-api-policy-test-execution-and-code-coverage)
+	- [4.1. Swagger validation with `swagger-cli`](#41-swagger-validation-with-swagger-cli)
+	- [4.2. Javascript callout source code analysis](#42-javascript-callout-source-code-analysis)
+	- [4.3. Javascript callout test execution and code coverage](#43-javascript-callout-test-execution-and-code-coverage)
+	- [4.4. API documentation and complexity reports](#44-api-documentation-and-complexity-reports)
 - [5. Contributions](#5-contributions)
 - [6. Terms of service](#6-terms-of-service)
 - [7. License](#7-license)
@@ -73,9 +74,10 @@ This repository demonstrates best practices for an API Proxy that uses custom Ja
 
 Therefore, we need to enforce Swagger quality; Javascript quality; and Javascript unit tests and code coverage.
 
-### 4.1. Swagger quality analysis
+### 4.1. Swagger validation with `swagger-cli`
+> :trophy: `cordova-contacts-swagger-api` validates Swagger docs with [`swagger-cli`][swagger-cli-url].
 
-Swagger quality analysis runs before every test execution:
+[`swagger-cli`][swagger-cli-url] validation runs before every test execution:
 
 ```bash
 
@@ -108,9 +110,10 @@ $ npm run swagger:lint
 ```
 
 
-### 4.2. Javascript API policy source code analysis
-
-`cordova-contacts-swagger-api` uses `ESLint` for static code analysis. It also uses `nsp` (the Node Security Program) to check for vulnerabilities, as well as `BitHound` to track dependency drift.
+### 4.2. Javascript callout source code analysis
+> :closed_lock_with_key: :bath: :ocean: `cordova-contacts-swagger-api` lints source code; checks for vulnerabilities; assesses dependency drift; and executes quality gates with `BitHound`, `eslint`, `nsp`, and `SonarQube`/`sonarcloud`.
+>
+> The results are displayed real-time with README badges.
 
 Code quality analysis runs before every test execution:
 
@@ -152,9 +155,10 @@ $ npm run eslint:html
 
 ```
 
-### 4.3. Javascript API policy test execution and code coverage
-
-`cordova-contacts-swagger-api` uses `jest` for BDD spec execution and code coverage analysis.
+### 4.3. Javascript callout test execution and code coverage
+> :100: `cordova-contacts-swagger-api` uses `jest` for BDD spec execution and code coverage analysis.
+>
+> The results are displayed real-time with README badges.
 
 Run:
 
@@ -168,6 +172,27 @@ This generates:
 
 * Detailed code coverage reports at `{PROJECT_ROOT}/coverage/lcov-report/index.html`, as well as
 * `lcov.info` and `clover.xml` files, which you can send to CI test coverage services like Coveralls.
+
+### 4.4. API documentation and complexity reports
+> :page_facing_up: `cordova-contacts-swagger-api` automatically generates API docs with `jsdoc-to-markdown`, complexity reports with `complexity-report`, and Git markdown-friendly Swagger API docs with `swagger-markdown`
+>
+> You can view the [complexity report][complexity-report-url], [Javascript callout API docs][js-callout-docs-url], and [Swagger API docs][swagger-api-docs-url].
+
+To generate API docs, Swagger docs, and Complexity reports in the `{PROJECT_ROOT}/lib` directory, run:
+
+```bash
+
+$ npm run docs
+
+```
+
+`npm-script docs` is a shorthand script that executes [`jsdoc-to-markdown`][jsdoc2md-url], [`complexity-report`][complexity-report-url], and [`swagger-markdown`][swagger-markdown-url]:
+
+```bash
+
+$ npm run docs:api && npm run docs:complexity && npm run docs:swagger
+
+```
 
 ## 5. Contributions
 :family: We warmly welcome contributors. Check out the guidelines for [Contributing to `cordova-contacts-swagger-api`](./.github/CONTRIBUTING.md) and our [Contributor Covenant Code of Conduct][code-of-conduct-url].
@@ -188,6 +213,7 @@ Please review Verizon's [Terms of Service](TERMS_OF_SERVICE.md).
 
 [![Greenkeeper badge][greenkeeper-img]][greenkeeper-url] [![StackShare][stackshare-img]][stackshare-url]
 
+
 [author-url]: https://github.com/gregswindle
 [bithound-dep-img]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/badges/dependencies.svg
 [bithound-dep-url]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/master/dependencies/npm
@@ -196,6 +222,7 @@ Please review Verizon's [Terms of Service](TERMS_OF_SERVICE.md).
 [codacy-img]: https://api.codacy.com/project/badge/Grade/554fe390431b455a87ba6acde3ff2989?style=flat-square
 [codacy-url]: https://www.codacy.com/app/greg_7/cordova-contacts-swagger-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gregswindle/cordova-contacts-swagger-api&amp;utm_campaign=Badge_Grade
 [code-of-conduct-url]: ./.github/CODE_OF_CONDUCT.md
+[complexity-report-url]: https://github.com/escomplex/complexity-report
 [coveralls-img]: https://coveralls.io/repos/github/gregswindle/cordova-contacts-swagger-api/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/gregswindle/cordova-contacts-swagger-api?branch=master
 [eslint-dev-env-url]: http://eslint.org/docs/developer-guide/development-environment
@@ -205,8 +232,12 @@ Please review Verizon's [Terms of Service](TERMS_OF_SERVICE.md).
 [inch-ci-url]: http://inch-ci.org/github/gregswindle/cordova-contacts-swagger-api
 [issues-new-url]: https://github.com/gregswindle/cordova-contacts-swagger-api/issues/new
 [issues-url]: https://github.com/gregswindle/cordova-contacts-swagger-api/issues
+[js-callout-docs-url]: ./lib/README.md
+[jsdoc-url]: http://usejsdoc.org/
+[jsdoc2md-url]: https://github.com/jsdoc2md/jsdoc-to-markdown
 [license-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square
 [license-url]: ./LICENSE
+[swagger-api-docs-url]: ./lib/SWAGGER.md
 [nsp-img]: https://nodesecurity.io/orgs/gregswindle/projects/a3912719-529f-457f-9ff6-53fa70d8f475/badge
 [nsp-url]: https://nodesecurity.io/orgs/gregswindle/projects/a3912719-529f-457f-9ff6-53fa70d8f475
 [pr-url]: https://github.com/gregswindle/cordova-contacts-swagger-api/pulls
@@ -214,9 +245,23 @@ Please review Verizon's [Terms of Service](TERMS_OF_SERVICE.md).
 [readme-score-url]: http://clayallsopp.github.io/readme-score?url=https://github.com/gregswindle/cordova-contacts-swagger-api
 [rule-plural-paths-url]: ./docs/rules/require-plural-paths.md
 [rules-backlog-wiki-url]: https://github.com/gregswindle/cordova-contacts-swagger-api/wiki/Rules-backlog
+[sonar-cognitive-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=cognitive_complexity
+[sonar-cognitive-url]: https://sonarcloud.io/component_measures/metric/cognitive_complexity/list?id=gregswindle-cordova-contacts-swagger-api
+[sonar-complexity-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=function_complexity
+[sonar-complexity-url]: https://sonarcloud.io/component_measures/domain/Complexity?id=gregswindle-cordova-contacts-swagger-api
+[sonar-coverage-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=coverage
+[sonar-coverage-url]: https://sonarcloud.io/component_measures/domain/Coverage?id=gregswindle-cordova-contacts-swagger-api
+[sonar-gate-img]: http://sonarcloud.io/api/badges/gate?key=gregswindle-cordova-contacts-swagger-api
+[sonar-gate-url]: http://sonarcloud.io/dashboard/index/gregswindle-cordova-contacts-swagger-api
+[sonar-security-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=vulnerabilities
+[sonar-security-url]: https://sonarcloud.io/component_measures/domain/Security?id=gregswindle-cordova-contacts-swagger-api
+[sonar-tech-debt-img]:  https://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=sqale_debt_ratio
+[sonar-tech-debt-url]: https://sonarcloud.io/component_measures/metric/sqale_index/list?id=gregswindle-cordova-contacts-swagger-api
 [stackshare-img]: https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat
 [stackshare-url]: https://stackshare.io/gregswindle/cordova-contacts-swagger-api
+[swagger-cli-url]: https://github.com/BigstickCarpet/swagger-cli
 [swagger-io-url]: http://swagger.io
 [swagger-logo-20-img]: ./.github/assets/img/swagger-logo-20.png
+[swagger-markdown-url]: https://github.com/syroegkin/swagger-markdown
 [travis-ci-img]: https://travis-ci.org/gregswindle/cordova-contacts-swagger-api.svg?branch=master
 [travis-ci-url]:  https://travis-ci.org/gregswindle/cordova-contacts-swagger-api

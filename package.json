@@ -1,10 +1,10 @@
 {
     "name": "cordova-contacts-swagger-api",
-    "version": "1.0.0",
+    "version": "1.0.0-development",
     "description": "A reference Apigee API Proxy that demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation",
-    "main": "index.js",
+    "main": "lib/cordova-contacts.js",
     "scripts": {
-        "build": "browserify lib/index.js -t babelify --outfile apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js && npm run minify && npm run docs:api",
+        "build": "browserify lib/cordova-contacts.js -t babelify --outfile apiproxy/resources/jsc/profile-pantry-adaptor.bundle.js && npm run minify && npm run docs",
         "docs": "npm run docs:api && npm run docs:complexity && npm run docs:swagger",
         "docs:api": "./node_modules/.bin/jsdoc2md --partial .github/assets/jsdoc2md/*.hbs --files lib/*.js > lib/README.md",
         "docs:complexity": "./node_modules/.bin/cr --format markdown lib/*.js > lib/COMPLEXITY.md",
@@ -21,7 +21,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "ssh://git@onestash.verizon.com:7999/gtsap/cordova-contacts-swagger-api.git"
+        "url": "https://github.com/gregswindle/cordova-contacts-swagger-api.git"
     },
     "keywords": [
         "apigee",
