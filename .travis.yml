@@ -1,7 +1,20 @@
-sudo: false
+dist: trusty
+addons:
+  sonarqube:
+    organization: "$SONAR_ORGANIZATION"
+    token:
+      secure: "$SONAR_TOKEN"
+    github_token:
+      secure: "$GITHUB_ACCESS_TOKEN"
+    branches:
+      - master
+      - /[build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test].*/
+jdk:
+  - oraclejdk8
 language: node_js
 cache:
   directories:
+    - '$HOME/.sonar/cache'
     - node_modules
 notifications:
   email: false
@@ -15,6 +28,7 @@ before_script:
 script:
   - npm run build
   - npm test
+  - sonar-scanner -Dproject.settings=sonar-project.properties -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR_TOKEN -X
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 after_success:

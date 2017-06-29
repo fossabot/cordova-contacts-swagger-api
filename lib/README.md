@@ -1,11 +1,14 @@
 ---
 
-###### Menu: [API Policy](README.md) | [Complexity Report](COMPLEXITY.md) | [Swagger](SWAGGER.md)
+###### Menu: [Javascript callout API docs](README.md) | [Javascript callout Complexity Report](COMPLEXITY.md) | [Swagger](SWAGGER.md) | [Terms of Service](../TERMS_OF_SERVICE.md)
 
 ---
 
-# API Policy docs
+# Javascript callout API docs
+[![Quality Gate][sonar-gate-img]][sonar-gate-url] [![Security][sonar-security-img]][sonar-security-url] [![Code smells][sonar-code-smells-img]][sonar-code-smells-url] [![Sonar coverage][sonar-coverage-img]][sonar-coverage-url] [![Duplications][sonar-duplications-img]][sonar-duplications-url]
+<br>[![Technical debt][sonar-tech-debt-img]][sonar-tech-debt-url] [![Reliability][sonar-reliability-img]][sonar-reliability-url]  [![Maintainability][sonar-maintainability-img]][sonar-maintainability-url] [![Complexity][sonar-complexity-img]][sonar-complexity-url] [![Cognitive complexity][sonar-cognitive-img]][sonar-cognitive-url] [![Issues][sonar-issues-img]][sonar-issues-url]
 
+---
 > [![Swagger Logo](../.github/assets/img/swagger-logo-20.png)](http://swagger.io) The API documentation for a _reference_ Apigee API Proxy that
 >
 > * Demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation; and
@@ -15,7 +18,20 @@
 
 <dl>
 <dt><code><a href="#module_cordova-contacts">cordova-contacts</a></code></dt>
-<dd><p>A module for adapting Verizon&#39;s Profile Pantry attributes to the Cordova <code>Contact</code> interface.</p>
+<dd><h4 id="-abcd-arrow_right-iphone-provide-one-s-own-verizon-employee-contact-information-using-the-cordova-contacts-api-https-cordova-apache-org-docs-en-latest-reference-cordova-plugin-contacts-index-html-">:abcd: :arrow_right: :iphone: Provide one&#39;s own Verizon employee contact information using the <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html">Cordova Contacts API</a>.</h4>
+<p>The Verizon Profile Pantry is a Web service that returns a cached flat-map of
+employee attributes that have been</p>
+<ol>
+<li>Exported from various data sources of truth, e.g., PeopleSoft, CRC, or</li>
+<li>Derived from <a href="https://en.wikipedia.org/wiki/MVEL">MVFLEX Expression Language (MVEL)</a>.</li>
+</ol>
+<p>This Javascript callout module adapts the profile pantry&#39;s attributes to the
+Cordova <code>Contact</code> interface.</p>
+<blockquote>
+<h5 id="-warning-caution-profile-pantry-attributes-are-only-available-to-the-currently-authenticated-user-"><strong>:warning: Caution:</strong> Profile Pantry attributes are only available to the currently authenticated user.</h5>
+<p>In other words, you can see your <em>own</em> profile pantry results, but you
+cannot see anyone else&#39;s.</p>
+</blockquote>
 </dd>
 </dl>
 
@@ -28,7 +44,7 @@
 can immediately use to <em>create</em>, <em>store</em>, or <em>remove</em>
 from a mobile device&#39;s native contacts database.</p>
 </dd>
-<dt><code><a href="#cordova-contacts/CordovaContactAdaptor">cordova-contacts/CordovaContactAdaptor</a></code></dt>
+<dt><code><a href="#cordova-contacts/profilePantryToCordovaContact">cordova-contacts/profilePantryToCordovaContact</a></code></dt>
 <dd><p>Adapts Profile Pantry attributes to the Cordova <code>Contact</code> interface.</p>
 </dd>
 </dl>
@@ -38,8 +54,23 @@ from a mobile device&#39;s native contacts database.</p>
 <a name="module_cordova-contacts"></a>
 
 <h3><code>cordova-contacts</code></h3>
-A module for adapting Verizon's Profile Pantry attributes to the Cordova `Contact` interface.
+#### :abcd: :arrow_right: :iphone: Provide one's own Verizon employee contact information using the [Cordova Contacts API](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html).
 
+The Verizon Profile Pantry is a Web service that returns a cached flat-map of
+employee attributes that have been
+
+1. Exported from various data sources of truth, e.g., PeopleSoft, CRC, or
+2. Derived from [MVFLEX Expression Language (MVEL)](https://en.wikipedia.org/wiki/MVEL).
+
+This Javascript callout module adapts the profile pantry's attributes to the
+Cordova `Contact` interface.
+
+> ##### **:warning: Caution:** Profile Pantry attributes are only available to the currently authenticated user.
+>
+> In other words, you can see your _own_ profile pantry results, but you
+cannot see anyone else's.
+
+**See**: [Your Profile from `profilepantry`](https://profilepantry.verizon.com/profiles/0/allowedServices,alternateManager,basePay,birthday,buildingCode,company,companyCode,compPlanDescr,contractorReportsTo,contractorSupervisorFlag,corpId,crossReports,dataSource,deathBenefit,delegation,dentContribution,directReportEIDs,distinguishedName,domainId,edirDisplay,edirDisplayVzw,edpDeferralPercent,edpDefPsu,edpDefRsu,edpIdpBalance,employeeClass,employeeNumber,employeeStatus,employeeType,erlipGuide,execDeferralPlan,execDeferralPlanEnrolled,exempt,externalEmail,feedBasPreTax,feedBasRoth,feedBBaspstTax,feedBeginBalNonQual,feedBeginBalQual,feedBeneFlag,feedCatchup,feedChgMktValNonQual,feedChgMktValuQual,feedcmytd,feedCoMatch,feedCoProfit,feedEeContYtd,feedLeadWithdraw,feedRepayWithdraw,feedRollover,feedRothCatchup,feedSupPreTax,feedSuppsTax,feedSupRoth,feedVestBalNonQual,feedVestBalQual,feedVestIndNonQual,feedVestIndQual,feedWithdrawNonQual,feedWithdrawQual,feeLoanRepay,fidelityCotribution,fidelityDiscretionaryMatch,fidelityParticipant,financeLobName,financeLobNumber,firstName,fullName,hireDate,homeState,hrDeptId,idpEligible,internalEmail,jiveUser,jobTitle,jobTitleCode,laborAgreementNumber,lastName,legacyOrganization,legacyPersonType,lifeContribution,limitOfLiability,ltiTargetAmt,ltiValue,mailCode,managerEid,managerLevel,medContribution,mellonClosingBalance,mellonEmployeePlan,mellonInterestEarned,mellonOpenBalance,mobile,newHireDomainId,newHireFirstName,newHireHireDate,newHireLastName,nfCarryOverHrsBalance,nickname,nonQualifiedCashBal,nonQualifiedCashBal2,nonQualifiedCashBal3,nonQualifiedCashBal4,notesDn,numPerformStockUnit,numRestrictedStockUnit,officePhoneNumber,officialJobTitle,onboardingDirectReports,optionsExercisable,organization,outstandingOptions,payrollCountry,peliParticipant,pensionPlanCode,pensionPlanCode2,pensionPlanCode3,pensionPlanCode4,performStockUnitValue,perhiresWorkCountry,perHrsBalance,perHrsUsed,permanentGrade,permanentManagerLevel,permDeptFunction,personnelSubArea,prehiresCompanyCode,prehiresDomainId,prehiresInternalEmail,prehiresJobTitleCode,prehiresLegacyOrg,prehiresLegacyPersonType,prehiresManagerLevel,prehiresPrimaryDomain,prehiresVzeid,primaryDomain,psFullName,qualifiedCashBal,qualifiedCashBal2,qualifiedCashBal3,qualifiedCashBal4,restrictedStockUnitValue,restrictedStockValue,rothBasicPercentNx,rothCatchupPercentNx,rothSuppPercentNx,salaryGrade,salesAnnualRates,salesCalendarYears,salesCommissionsPaid,salesEmployee,salesIncentive,salesSTIActualAmounts,salesSTITargetAmounts,salesTargetCommissions,salesTargetMBOs,serviceDate,stiDeferralPercent,stiPlanAmount,stiPlanPercentOfBase,stiValue,subOrganization,supervisor,temporaryGrade,temporaryIncreaseAmt,totalTargetCompensation,treeHierarchy,treeLobName,treeLobNumber,tuitionAnnualCap,tuitionReimbursedAmt,vacAnnualEligibility,vacHrsBalance,vacHrsUsed,valueOptionsExercisable,valueOutstandingOptions,velipParticipant,velipPremium,vipPercent,vipTarget,vPerOrg,vz401kCont,vzbGrade,vzEdpCont,vzEdpStiPlanMatch,vzeid,vzid,vztPersonalHoursRemainingBalance,vztPersonalHoursStartingBalance,vztPersonalHoursUsedYTD,vztPersonalNonforfeitableHours,vztVacationCurrentYearMaxAccrual,vztVacationEarned,vztVacationHoursAccruedYTD,vztVacationHoursStartingBalance,vztVacationHoursUsedYTD,vztVacationNonforfeitableHours,vztVacationRemainingAccruableHours,vztVacationRemainingAccruedHours,vzVelipCont,vzwPerHrsAvail,vzwPerHrsBalance,vzwPerHrsUsed,vzwVacAnnualEligibility,vzwVacHrsBalance,vzwVacHrsUsed,vzwVacMaxAccrualHrs,workCity,workCountry,workPostalCode,workState,workStreet,ytr401kBalance,ytr401kBasicAfterTax,ytr401kBasicBeforeTax,ytr401kCatchup,ytr401kSuppAfterTax,ytr401kSuppBeforeTax,ytrCompanyCode,ytrHireDate,ytrPermanentGrade)  
 **Author**: Greg Swindle <gregory.jay.swindle@verizon.com>  
 
 <hr>
@@ -140,9 +171,9 @@ array.
 
 
 <hr>
-<a name="cordova-contacts/CordovaContactType"></a>
+<a name="cordova-contacts/cordovaContactType"></a>
 
-<h3><code>cordova-contacts/CordovaContactType : <code>enum</code></code></h3>
+<h3><code>cordova-contacts/cordovaContactType : <code>enum</code></code></h3>
 An enum that specificies the kinds of contact information and avoids "magic numbers" during interface adaption/transformation.
 
 **Kind**: global enum  
@@ -197,21 +228,21 @@ from a mobile device's native contacts database.
 
 
 <hr>
-<a name="cordova-contacts/CordovaContactAdaptor"></a>
+<a name="cordova-contacts/profilePantryToCordovaContact"></a>
 
-<h3><code>cordova-contacts/CordovaContactAdaptor</code></h3>
+<h3><code>cordova-contacts/profilePantryToCordovaContact</code></h3>
 Adapts Profile Pantry attributes to the Cordova `Contact` interface.
 
 **Kind**: global constant  
-**Requires**: <code>module:cordova-contacts/CordovaContactType</code>  
+**Requires**: <code>module:cordova-contacts/cordovaContactType</code>  
 
 <hr>
-<a name="cordova-contacts/CordovaContactAdaptor.adapt"></a>
+<a name="cordova-contacts/profilePantryToCordovaContact.adapt"></a>
 
-<h3><code>cordova-contacts/CordovaContactAdaptor.adapt(profilePantry) ⇒ [<code>cordova-contacts/Contact</code>](#cordova-contacts/Contact)</code></h3>
+<h3><code>cordova-contacts/profilePantryToCordovaContact.adapt(profilePantry) ⇒ [<code>cordova-contacts/Contact</code>](#cordova-contacts/Contact)</code></h3>
 Transform profile pantry `JSON` to a Cordova `Contact` object.
 
-**Kind**: static method of [<code>cordova-contacts/CordovaContactAdaptor</code>](#cordova-contacts/CordovaContactAdaptor)  
+**Kind**: static method of [<code>cordova-contacts/profilePantryToCordovaContact</code>](#cordova-contacts/profilePantryToCordovaContact)  
 **Returns**: [<code>cordova-contacts/Contact</code>](#cordova-contacts/Contact) - A Cordova `Contact` object.  
 
 | Param | Type | Default | Description |
@@ -245,3 +276,27 @@ Transform profile pantry `JSON` to a Cordova `Contact` object.
 | [profilePantry.workStreet] | <code>string</code> | <code>null</code> | The street on which the contact works. |
 
 ---
+
+
+[sonar-code-smells-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=code_smells
+[sonar-code-smells-url]: https://sonarcloud.io/component_measures/metric/code_smells/list?id=gregswindle-cordova-contacts-swagger-api
+[sonar-cognitive-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=cognitive_complexity
+[sonar-cognitive-url]: https://sonarcloud.io/component_measures/metric/cognitive_complexity/list?id=gregswindle-cordova-contacts-swagger-api
+[sonar-complexity-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=function_complexity
+[sonar-complexity-url]: https://sonarcloud.io/component_measures/domain/Complexity?id=gregswindle-cordova-contacts-swagger-api
+[sonar-coverage-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=coverage
+[sonar-coverage-url]: https://sonarcloud.io/component_measures/domain/Coverage?id=gregswindle-cordova-contacts-swagger-api
+[sonar-duplications-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=duplicated_line_density
+[sonar-duplications-url]: https://sonarcloud.io/component_measures/domain/Duplications?id=gregswindle-cordova-contacts-swagger-api
+[sonar-gate-img]: http://sonarcloud.io/api/badges/gate?key=gregswindle-cordova-contacts-swagger-api
+[sonar-gate-url]: http://sonarcloud.io/dashboard/index/gregswindle-cordova-contacts-swagger-api
+[sonar-issues-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=blocker_violations
+[sonar-issues-url]: https://sonarcloud.io/component_measures/domain/Issues?id=gregswindle-cordova-contacts-swagger-api
+[sonar-maintainability-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=new_maintainability_rating
+[sonar-maintainability-url]: https://sonarcloud.io/component_measures/domain/Maintainability?id=gregswindle-cordova-contacts-swagger-api
+[sonar-reliability-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=new_reliability_rating
+[sonar-reliability-url]: https://sonarcloud.io/component_measures/domain/Reliability?id=gregswindle-cordova-contacts-swagger-api
+[sonar-security-img]: http://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=vulnerabilities
+[sonar-security-url]: https://sonarcloud.io/component_measures/domain/Security?id=gregswindle-cordova-contacts-swagger-api
+[sonar-tech-debt-img]:  https://sonarcloud.io/api/badges/measure?key=gregswindle-cordova-contacts-swagger-api&metric=sqale_debt_ratio
+[sonar-tech-debt-url]: https://sonarcloud.io/component_measures/metric/sqale_index/list?id=gregswindle-cordova-contacts-swagger-api

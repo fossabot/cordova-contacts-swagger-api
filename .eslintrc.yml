@@ -294,12 +294,12 @@ rules:
   filenames/match-regex:
     - warn
     - kebab
-    # - "^([a-z]+(-){0,1})+(\\.spec){0,1}\\.js(on)?"
+    - "^([a-z]+(-){0,1})+(\\.spec){0,1}\\.js(on)?"
   filenames/match-exported:
     - warn
     - kebab
-    # - "^([a-z]+(-){0,1})+(\\.spec){0,1}\\.js(on)?"
-  filenames/no-index: warn
+    - "^([a-z]+(-){0,1})+(\\.spec){0,1}\\.js(on)?"
+  filenames/no-index: error
   # https://www.npmjs.com/package/eslint-plugin-json
 
   # https://github.com/nodesecurity/eslint-plugin-security#rules

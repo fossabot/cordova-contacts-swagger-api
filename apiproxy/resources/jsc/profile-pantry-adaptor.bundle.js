@@ -34,37 +34,87 @@ module.exports=[{
 },{}],2:[function(require,module,exports){
 'use strict';
 
-var CordovaContactType = {};
-(function (CordovaContactType) {
-    CordovaContactType[CordovaContactType['CROWD_AROUND_PROFILE'] = 1] = 'CROWD_AROUND_PROFILE';
-    CordovaContactType[CordovaContactType['E_DIRECTORY_PROFILE'] = 0] = 'E_DIRECTORY_PROFILE';
-    CordovaContactType[CordovaContactType['MOBILE'] = 1] = 'MOBILE';
-    CordovaContactType[CordovaContactType['ONE_CONFLUENCE_PROFILE'] = 3] = 'ONE_CONFLUENCE_PROFILE';
-    CordovaContactType[CordovaContactType['ONE_JIRA_PROFILE'] = 2] = 'ONE_JIRA_PROFILE';
-    CordovaContactType[CordovaContactType['ONE_STASH_PROFILE'] = 4] = 'ONE_STASH_PROFILE';
-    CordovaContactType[CordovaContactType['VZEID'] = 0] = 'VZEID';
-    CordovaContactType[CordovaContactType['VZEID_DIRECT_REPORTS'] = 2] = 'VZEID_DIRECT_REPORTS';
-    CordovaContactType[CordovaContactType['VZEID_MANAGER'] = 1] = 'VZEID_MANAGER';
-    CordovaContactType[CordovaContactType['VZID'] = 0] = 'VZID';
-    CordovaContactType[CordovaContactType['WORK'] = 0] = 'WORK';
-    CordovaContactType[CordovaContactType['WORK_EXTERNAL'] = 0] = 'WORK_EXTERNAL';
-    CordovaContactType[CordovaContactType['WORK_INTERNAL'] = 1] = 'WORK_INTERNAL';
-})(CordovaContactType);
+/**
+ * An enum that specificies the kinds of contact information and avoids "magic numbers" during interface adaption/transformation.
+ *
+ * @readonly
+ * @alias cordova-contacts/cordovaContactType
+ * @enum {number}
+ * @property {number} CROWD_AROUND_PROFILE=1
+ * @property {number} E_DIRECTORY_PROFILE=0
+ * @property {number} MOBILE=1
+ * @property {number} ONE_CONFLUENCE_PROFILE=3
+ * @property {number} ONE_JIRA_PROFILE=2
+ * @property {number} ONE_STASH_PROFILE=4
+ * @property {number} VZEID_DIRECT_REPORTS=2
+ * @property {number} VZEID_MANAGER=1
+ * @property {number} VZEID=0
+ * @property {number} VZID=0
+ * @property {number} WORK_EXTERNAL=0
+ * @property {number} WORK_INTERNAL=1
+ * @property {number} WORK=0
+ */
+var cordovaContactType = {};
+(function (cordovaContactType) {
+  cordovaContactType[cordovaContactType['CROWD_AROUND_PROFILE'] = 1] = 'CROWD_AROUND_PROFILE';
+  cordovaContactType[cordovaContactType['E_DIRECTORY_PROFILE'] = 0] = 'E_DIRECTORY_PROFILE';
+  cordovaContactType[cordovaContactType['MOBILE'] = 1] = 'MOBILE';
+  cordovaContactType[cordovaContactType['ONE_CONFLUENCE_PROFILE'] = 3] = 'ONE_CONFLUENCE_PROFILE';
+  cordovaContactType[cordovaContactType['ONE_JIRA_PROFILE'] = 2] = 'ONE_JIRA_PROFILE';
+  cordovaContactType[cordovaContactType['ONE_STASH_PROFILE'] = 4] = 'ONE_STASH_PROFILE';
+  cordovaContactType[cordovaContactType['VZEID_DIRECT_REPORTS'] = 2] = 'VZEID_DIRECT_REPORTS';
+  cordovaContactType[cordovaContactType['VZEID_MANAGER'] = 1] = 'VZEID_MANAGER';
+  cordovaContactType[cordovaContactType['VZEID'] = 0] = 'VZEID';
+  cordovaContactType[cordovaContactType['VZID'] = 0] = 'VZID';
+  cordovaContactType[cordovaContactType['WORK_EXTERNAL'] = 0] = 'WORK_EXTERNAL';
+  cordovaContactType[cordovaContactType['WORK_INTERNAL'] = 1] = 'WORK_INTERNAL';
+  cordovaContactType[cordovaContactType['WORK'] = 0] = 'WORK';
+})(cordovaContactType);
 
-module.exports = CordovaContactType;
+module.exports = cordovaContactType;
 
 },{}],3:[function(require,module,exports){
 'use strict';
 
-var CordovaContactType = require('./cordova-contact-type');
+/**
+ * #### :abcd: :arrow_right: :iphone: Provide one's own Verizon employee contact information using the [Cordova Contacts API](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html).
+ *
+ * The Verizon Profile Pantry is a Web service that returns a cached flat-map of
+ * employee attributes that have been
+ *
+ * 1. Exported from various data sources of truth, e.g., PeopleSoft, CRC, or
+ * 2. Derived from [MVFLEX Expression Language (MVEL)](https://en.wikipedia.org/wiki/MVEL).
+ *
+ * This Javascript callout module adapts the profile pantry's attributes to the
+ * Cordova `Contact` interface.
+ *
+ * > ##### **:warning: Caution:** Profile Pantry attributes are only available to the currently authenticated user.
+ * >
+ * > In other words, you can see your _own_ profile pantry results, but you
+ * cannot see anyone else's.
+ * @see {@link https://profilepantry.verizon.com/profiles/0/allowedServices,alternateManager,basePay,birthday,buildingCode,company,companyCode,compPlanDescr,contractorReportsTo,contractorSupervisorFlag,corpId,crossReports,dataSource,deathBenefit,delegation,dentContribution,directReportEIDs,distinguishedName,domainId,edirDisplay,edirDisplayVzw,edpDeferralPercent,edpDefPsu,edpDefRsu,edpIdpBalance,employeeClass,employeeNumber,employeeStatus,employeeType,erlipGuide,execDeferralPlan,execDeferralPlanEnrolled,exempt,externalEmail,feedBasPreTax,feedBasRoth,feedBBaspstTax,feedBeginBalNonQual,feedBeginBalQual,feedBeneFlag,feedCatchup,feedChgMktValNonQual,feedChgMktValuQual,feedcmytd,feedCoMatch,feedCoProfit,feedEeContYtd,feedLeadWithdraw,feedRepayWithdraw,feedRollover,feedRothCatchup,feedSupPreTax,feedSuppsTax,feedSupRoth,feedVestBalNonQual,feedVestBalQual,feedVestIndNonQual,feedVestIndQual,feedWithdrawNonQual,feedWithdrawQual,feeLoanRepay,fidelityCotribution,fidelityDiscretionaryMatch,fidelityParticipant,financeLobName,financeLobNumber,firstName,fullName,hireDate,homeState,hrDeptId,idpEligible,internalEmail,jiveUser,jobTitle,jobTitleCode,laborAgreementNumber,lastName,legacyOrganization,legacyPersonType,lifeContribution,limitOfLiability,ltiTargetAmt,ltiValue,mailCode,managerEid,managerLevel,medContribution,mellonClosingBalance,mellonEmployeePlan,mellonInterestEarned,mellonOpenBalance,mobile,newHireDomainId,newHireFirstName,newHireHireDate,newHireLastName,nfCarryOverHrsBalance,nickname,nonQualifiedCashBal,nonQualifiedCashBal2,nonQualifiedCashBal3,nonQualifiedCashBal4,notesDn,numPerformStockUnit,numRestrictedStockUnit,officePhoneNumber,officialJobTitle,onboardingDirectReports,optionsExercisable,organization,outstandingOptions,payrollCountry,peliParticipant,pensionPlanCode,pensionPlanCode2,pensionPlanCode3,pensionPlanCode4,performStockUnitValue,perhiresWorkCountry,perHrsBalance,perHrsUsed,permanentGrade,permanentManagerLevel,permDeptFunction,personnelSubArea,prehiresCompanyCode,prehiresDomainId,prehiresInternalEmail,prehiresJobTitleCode,prehiresLegacyOrg,prehiresLegacyPersonType,prehiresManagerLevel,prehiresPrimaryDomain,prehiresVzeid,primaryDomain,psFullName,qualifiedCashBal,qualifiedCashBal2,qualifiedCashBal3,qualifiedCashBal4,restrictedStockUnitValue,restrictedStockValue,rothBasicPercentNx,rothCatchupPercentNx,rothSuppPercentNx,salaryGrade,salesAnnualRates,salesCalendarYears,salesCommissionsPaid,salesEmployee,salesIncentive,salesSTIActualAmounts,salesSTITargetAmounts,salesTargetCommissions,salesTargetMBOs,serviceDate,stiDeferralPercent,stiPlanAmount,stiPlanPercentOfBase,stiValue,subOrganization,supervisor,temporaryGrade,temporaryIncreaseAmt,totalTargetCompensation,treeHierarchy,treeLobName,treeLobNumber,tuitionAnnualCap,tuitionReimbursedAmt,vacAnnualEligibility,vacHrsBalance,vacHrsUsed,valueOptionsExercisable,valueOutstandingOptions,velipParticipant,velipPremium,vipPercent,vipTarget,vPerOrg,vz401kCont,vzbGrade,vzEdpCont,vzEdpStiPlanMatch,vzeid,vzid,vztPersonalHoursRemainingBalance,vztPersonalHoursStartingBalance,vztPersonalHoursUsedYTD,vztPersonalNonforfeitableHours,vztVacationCurrentYearMaxAccrual,vztVacationEarned,vztVacationHoursAccruedYTD,vztVacationHoursStartingBalance,vztVacationHoursUsedYTD,vztVacationNonforfeitableHours,vztVacationRemainingAccruableHours,vztVacationRemainingAccruedHours,vzVelipCont,vzwPerHrsAvail,vzwPerHrsBalance,vzwPerHrsUsed,vzwVacAnnualEligibility,vzwVacHrsBalance,vzwVacHrsUsed,vzwVacMaxAccrualHrs,workCity,workCountry,workPostalCode,workState,workStreet,ytr401kBalance,ytr401kBasicAfterTax,ytr401kBasicBeforeTax,ytr401kCatchup,ytr401kSuppAfterTax,ytr401kSuppBeforeTax,ytrCompanyCode,ytrHireDate,ytrPermanentGrade|Your Profile from `profilepantry`}
+ * @author Greg Swindle <gregory.jay.swindle@verizon.com>
+ * @module cordova-contacts
+ */
+
+/**
+ * @ignore
+ */
+var cordovaContactType = require('./cordova-contact-type');
+
+/**
+ * @ignore
+ */
 var profilePantryToCordovaContact = require('./profile-pantry-to-cordova-contact');
 
-module.exports = {
-    CordovaContactType: CordovaContactType,
-    CordovaContactAdaptor: profilePantryToCordovaContact
+var cordovaContacts = {
+  cordovaContactType: cordovaContactType,
+  profilePantryToCordovaContact: profilePantryToCordovaContact
 };
 
-},{"./cordova-contact-type":2,"./profile-pantry-to-cordova-contact":5}],4:[function(require,module,exports){
+module.exports = cordovaContacts;
+
+},{"./cordova-contact-type":2,"./profile-pantry-to-cordova-contact":6}],4:[function(require,module,exports){
 module.exports={
     "id": null,
     "displayName": null,
@@ -183,13 +233,132 @@ module.exports={
 },{}],5:[function(require,module,exports){
 'use strict';
 
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "Contact[Address|Field|Organization]?" }]*/
+var nullCordovaContact = require('./null-cordova-contact.json');
+
+/**
+ * The `ContactAddress` object stores the properties of a single address of a
+ * contact. A Contact object may include more than one address in a
+ * `ContactAddress[]` array.
+ *
+ * @kind ContactAddress
+ * @property {string} country The country name.
+ * @property {string} formatted The full address formatted for display.
+ * @property {string} locality The city or locality.
+ * @property {string} postalCode The zip or postal code.
+ * @property {boolean} pref Set to true if this ContactAddress contains the user's preferred value.
+ * @property {string} region The state or region.
+ * @property {string} streetAddress The full street address.
+ * @property {string} type A string indicating what type of field this is, e.g., "work".
+ * @protected
+ * @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html#contactaddress
+ */
+var ContactAddress = {};
+
+/**
+ * The `ContactField` object is a reusable component that represents contact
+ * fields generically. Each `ContactField` object contains a `value`, `type`,
+ * and `pref` property. A Contact object stores several properties in
+ * `ContactField[]` arrays, such as phone numbers and email addresses.
+ *
+ * In most instances, there are no pre-determined values for a ContactField
+ * object's type attribute. For example, a phone number can specify type values
+ * of home, work, mobile, iPhone, or any other value that is supported by a
+ * particular device platform's contact database. However, for the `Contact`
+ * photos field, the type field indicates the format of the returned image: url
+ * when the value attribute contains a URL to the photo image, or base64 when
+ * the value contains a base64-encoded image string.
+ *
+ * @kind ContactField
+ * @property {boolean} pref Set to `true` if this `ContactField` contains the user's preferred value.
+ * @property {string} type A string that indicates what type of field this is, e.g., "work".
+ * @property {string} value The value of the field, such as a phone number or email address.
+ * @protected
+ * @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html#contactfield
+ */
+var ContactField = {};
+
+/**
+ * Contains different kinds of information about a `Contact` object's name.
+ *
+ * @kind ContactName
+ * @property {string} familyName The contact's last name/surname.
+ * @property {string} formatted The complete name of the contact.
+ * @property {string} givenName The contact's first name/forename.
+ * @property {string} honorificPrefix The contact's prefix (example _Ms._ or _Dr._).
+ * @property {string} honorificSuffix The contact's suffix (example Esq. or _III_).
+ * @property {string} middleName The contact's middle name.
+ * @protected
+ * @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html#contactname
+ */
+var ContactName = {};
+
+/**
+ * The `ContactOrganization` object stores a contact's organization properties.
+ * A `Contact` object stores one or more `ContactOrganization` objects in an
+ * array.
+ *
+ * @kind ContactOrganization
+ * @property {string} department The department the contract works for.
+ * @property {string} name The name of the organization.
+ * @property {boolean} pref Set to true if this ContactOrganization contains the user's preferred value.
+ * @property {string} title The contact's title at the organization.
+ * @property {string} type A string that indicates what type of field this is, e.g., "work".
+ * @protected
+ * @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html#contactorganization
+ */
+var ContactOrganization = {};
+
+/**
+ * The `Contact` object represents a user's contact in a form that
+ * [`cordova-plugin-contacts`](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html)
+ * can immediately use to _create_, _store_, or _remove_
+ * from a mobile device's native contacts database.
+ *
+ * @const
+ * @alias cordova-contacts/Contact
+ * @property {string} id A globally unique identifier set by a mobile device.
+ * <br>
+ * <br>
+ * **:warning: Do not use `id` to store user-defined values.**
+ * The `id` property should _never_ by used to store a value, as each mobile device overwrites it with a UUID.
+ * @property {array.<ContactAddress>} addresses An array of all the contact's addresses.
+ * @property {string} birthday The Contact's birth month/date.
+ * <br>
+ * <br>
+ * **:warning: `birthday` does not include the birth year.**
+ * @property {array.<ContactField>} categories An array of all the user-defined categories associated with the contact. The Verizon implementation displays the Verizon Enterprise ID of the:
+ * <br>
+ * <ul>
+ * <li> `Contact` itself;
+ * <li> `Contact`'s direct reports (if any); and
+ * <li> `Contact`'s supervisor.
+ * <br>
+ * <br>
+ * @property {string} displayName The name of this Contact, suitable for display to end users.
+ * @property {array.<ContactField>} emails An array of all the contact's email addresses.
+ * @property {array.<ContactField>} ims An array of all the contact's Instant Message (IM) addresses.
+ * @property {ContactName} name An object containing all components of a persons name.
+ * @property {string} nickname A casual name by which to address the contact.
+ * @property {string} note A note/bio about the contact.
+ * @property {array.<ContactOrganization>} organizations An array of all the contact's organizations.
+ * @property {array.<ContactField>} phoneNumbers An array of all the contact's phone numbers.
+ * @property {array.<ContactField>} urls An array of web pages associated with the contact.
+ * @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html#contact
+ */
+var Contact = {};
+module.exports = nullCordovaContact;
+
+},{"./null-cordova-contact.json":4}],6:[function(require,module,exports){
+'use strict';
+
 var _require = require('lodash'),
     clone = _require.clone,
     map = _require.map,
     startCase = _require.startCase,
     toLower = _require.toLower;
 
-var CordovaContactType = require('./cordova-contact-type');
+var cordovaContactType = require('./cordova-contact-type');
 var nullCordovaContact = require('./null-cordova-contact');
 var WORK = 'work';
 var contactUrls = require('./contact-urls');
@@ -204,14 +373,14 @@ var contactUrls = require('./contact-urls');
  * @returns {void}
  */
 var assignAddresses = function assignAddresses(contact, profilePantry) {
-    contact.addresses[CordovaContactType.WORK].type = WORK;
-    contact.addresses[CordovaContactType.WORK].country = profilePantry.workCountry;
-    contact.addresses[CordovaContactType.WORK].formatted = profilePantry.workStreet + ' ' + profilePantry.mailCode + ', ' + profilePantry.workCity + ', ' + profilePantry.workState + ' ' + profilePantry.workPostalCode + ' ' + profilePantry.workCountry;
-    contact.addresses[CordovaContactType.WORK].locality = profilePantry.workCity;
-    contact.addresses[CordovaContactType.WORK].postalCode = profilePantry.workPostalCode;
-    contact.addresses[CordovaContactType.WORK].pref = true;
-    contact.addresses[CordovaContactType.WORK].region = profilePantry.workState;
-    contact.addresses[CordovaContactType.WORK].streetAddress = profilePantry.workStreet + ' ' + profilePantry.mailCode;
+    contact.addresses[cordovaContactType.WORK].type = WORK;
+    contact.addresses[cordovaContactType.WORK].country = profilePantry.workCountry;
+    contact.addresses[cordovaContactType.WORK].formatted = profilePantry.workStreet + ' ' + profilePantry.mailCode + ', ' + profilePantry.workCity + ', ' + profilePantry.workState + ' ' + profilePantry.workPostalCode + ' ' + profilePantry.workCountry;
+    contact.addresses[cordovaContactType.WORK].locality = profilePantry.workCity;
+    contact.addresses[cordovaContactType.WORK].postalCode = profilePantry.workPostalCode;
+    contact.addresses[cordovaContactType.WORK].pref = true;
+    contact.addresses[cordovaContactType.WORK].region = profilePantry.workState;
+    contact.addresses[cordovaContactType.WORK].streetAddress = profilePantry.workStreet + ' ' + profilePantry.mailCode;
 };
 
 /**
@@ -224,13 +393,13 @@ var assignAddresses = function assignAddresses(contact, profilePantry) {
  * @returns {void}
  */
 var assignCategories = function assignCategories(contact, profilePantry) {
-    contact.categories[CordovaContactType.VZEID].pref = true;
-    contact.categories[CordovaContactType.VZEID].type = 'id:vzeid';
-    contact.categories[CordovaContactType.VZEID].value = profilePantry.vzeid;
-    contact.categories[CordovaContactType.VZEID_MANAGER].type = 'id:vzeid:manager';
-    contact.categories[CordovaContactType.VZEID_MANAGER].value = profilePantry.managerEid;
-    contact.categories[CordovaContactType.VZEID_DIRECT_REPORTS].type = 'id:vzeid:direct-reports';
-    contact.categories[CordovaContactType.VZEID_DIRECT_REPORTS].value = profilePantry.directReportsEIDs;
+    contact.categories[cordovaContactType.VZEID].pref = true;
+    contact.categories[cordovaContactType.VZEID].type = 'id:vzeid';
+    contact.categories[cordovaContactType.VZEID].value = profilePantry.vzeid;
+    contact.categories[cordovaContactType.VZEID_MANAGER].type = 'id:vzeid:manager';
+    contact.categories[cordovaContactType.VZEID_MANAGER].value = profilePantry.managerEid;
+    contact.categories[cordovaContactType.VZEID_DIRECT_REPORTS].type = 'id:vzeid:direct-reports';
+    contact.categories[cordovaContactType.VZEID_DIRECT_REPORTS].value = profilePantry.directReportsEIDs;
 };
 
 /**
@@ -243,11 +412,11 @@ var assignCategories = function assignCategories(contact, profilePantry) {
  * @returns {void}
  */
 var assignEmails = function assignEmails(contact, profilePantry) {
-    contact.emails[CordovaContactType.WORK_INTERNAL].type = 'work:internal';
-    contact.emails[CordovaContactType.WORK_INTERNAL].value = profilePantry.internalEmail;
-    contact.emails[CordovaContactType.WORK_EXTERNAL].pref = true;
-    contact.emails[CordovaContactType.WORK_EXTERNAL].type = 'work:external';
-    contact.emails[CordovaContactType.WORK_EXTERNAL].value = profilePantry.externalEmail;
+    contact.emails[cordovaContactType.WORK_INTERNAL].type = 'work:internal';
+    contact.emails[cordovaContactType.WORK_INTERNAL].value = profilePantry.internalEmail;
+    contact.emails[cordovaContactType.WORK_EXTERNAL].pref = true;
+    contact.emails[cordovaContactType.WORK_EXTERNAL].type = 'work:external';
+    contact.emails[cordovaContactType.WORK_EXTERNAL].value = profilePantry.externalEmail;
 };
 
 /**
@@ -275,11 +444,11 @@ var assignName = function assignName(contact, profilePantry) {
  * @returns {void}
  */
 var assignOrganizations = function assignOrganizations(contact, profilePantry) {
-    contact.organizations[CordovaContactType.WORK].department = startCase(toLower(profilePantry.financeLobName));
-    contact.organizations[CordovaContactType.WORK].name = profilePantry.treeLobName + ', ' + profilePantry.organization;
-    contact.organizations[CordovaContactType.WORK].pref = true;
-    contact.organizations[CordovaContactType.WORK].title = profilePantry.jobTitle;
-    contact.organizations[CordovaContactType.WORK].type = WORK;
+    contact.organizations[cordovaContactType.WORK].department = startCase(toLower(profilePantry.financeLobName));
+    contact.organizations[cordovaContactType.WORK].name = profilePantry.treeLobName + ', ' + profilePantry.organization;
+    contact.organizations[cordovaContactType.WORK].pref = true;
+    contact.organizations[cordovaContactType.WORK].title = profilePantry.jobTitle;
+    contact.organizations[cordovaContactType.WORK].type = WORK;
 };
 
 /**
@@ -292,11 +461,11 @@ var assignOrganizations = function assignOrganizations(contact, profilePantry) {
  * @returns {void}
  */
 var assignPhoneNumbers = function assignPhoneNumbers(contact, profilePantry) {
-    contact.phoneNumbers[CordovaContactType.WORK].pref = true;
-    contact.phoneNumbers[CordovaContactType.WORK].type = WORK;
-    contact.phoneNumbers[CordovaContactType.WORK].value = profilePantry.officePhoneNumber;
-    contact.phoneNumbers[CordovaContactType.MOBILE].type = 'mobile';
-    contact.phoneNumbers[CordovaContactType.MOBILE].value = profilePantry.mobile;
+    contact.phoneNumbers[cordovaContactType.WORK].pref = true;
+    contact.phoneNumbers[cordovaContactType.WORK].type = WORK;
+    contact.phoneNumbers[cordovaContactType.WORK].value = profilePantry.officePhoneNumber;
+    contact.phoneNumbers[cordovaContactType.MOBILE].type = 'mobile';
+    contact.phoneNumbers[cordovaContactType.MOBILE].value = profilePantry.mobile;
 };
 
 /**
@@ -321,17 +490,45 @@ var assignUrls = function assignUrls(contact, profilePantry) {
 };
 
 /**
- * Adapts Profile Pantry attributes to the Cordova Contact interface
- * @class
+ * Adapts Profile Pantry attributes to the Cordova `Contact` interface.
+ * @const
+ * @alias cordova-contacts/profilePantryToCordovaContact
+ * @requires cordova-contacts/cordovaContactType
  */
 var profilePantryToCordovaContact = {
 
     /**
-     * Transform profile pantry JSON to an Contact object.
+     * Transform profile pantry `JSON` to a Cordova `Contact` object.
      *
-     * @param {object} profilePantry Profile Pantry attributes
-     *
-     * @returns {Contact} A Cordova Contact object.
+     * @param {object} profilePantry={} Profile Pantry attributes.
+     * @param {string=} [profilePantry.birthday=null] The contact's birth month/date, without year.
+     * @param {string=} [profilePantry.company=null] The Verizon company code.
+     * @param {string=} [profilePantry.directReportsEIDs=null] A comma-delimited string of the contact's direct reports' Enterprise IDs
+     * @param {string=} [profilePantry.externalEmail=null] The contact's Verizon external email address.
+     * @param {string=} [profilePantry.financeLobName=null] A Verizon Line Of Business name.
+     * @param {string=} [profilePantry.firstName=null] The contact's given name.
+     * @param {string=} [profilePantry.fullName=null] The contact's fully formatted name.
+     * @param {string=} [profilePantry.internalEmail=null] The contact's Verizon-internal email address.
+     * @param {string=} [profilePantry.jobTitle=null] The contact's job title.
+     * @param {string=} [profilePantry.lastName=null] The contact's family name.
+     * @param {string=} [profilePantry.mailCode=null] The contact's mail box.
+     * @param {string=} [profilePantry.managerEid=null] The contact's supervisor's Enterprise ID.
+     * @param {string=} [profilePantry.mobile=null] The contact's mobile phone number.
+     * @param {string=} [profilePantry.nickname=null] The contact's preferred name.
+     * @param {string=} [profilePantry.officePhoneNumber=null] The contact's work phone number.
+     * @param {string=} [profilePantry.organization=null] The name of the organization in which the contact works.
+     * @param {string=} [profilePantry.treeHierarchy=null] The Verizon Enterprise IDs of the contact's supervisor up to the CEO.
+     * @param {string=} [profilePantry.treeLobName=null] The contact's Line Of Business abbreviation.
+     * @param {string=} [profilePantry.treeLobNumber=null] The contact's Line Of Business's identifier.
+     * @param {string=} [profilePantry.vzeid=null] The contact's unique Enterprise ID.
+     * @param {string=} [profilePantry.vzid=null] The contact's unique Verizon ID.
+     * @param {string=} [profilePantry.workCity=null] The locality in which the contact works.
+     * @param {string=} [profilePantry.workCountry=null] The country in which the contact works.
+     * @param {string=} [profilePantry.workPostalCode=null] The alphanumeric code that categorizes the contact's geographic area, institution, agency, or company.
+     * @param {string=} [profilePantry.workState=null] The region in which the contact works.
+     * @param {string=} [profilePantry.workStreet=null] The street on which the contact works.
+     * @static
+     * @returns {cordova-contacts/Contact} A Cordova `Contact` object.
      */
     adapt: function adapt(profilePantry) {
         var contact = clone(nullCordovaContact);
@@ -351,7 +548,7 @@ var profilePantryToCordovaContact = {
 
 module.exports = profilePantryToCordovaContact;
 
-},{"./contact-urls":1,"./cordova-contact-type":2,"./null-cordova-contact":4,"lodash":6}],6:[function(require,module,exports){
+},{"./contact-urls":1,"./cordova-contact-type":2,"./null-cordova-contact":5,"lodash":7}],7:[function(require,module,exports){
 (function (global){
 /**
  * @license
