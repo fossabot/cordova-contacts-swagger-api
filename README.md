@@ -1,5 +1,5 @@
 # `cordova-contacts-swagger-api`
-> [![Swagger Logo][swagger-logo-20-img]][swagger-io-url] A _reference_ Apigee API Proxy that
+> **[![Swagger Validity][swagger-validity-img]][swagger-validity-url] A reference Apigee API Proxy that**
 >
 > * Demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation; and
 > * Provides mock data for automated content publication in the Apigee Developer Portal.
@@ -16,7 +16,7 @@
 	- [3.1. Design-first with Swagger/OpenAPI documents](#31-design-first-with-swaggeropenapi-documents)
 	- [3.2. Swagger document creation and edits](#32-swagger-document-creation-and-edits)
 - [4. Quality gates and tests](#4-quality-gates-and-tests)
-	- [4.1. Swagger validation with `swagger-cli`](#41-swagger-validation-with-swagger-cli)
+	- [4.1. Swagger validation and badge](#41-swagger-validation-and-badge)
 	- [4.2. Javascript callout source code analysis](#42-javascript-callout-source-code-analysis)
 	- [4.3. Javascript callout test execution and code coverage](#43-javascript-callout-test-execution-and-code-coverage)
 	- [4.4. API documentation and complexity reports](#44-api-documentation-and-complexity-reports)
@@ -74,7 +74,7 @@ This repository demonstrates best practices for an API Proxy that uses custom Ja
 
 Therefore, we need to enforce Swagger quality; Javascript quality; and Javascript unit tests and code coverage.
 
-### 4.1. Swagger validation with `swagger-cli`
+### 4.1. Swagger validation and badge
 > :trophy: `cordova-contacts-swagger-api` validates Swagger docs with [`swagger-cli`][swagger-cli-url].
 
 [`swagger-cli`][swagger-cli-url] validation runs before every test execution:
@@ -108,6 +108,13 @@ To execute `swagger validate *.swagger.yaml --debug` alone, run:
 $ npm run swagger:lint
 
 ```
+
+[`swagger-api/validator-badge`](https://github.com/swagger-api/validator-badge)s display whether there are syntactic issues with you Swagger/OpenAPI 2.0 document:
+
+* **Valid:**
+    * [![Swagger Validity][swagger-validity-img]][swagger-validity-url] `cordova-contacts.swagger.yaml`
+    * [![Swagger Validity](http://online.swagger.io/validator?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.json)]((http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.json) `cordova-contacts.swagger.json`
+* **Invalid:**<br>[![Swagger Validity](http://online.swagger.io/validator?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/README.md)](http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/README.md)
 
 
 ### 4.2. Javascript callout source code analysis
@@ -213,7 +220,8 @@ Please review Verizon's [Terms of Service](TERMS_OF_SERVICE.md).
 
 [![Greenkeeper badge][greenkeeper-img]][greenkeeper-url] [![StackShare][stackshare-img]][stackshare-url]
 
-
+[swagger-validity-img]: http://online.swagger.io/validator?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.yaml
+[swagger-validity-url]: http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.yaml
 [author-url]: https://github.com/gregswindle
 [bithound-dep-img]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/badges/dependencies.svg
 [bithound-dep-url]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/master/dependencies/npm

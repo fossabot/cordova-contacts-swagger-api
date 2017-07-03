@@ -31,9 +31,9 @@ paths:
       - contacts
       summary:           Retrieve one's own Contact information.
       description:       Returns one's own Contact information.
-      operationId:       getMe
       produces:
       - application/json
+      - application/xml
       responses:
         '200':
           description:   OK
@@ -53,7 +53,13 @@ paths:
       description:       Retrieve an active Verizon employee's Contact information by a (registered) identifier.
       produces:
       - application/json
+      - application/xml
       parameters:
+      - in:              path
+        name:            id
+        description:     A registered identifier value for an active Verizon employee.
+        required:        true
+        type:            string
       - in:              query
         name:            type
         type:            string
@@ -64,11 +70,6 @@ paths:
         - eid
         - emplid
         - vzid
-      - in:              path
-        name:            id
-        description:     A registered identifier value for an active Verizon employee.
-        required:        true
-        type:            string
       responses:
         '200':
           description:   OK
