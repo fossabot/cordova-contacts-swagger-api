@@ -1,8 +1,8 @@
 Cordova Contacts
 ================
-The `Contact` object represents a user's contact information that the [`cordova-plugin-contacts`](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html) can use to _create_, _store_, or _remove_ from a mobile device's contacts database.
+[![Swagger Validity](http://online.swagger.io/validator?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.yaml)](http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.yaml) The `Contact` object represents a user's contact information that the [`cordova-plugin-contacts`](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html) can use to _create_, _store_, or _remove_ from a mobile device's contacts database.
 
-**:rotating_light: IMPORTANT Privacy Considerations**
+**:rotating_light:   IMPORTANT Privacy Considerations**
 > Collection and use of contact data raises important privacy issues. Your app's privacy policy should declare how it uses contact data and whether it is shared with any other parties. Contact information is considered sensitive because it reveals the people with whom a person communicates. Therefore, in addition to the app's privacy policy, you should strongly consider providing a just-in-time notice before the app accesses or uses contact data, if the device operating system doesn't do so already. That notice should provide the same information noted above, as well as obtaining the user's permission (e.g., by presenting choices for "I agree" and "I decline"). Note that some app marketplaces may require the app to provide a just-in-time notice and obtain the user's permission before accessing contact data. A clear and easy-to-understand user experience surrounding the use of contact data helps avoid user confusion and perceived misuse of contact data.
 
 **Version:** 1.0.0
@@ -54,41 +54,32 @@ oneapi-team@verizon.com
 | --- | --- |
 | api_key | |
 
-##### ***DELETE***
-**Summary:** :no_entry_sign: Contact information cannot be deleted with this API.
+### /contacts/{id}
+---
+##### ***GET***
+**Summary:** Retrieve an active Verizon employee's Contact information.
+
+**Description:** Retrieve an active Verizon employee's Contact information by a (registered) identifier.
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| type | query | The specific kind of identifier provided. If omitted, `type` defaults to `eid` (Enterprise ID). Otherwise you can specify `emplid` (Employee ID) or `vzid` (Verizon ID). | No | string |
+| id | path | A registered identifier value for an active Verizon employee. | Yes | string |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 405 | Method not allowed |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [Contact](#contact) |
+| 404 | Not found | [ErrorResponse](#errorResponse) |
 
-##### ***PATCH***
-**Summary:** :no_entry_sign: Contact information cannot be updated with this API.
+**Security**
 
-**Responses**
-
-| Code | Description |
-| ---- | ----------- |
-| 405 | Method not allowed |
-
-##### ***POST***
-**Summary:** :no_entry_sign: Contact information cannot be created with this API.
-
-**Responses**
-
-| Code | Description |
-| ---- | ----------- |
-| 405 | Method not allowed |
-
-##### ***PUT***
-**Summary:** :no_entry_sign: Contact information cannot be replaced with this API.
-
-**Responses**
-
-| Code | Description |
-| ---- | ----------- |
-| 405 | Method not allowed |
+| Security Schema | Scopes |
+| --- | --- |
+| api_key | |
 
 ### Models
 ---
@@ -142,7 +133,7 @@ oneapi-team@verizon.com
 | id | string | A globally unique identifier set by a mobile device. ⚠️ Do not use id to store user-defined values. The id property should never by used to store a value, as each mobile device overwrites it with a UUID. | No |
 | addresses | [ [ContactAddress](#contactAddress) ] | An array of the contact's addresses. | No |
 | birthday | date | The Contact's birth month/date. ⚠️  `birthday` does not include the birth year. | No |
-| categories | [ [ContactField](#contactField) ] | An `array` of all the user-defined categories associated with the contact. The Verizon implementation displays the Verizon Enterprise ID of the: Contact itself; Contact's direct reports (if any); and Contact's supervisor.  | No |
+| categories | [ [ContactField](#contactField) ] | An `array` of all the user-defined categories associated with the contact. The Verizon implementation displays the Verizon Enterprise ID of the:     Contact itself; Contact's direct reports (if any); and Contact's supervisor.  | No |
 | displayName | string | The name of this `Contact`, suitable for display to end users. | No |
 | emails | [ [ContactField](#contactField) ] | An array of the contact's email addresses. | No |
 | ims | [ [ContactField](#contactField) ] | An `array` of the contact's Instant Message (IM) addresses. | No |
