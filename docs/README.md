@@ -173,7 +173,10 @@ array.
 <a name="cordova-contacts/cordovaContactType"></a>
 
 <h3><code>cordova-contacts/cordovaContactType : <code>enum</code></code></h3>
-An enum that specificies the kinds of contact information and avoids "magic numbers" during interface adaption/transformation.
+An enum that specificies the kinds of contact information and avoids
+"magic numbers" during interface adaption/transformation. Note that
+`cordovaContactType` provides both numeric and string values, which is
+useful for JSON serialization and human comprehension:
 
 **Kind**: global enum  
 **Read only**: true  
@@ -181,20 +184,80 @@ An enum that specificies the kinds of contact information and avoids "magic numb
 
 | Name | Type | Default |
 | --- | --- | --- |
-| CROWD_AROUND_PROFILE | <code>number</code> | <code>1</code> | 
-| E_DIRECTORY_PROFILE | <code>number</code> | <code>0</code> | 
-| MOBILE | <code>number</code> | <code>1</code> | 
-| ONE_CONFLUENCE_PROFILE | <code>number</code> | <code>3</code> | 
-| ONE_JIRA_PROFILE | <code>number</code> | <code>2</code> | 
-| ONE_STASH_PROFILE | <code>number</code> | <code>4</code> | 
-| VZEID_DIRECT_REPORTS | <code>number</code> | <code>2</code> | 
-| VZEID_MANAGER | <code>number</code> | <code>1</code> | 
-| VZEID | <code>number</code> | <code>0</code> | 
-| VZID | <code>number</code> | <code>0</code> | 
-| WORK_EXTERNAL | <code>number</code> | <code>0</code> | 
-| WORK_INTERNAL | <code>number</code> | <code>1</code> | 
-| WORK | <code>number</code> | <code>0</code> | 
+| cordovaContactType.email.WORK_EXTERNAL | <code>number</code> | <code>0</code> | 
+| cordovaContactType.email[0] | <code>string</code> | <code>&quot;&#x27;WORK_EXTERNAL&#x27;&quot;</code> | 
+| cordovaContactType.email.WORK_INTERNAL | <code>number</code> | <code>1</code> | 
+| cordovaContactType.email[1] | <code>string</code> | <code>&quot;WORK_INTERNAL&quot;</code> | 
+| cordovaContactType.geographic.WORK | <code>number</code> | <code>0</code> | 
+| cordovaContactType.geographic[0] | <code>string</code> | <code>&quot;WORK&quot;</code> | 
+| cordovaContactType.telecom.WORK | <code>number</code> | <code>0</code> | 
+| cordovaContactType.telecom[0] | <code>string</code> | <code>&quot;WORK&quot;</code> | 
+| cordovaContactType.telecom.MOBILE | <code>number</code> | <code>1</code> | 
+| cordovaContactType.telecom[1] | <code>string</code> | <code>&quot;MOBILE&quot;</code> | 
+| cordovaContactType.url.E_DIRECTORY_PROFILE | <code>number</code> | <code>0</code> | 
+| cordovaContactType.url[0] | <code>string</code> | <code>&quot;E_DIRECTORY_PROFILE&quot;</code> | 
+| cordovaContactType.url.CROWD_AROUND_PROFILE | <code>number</code> | <code>1</code> | 
+| cordovaContactType.url[1] | <code>string</code> | <code>&quot;CROWD_AROUND_PROFILE&quot;</code> | 
+| cordovaContactType.url.ONE_JIRA_PROFILE | <code>number</code> | <code>2</code> | 
+| cordovaContactType.url[2] | <code>string</code> | <code>&quot;ONE_JIRA_PROFILE&quot;</code> | 
+| cordovaContactType.url.ONE_CONFLUENCE_PROFILE | <code>number</code> | <code>3</code> | 
+| cordovaContactType.url[3] | <code>string</code> | <code>&quot;ONE_CONFLUENCE_PROFILE&quot;</code> | 
+| cordovaContactType.url.ONE_STASH_PROFILE | <code>number</code> | <code>4</code> | 
+| cordovaContactType.url[4] | <code>string</code> | <code>&quot;ONE_STASH_PROFILE&quot;</code> | 
+| cordovaContactType.url.PROFILE_PICTURE_IMG | <code>number</code> | <code>5</code> | 
+| cordovaContactType.url[5] | <code>string</code> | <code>&quot;PROFILE_PICTURE_IMG&quot;</code> | 
+| cordovaContactType.category.WORK | <code>number</code> | <code>0</code> | 
+| cordovaContactType.category[0] | <code>string</code> | <code>&quot;WORK&quot;</code> | 
+| cordovaContactType.id.ENTERPRISE_ID | <code>number</code> | <code>0;</code> | 
+| cordovaContactType.id[0] | <code>string</code> | <code>&quot;ENTERPRISE_ID;&quot;</code> | 
+| cordovaContactType.id.ENTERPRISE_ID_MANAGER | <code>number</code> | <code>1;</code> | 
+| cordovaContactType.id[1] | <code>string</code> | <code>&quot;ENTERPRISE_ID_MANAGER;&quot;</code> | 
+| cordovaContactType.id.ENTERPRISE_ID_DIRECT_REPORTS | <code>number</code> | <code>2;</code> | 
+| cordovaContactType.id[2] | <code>string</code> | <code>&quot;ENTERPRISE_ID_DIRECT_REPORTS;&quot;</code> | 
+| cordovaContactType.id.VZID | <code>number</code> | <code>3;</code> | 
+| cordovaContactType.id[3] | <code>string</code> | <code>&quot;VZID;&quot;</code> | 
+| cordovaContactType.id.EMPLOYEE_ID | <code>number</code> | <code>4;</code> | 
+| cordovaContactType.id[4] | <code>string</code> | <code>&quot;EMPLOYEE_ID;&quot;</code> | 
+| cordovaContactType.id.ONE_WORLD_ID | <code>number</code> | <code>5;</code> | 
+| cordovaContactType.id[5] | <code>string</code> | <code>&quot;ONE_WORLD_ID;&quot;</code> | 
+| cordovaContactType.id.ONE_WORLD_NUMBER | <code>number</code> | <code>6;</code> | 
+| cordovaContactType.id[6] | <code>string</code> | <code>&quot;ONE_WORLD_NUMBER;&quot;</code> | 
+| cordovaContactType.id.BADGE_ID | <code>number</code> | <code>7;</code> | 
+| cordovaContactType.id[7] | <code>string</code> | <code>&quot;BADGE_ID;&quot;</code> | 
+| cordovaContactType.url.E_DIRECTORY_PROFILE | <code>number</code> | <code>0;</code> | 
+| cordovaContactType.url[0] | <code>string</code> | <code>&quot;E_DIRECTORY_PROFILE;&quot;</code> | 
+| cordovaContactType.url.CROWD_AROUND_PROFILE | <code>number</code> | <code>1;</code> | 
+| cordovaContactType.url[1] | <code>string</code> | <code>&quot;CROWD_AROUND_PROFILE;&quot;</code> | 
+| cordovaContactType.url.ONE_JIRA_PROFILE | <code>number</code> | <code>2;</code> | 
+| cordovaContactType.url[2] | <code>string</code> | <code>&quot;ONE_JIRA_PROFILE;&quot;</code> | 
+| cordovaContactType.url.ONE_CONFLUENCE_PROFILE | <code>number</code> | <code>3;</code> | 
+| cordovaContactType.url[3] | <code>string</code> | <code>&quot;ONE_CONFLUENCE_PROFILE;&quot;</code> | 
+| cordovaContactType.url.ONE_STASH_PROFILE | <code>number</code> | <code>4;</code> | 
+| cordovaContactType.url[4] | <code>string</code> | <code>&quot;ONE_STASH_PROFILE;&quot;</code> | 
+| cordovaContactType.url.PROFILE_PICTURE_IMG | <code>number</code> | <code>5;</code> | 
+| cordovaContactType.url[5] | <code>string</code> | <code>&quot;PROFILE_PICTURE_IMG;&quot;</code> | 
+| cordovaContactType.org.WORK | <code>number</code> | <code>0;</code> | 
+| cordovaContactType.org[org.WORK] | <code>string</code> | <code>&quot;WORK;&quot;</code> | 
+| email | <code>number</code> \| <code>string</code> | <code>email</code> | 
+| geographic | <code>number</code> \| <code>string</code> | <code>geographic</code> | 
+| telecom | <code>number</code> \| <code>string</code> | <code>telecom</code> | 
+| url | <code>number</code> \| <code>string</code> | <code>url</code> | 
+| category | <code>number</code> \| <code>string</code> | <code>category</code> | 
+| id | <code>number</code> \| <code>string</code> | <code>id</code> | 
+| org | <code>number</code> \| <code>string</code> | <code>org</code> | 
 
+**Example** *(Using numeric and string enumerators)*  
+```js
+// 1. Get a contact's JIRA Profile URL
+console.log(cordovaContactType.url.ONE_JIRA_PROFILE);
+// => 2
+// 2. Get the human readable string for the enum ONE_JIRA_PROFILE
+console.log(cordovaContactType.url[cordovaContactType.url.ONE_JIRA_PROFILE]);
+// => 'ONE_JIRA_PROFILE'
+// 3. Example (2) above is equivalent to
+console.log(cordovaContactType.url[2]);
+// => 'ONE_JIRA_PROFILE'
+```
 
 <hr>
 <a name="cordova-contacts/Contact"></a>

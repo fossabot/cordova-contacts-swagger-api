@@ -1,32 +1,32 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports=[{
         "type": "e-directory-profile",
-        "value": "https://edirectory.verizon.com/eDirectory/CorpDirServlet?page=people&eid={VZEID}",
+        "value": "https://edirectory.verizon.com/eDirectory/CorpDirServlet?page=people&eid={ID_VZEID}",
         "pref": true
     },
     {
         "type": "crowd-around-profile",
-        "value": "https://crowdaround.verizon.com/people/{VZEID}",
+        "value": "https://crowdaround.verizon.com/people/{ID_VZEID}",
         "pref": false
     },
     {
         "type": "one-confluence-profile",
-        "value": "https://oneconfluence.verizon.com/display/~{VZID}",
+        "value": "https://oneconfluence.verizon.com/display/~{ID_VZID}",
         "pref": false
     },
     {
         "type": "one-jira-profile",
-        "value": "https://onejira.verizon.com/secure/ViewProfile.jspa?name={VZID}",
+        "value": "https://onejira.verizon.com/secure/ViewProfile.jspa?name={ID_VZID}",
         "pref": false
     },
     {
         "type": "one-stash-profile",
-        "value": "https://onestash.verizon.com/display/~{VZID}",
+        "value": "https://onestash.verizon.com/display/~{ID_VZID}",
         "pref": false
     },
     {
         "type": "profile-picture",
-        "value": "https://profilepicture.verizon.com/aps/photoap/ImageServlet?eid={VZEID}",
+        "value": "https://profilepicture.verizon.com/aps/photoap/ImageServlet?eid={ID_VZEID}",
         "pref": false
     }
 ]
@@ -34,42 +34,105 @@ module.exports=[{
 },{}],2:[function(require,module,exports){
 'use strict';
 
+var email = void 0;
+(function (email) {
+    email.WORK_EXTERNAL = 0;
+    email[email.WORK_EXTERNAL] = 'WORK_EXTERNAL';
+    email.WORK_INTERNAL = 1;
+    email[email.WORK_INTERNAL] = 'WORK_INTERNAL';
+})(email || (email = {}));
+var geographic = void 0;
+(function (geographic) {
+    geographic.WORK = 0;
+    geographic[geographic.WORK] = 'WORK';
+})(geographic || (geographic = {}));
+var telecom = void 0;
+(function (telecom) {
+    telecom.WORK = 0;
+    telecom[telecom.WORK] = 'WORK';
+    telecom.MOBILE = 1;
+    telecom[telecom.MOBILE] = 'MOBILE';
+})(telecom || (telecom = {}));
+var url = void 0;
+(function (url) {
+    url.E_DIRECTORY_PROFILE = 0;
+    url[url.E_DIRECTORY_PROFILE] = 'E_DIRECTORY_PROFILE';
+    url.CROWD_AROUND_PROFILE = 1;
+    url[url.CROWD_AROUND_PROFILE] = 'CROWD_AROUND_PROFILE';
+    url.ONE_JIRA_PROFILE = 2;
+    url[url.ONE_JIRA_PROFILE] = 'ONE_JIRA_PROFILE';
+    url.ONE_CONFLUENCE_PROFILE = 3;
+    url[url.ONE_CONFLUENCE_PROFILE] = 'ONE_CONFLUENCE_PROFILE';
+    url.ONE_STASH_PROFILE = 4;
+    url[url.ONE_STASH_PROFILE] = 'ONE_STASH_PROFILE';
+    url.PROFILE_PICTURE_IMG = 5;
+    url[url.PROFILE_PICTURE_IMG] = 'PROFILE_PICTURE_IMG';
+})(url || (url = {}));
+var category = void 0;
+(function (category) {
+    category.WORK = 0;
+    category[category.WORK] = 'WORK';
+})(category || (category = {}));
+var identifier = void 0;
+(function (identifier) {
+    identifier.ENTERPRISE_ID = 0;
+    identifier[identifier.ENTERPRISE_ID] = 'ENTERPRISE_ID';
+    identifier.ENTERPRISE_ID_MANAGER = 1;
+    identifier[identifier.ENTERPRISE_ID_MANAGER] = 'ENTERPRISE_ID_MANAGER';
+    identifier.ENTERPRISE_ID_DIRECT_REPORTS = 2;
+    identifier[identifier.ENTERPRISE_ID_DIRECT_REPORTS] = 'ENTERPRISE_ID_DIRECT_REPORTS';
+    identifier.VZID = 3;
+    identifier[identifier.VZID] = 'VZID';
+    identifier.EMPLOYEE_ID = 4;
+    identifier[identifier.EMPLOYEE_ID] = 'EMPLOYEE_ID';
+    identifier.ONE_WORLD_ID = 5;
+    identifier[identifier.ONE_WORLD_ID] = 'ONE_WORLD_ID';
+    identifier.ONE_WORLD_NUMBER = 6;
+    identifier[identifier.ONE_WORLD_NUMBER] = 'ONE_WORLD_NUMBER';
+    identifier.BADGE_ID = 7;
+    identifier[identifier.BADGE_ID] = 'BADGE_ID';
+})(identifier || (identifier = {}));
+var organization = void 0;
+(function (organization) {
+    organization.WORK = 0;
+    organization[organization.WORK] = 'WORK';
+})(organization || (organization = {}));
 /**
  * An enum that specificies the kinds of contact information and avoids "magic numbers" during interface adaption/transformation.
  *
  * @readonly
  * @alias cordova-contacts/cordovaContactType
- * @enum {number}
- * @property {number} CROWD_AROUND_PROFILE=1
- * @property {number} E_DIRECTORY_PROFILE=0
- * @property {number} MOBILE=1
- * @property {number} ONE_CONFLUENCE_PROFILE=3
- * @property {number} ONE_JIRA_PROFILE=2
- * @property {number} ONE_STASH_PROFILE=4
- * @property {number} VZEID_DIRECT_REPORTS=2
- * @property {number} VZEID_MANAGER=1
- * @property {number} VZEID=0
- * @property {number} VZID=0
- * @property {number} WORK_EXTERNAL=0
- * @property {number} WORK_INTERNAL=1
- * @property {number} WORK=0
+ * @enum {number|string}
+ * @property {number} addr.email.WORK_EXTERNAL=0
+ * @property {number} addr.email.WORK_INTERNAL=1
+ * @property {number} addr.geographic.WORK=0
+ * @property {number} addr.telecom.WORK=0
+ * @property {number} addr.telecom.MOBILE=1
+ * @property {number} addr.url.E_DIRECTORY_PROFILE=0
+ * @property {number} addr.url.CROWD_AROUND_PROFILE=1
+ * @property {number} addr.url.ONE_JIRA_PROFILE=2
+ * @property {number} addr.url.ONE_CONFLUENCE_PROFILE=3
+ * @property {number} addr.url.ONE_STASH_PROFILE=4
+ * @property {number} addr.url.PROFILE_PICTURE_IMG=5
+ * @property {number} category.PROFILE_PICTURE_IMG=5
  */
-var cordovaContactType = {};
-(function (cordovaContactType) {
-  cordovaContactType[cordovaContactType['CROWD_AROUND_PROFILE'] = 1] = 'CROWD_AROUND_PROFILE';
-  cordovaContactType[cordovaContactType['E_DIRECTORY_PROFILE'] = 0] = 'E_DIRECTORY_PROFILE';
-  cordovaContactType[cordovaContactType['MOBILE'] = 1] = 'MOBILE';
-  cordovaContactType[cordovaContactType['ONE_CONFLUENCE_PROFILE'] = 3] = 'ONE_CONFLUENCE_PROFILE';
-  cordovaContactType[cordovaContactType['ONE_JIRA_PROFILE'] = 2] = 'ONE_JIRA_PROFILE';
-  cordovaContactType[cordovaContactType['ONE_STASH_PROFILE'] = 4] = 'ONE_STASH_PROFILE';
-  cordovaContactType[cordovaContactType['VZEID_DIRECT_REPORTS'] = 2] = 'VZEID_DIRECT_REPORTS';
-  cordovaContactType[cordovaContactType['VZEID_MANAGER'] = 1] = 'VZEID_MANAGER';
-  cordovaContactType[cordovaContactType['VZEID'] = 0] = 'VZEID';
-  cordovaContactType[cordovaContactType['VZID'] = 0] = 'VZID';
-  cordovaContactType[cordovaContactType['WORK_EXTERNAL'] = 0] = 'WORK_EXTERNAL';
-  cordovaContactType[cordovaContactType['WORK_INTERNAL'] = 1] = 'WORK_INTERNAL';
-  cordovaContactType[cordovaContactType['WORK'] = 0] = 'WORK';
-})(cordovaContactType);
+var cordovaContactType = function () {
+    function cordovaContactType() {
+        throw new Error('cordovaContactType is "static," and has no valid constructor');
+    }
+    cordovaContactType = {
+        addr: {
+            email: email,
+            geographic: geographic,
+            telecom: telecom,
+            url: url
+        },
+        category: category,
+        id: identifier,
+        org: organization
+    };
+    return cordovaContactType;
+}();
 
 module.exports = cordovaContactType;
 
@@ -373,14 +436,14 @@ var contactUrls = require('./contact-urls');
  * @returns {void}
  */
 var assignAddresses = function assignAddresses(contact, profilePantry) {
-    contact.addresses[cordovaContactType.WORK].type = WORK;
-    contact.addresses[cordovaContactType.WORK].country = profilePantry.workCountry;
-    contact.addresses[cordovaContactType.WORK].formatted = profilePantry.workStreet + ' ' + profilePantry.mailCode + ', ' + profilePantry.workCity + ', ' + profilePantry.workState + ' ' + profilePantry.workPostalCode + ' ' + profilePantry.workCountry;
-    contact.addresses[cordovaContactType.WORK].locality = profilePantry.workCity;
-    contact.addresses[cordovaContactType.WORK].postalCode = profilePantry.workPostalCode;
-    contact.addresses[cordovaContactType.WORK].pref = true;
-    contact.addresses[cordovaContactType.WORK].region = profilePantry.workState;
-    contact.addresses[cordovaContactType.WORK].streetAddress = profilePantry.workStreet + ' ' + profilePantry.mailCode;
+    contact.addresses[cordovaContactType.addr.geograpic.WORK].type = WORK;
+    contact.addresses[cordovaContactType.addr.geograpic.WORK].country = profilePantry.workCountry;
+    contact.addresses[cordovaContactType.addr.geograpic.WORK].formatted = profilePantry.workStreet + ' ' + profilePantry.mailCode + ', ' + profilePantry.workCity + ', ' + profilePantry.workState + ' ' + profilePantry.workPostalCode + ' ' + profilePantry.workCountry;
+    contact.addresses[cordovaContactType.addr.geograpic.WORK].locality = profilePantry.workCity;
+    contact.addresses[cordovaContactType.addr.geograpic.WORK].postalCode = profilePantry.workPostalCode;
+    contact.addresses[cordovaContactType.addr.geograpic.WORK].pref = true;
+    contact.addresses[cordovaContactType.addr.geograpic.WORK].region = profilePantry.workState;
+    contact.addresses[cordovaContactType.addr.geograpic.WORK].streetAddress = profilePantry.workStreet + ' ' + profilePantry.mailCode;
 };
 
 /**
@@ -393,13 +456,13 @@ var assignAddresses = function assignAddresses(contact, profilePantry) {
  * @returns {void}
  */
 var assignCategories = function assignCategories(contact, profilePantry) {
-    contact.categories[cordovaContactType.VZEID].pref = true;
-    contact.categories[cordovaContactType.VZEID].type = 'id:vzeid';
-    contact.categories[cordovaContactType.VZEID].value = profilePantry.vzeid;
-    contact.categories[cordovaContactType.VZEID_MANAGER].type = 'id:vzeid:manager';
-    contact.categories[cordovaContactType.VZEID_MANAGER].value = profilePantry.managerEid;
-    contact.categories[cordovaContactType.VZEID_DIRECT_REPORTS].type = 'id:vzeid:direct-reports';
-    contact.categories[cordovaContactType.VZEID_DIRECT_REPORTS].value = profilePantry.directReportsEIDs;
+    contact.categories[cordovaContactType.id.VZEID].pref = true;
+    contact.categories[cordovaContactType.id.VZEID].type = 'id:vzeid';
+    contact.categories[cordovaContactType.id.VZEID].value = profilePantry.vzeid;
+    contact.categories[cordovaContactType.id.VZEID_MANAGER].type = 'id:vzeid:manager';
+    contact.categories[cordovaContactType.id.VZEID_MANAGER].value = profilePantry.managerEid;
+    contact.categories[cordovaContactType.id.VZEID_DIRECT_REPORTS].type = 'id:vzeid:direct-reports';
+    contact.categories[cordovaContactType.id.VZEID_DIRECT_REPORTS].value = profilePantry.directReportsEIDs;
 };
 
 /**
@@ -412,11 +475,11 @@ var assignCategories = function assignCategories(contact, profilePantry) {
  * @returns {void}
  */
 var assignEmails = function assignEmails(contact, profilePantry) {
-    contact.emails[cordovaContactType.WORK_INTERNAL].type = 'work:internal';
-    contact.emails[cordovaContactType.WORK_INTERNAL].value = profilePantry.internalEmail;
-    contact.emails[cordovaContactType.WORK_EXTERNAL].pref = true;
-    contact.emails[cordovaContactType.WORK_EXTERNAL].type = 'work:external';
-    contact.emails[cordovaContactType.WORK_EXTERNAL].value = profilePantry.externalEmail;
+    contact.emails[cordovaContactType.addr.email.WORK_INTERNAL].type = 'work:internal';
+    contact.emails[cordovaContactType.addr.email.WORK_INTERNAL].value = profilePantry.internalEmail;
+    contact.emails[cordovaContactType.addr.email.WORK_EXTERNAL].pref = true;
+    contact.emails[cordovaContactType.addr.email.WORK_EXTERNAL].type = 'work:external';
+    contact.emails[cordovaContactType.addr.email.WORK_EXTERNAL].value = profilePantry.externalEmail;
 };
 
 /**
@@ -444,11 +507,11 @@ var assignName = function assignName(contact, profilePantry) {
  * @returns {void}
  */
 var assignOrganizations = function assignOrganizations(contact, profilePantry) {
-    contact.organizations[cordovaContactType.WORK].department = startCase(toLower(profilePantry.financeLobName));
-    contact.organizations[cordovaContactType.WORK].name = profilePantry.treeLobName + ', ' + profilePantry.organization;
-    contact.organizations[cordovaContactType.WORK].pref = true;
-    contact.organizations[cordovaContactType.WORK].title = profilePantry.jobTitle;
-    contact.organizations[cordovaContactType.WORK].type = WORK;
+    contact.organizations[cordovaContactType.org.WORK].department = startCase(toLower(profilePantry.financeLobName));
+    contact.organizations[cordovaContactType.org.WORK].name = profilePantry.treeLobName + ', ' + profilePantry.organization;
+    contact.organizations[cordovaContactType.org.WORK].pref = true;
+    contact.organizations[cordovaContactType.org.WORK].title = profilePantry.jobTitle;
+    contact.organizations[cordovaContactType.org.WORK].type = CATEGORY_WORK;
 };
 
 /**
@@ -461,11 +524,11 @@ var assignOrganizations = function assignOrganizations(contact, profilePantry) {
  * @returns {void}
  */
 var assignPhoneNumbers = function assignPhoneNumbers(contact, profilePantry) {
-    contact.phoneNumbers[cordovaContactType.WORK].pref = true;
-    contact.phoneNumbers[cordovaContactType.WORK].type = WORK;
-    contact.phoneNumbers[cordovaContactType.WORK].value = profilePantry.officePhoneNumber;
-    contact.phoneNumbers[cordovaContactType.MOBILE].type = 'mobile';
-    contact.phoneNumbers[cordovaContactType.MOBILE].value = profilePantry.mobile;
+    contact.phoneNumbers[cordovaContactType.addr.telecom.WORK].pref = true;
+    contact.phoneNumbers[cordovaContactType.addr.telecom.WORK].type = CATEGORY_WORK;
+    contact.phoneNumbers[cordovaContactType.addr.telecom.WORK].value = profilePantry.officePhoneNumber;
+    contact.phoneNumbers[cordovaContactType.addr.telecom.MOBILE].type = 'mobile';
+    contact.phoneNumbers[cordovaContactType.addr.telecom.MOBILE].value = profilePantry.mobile;
 };
 
 /**
@@ -484,7 +547,7 @@ var assignPhoneNumbers = function assignPhoneNumbers(contact, profilePantry) {
  */
 var assignUrls = function assignUrls(contact, profilePantry) {
     contact.urls = map(contactUrls, function (url) {
-        url.value = url.value.replace('{VZEID}', profilePantry.vzeid).replace('{VZID}', profilePantry.vzid);
+        url.value = url.value.replace('{ID_VZEID}', profilePantry.vzeid).replace('{ID_VZID}', profilePantry.vzid);
         return url;
     });
 };

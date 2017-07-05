@@ -8,7 +8,7 @@ addons:
       secure: "$GITHUB_ACCESS_TOKEN"
     branches:
       - master
-      - /[build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test].*/
+      - /[build|chore|ci|docs|feat|fix|perf|refactor|revert|spike|style|test].*/
 jdk:
   - oraclejdk8
 language: node_js
