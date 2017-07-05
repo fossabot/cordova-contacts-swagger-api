@@ -48,6 +48,7 @@ function commitAndPush() {
   git add .
   git commit -m "${msg}"
   git push origin "${branch}"
+  git push github "${branch}"
 }
 
 function main() {
