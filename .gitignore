@@ -66,3 +66,14 @@ typings/
 
 # Mac files
 .DS_Store
+
+# "Temporary" directories
+.temp/
+.tmp/
+temp/
+tmp/
+
+# Compressed resources
+*.tar
+*.tgz
+*.zip

@@ -1,8 +1,9 @@
 # `cordova-contacts-swagger-api`
 > **[![Swagger Validity][swagger-validity-img]][swagger-validity-url] A reference Apigee API Proxy that**
 >
-> * Demonstrates best practices for CI/CD quality gates executed during build, test, and deploy automation; and
-> * Provides mock data for automated content publication in the Apigee Developer Portal.
+> * Demonstrates best practices for CI/CD;
+> * Provides mock data for automated content publication in the Apigee Developer Portal; and
+> * :rocket: **Automates, build, lint, test, API documentation, `apiproxy` packaging, and deployment to Apigee EDGE.**
 
 [![Build Status][travis-ci-img]][travis-ci-url] [![Sonar coverage][sonar-coverage-img]][sonar-coverage-url] [![Quality Gate][sonar-gate-img]][sonar-gate-url] [![Complexity][sonar-complexity-img]][sonar-complexity-url]<br>
 [![NSP Status][nsp-img]][nsp-url] [![bitHound Dependencies][bithound-dep-img]][bithound-dep-url] [![bitHound Dev Dependencies][bithound-dev-dep-img]][bithound-dev-dep-url]<br>[![License][license-image]][license-url]  [![Readme Score][readme-score-img]][readme-score-url] [![Inline docs][inch-ci-img]][inch-ci-url]
@@ -14,7 +15,10 @@
 - [2. Installation](#2-installation)
 - [3. Usage](#3-usage)
 	- [3.1. Design-first with Swagger/OpenAPI documents](#31-design-first-with-swaggeropenapi-documents)
-	- [3.2. Swagger document creation and edits](#32-swagger-document-creation-and-edits)
+	- [3.2. Create/edit Swagger/OpenAPI documents](#32-createedit-swaggeropenapi-documents)
+	- [3.3. Build, test, generate API docs, and push to Git](#33-build-test-generate-api-docs-and-push-to-git)
+	- [3.4. Package all `apiproxy` artifacts](#34-package-all-apiproxy-artifacts)
+	- [3.5. Package and **deploy** `apiproxy` artifacts](#35-package-and-deploy-apiproxy-artifacts)
 - [4. Quality gates and tests](#4-quality-gates-and-tests)
 	- [4.1. Swagger validation and badge](#41-swagger-validation-and-badge)
 	- [4.2. Javascript callout source code analysis](#42-javascript-callout-source-code-analysis)
@@ -59,7 +63,7 @@ When exposing APIs in Apigee, try to avoid the "lift-and-shift" mentality, and _
 2. **Auto-generated client SDKs**: [`Swagger Codegen`](http://swagger.io/swagger-codegen/) will automatically generate an SDK for 38 clients. This vastly broadens your potential market share.
 3. **Auto-generated, interactive documentation**: Swagger docs are interactive. Moreover, they're **required** before you can publish to the Apigee Developer Portal.
 
-### 3.2. Swagger document creation and edits
+### 3.2. Create/edit Swagger/OpenAPI documents
 
 1. Go to the [online Swagger Editor](http://editor.swagger.io/#/).
 2. Copy the contents of [`cordova-contacts.swagger.yaml`](cordova-contacts.swagger.yaml) to your clipboard.
@@ -67,6 +71,68 @@ When exposing APIs in Apigee, try to avoid the "lift-and-shift" mentality, and _
 4. Review the content in the right render pane.
 5. Select "Generate Client" on the Swagger Editor top-level navigation bar.
 6. Marvel at the SDK options presented before you!
+
+### 3.3. Build, test, generate API docs, and push to Git
+
+If you're a lazy programmer like me, you can run:
+
+```bash
+
+$ npm run build-test-push
+```
+
+Or, if that's too many characters for you, run the abbreviated command:
+
+```bash
+
+$ npm run btp
+
+```
+
+This will execute a:
+
+1. Build. If the build passes, then it will execute
+2. Test, which includes these quality gates:
+    1. Lint the
+	    * Swagger documents and the
+		* Javascript callout source code (if any exists). If all's good, then it will
+	2. Test with `jest`. If all tests pass within the coverage threshold, it will check
+	3. Security (with [`nsp`][nsp-url]). If prelimary security checks pass, it'll
+3. Document your
+    * Swagger spec and
+	* Javascript callout code (both of which you'll find in the [`docs`](./docs) directory). Finally, it'll
+4. Commit and push to Git.
+
+> ##### :warning: `npm run btp` generates an automated commit message
+>
+> The [`prepend-header.sh`](./.github/assets/prepend-header.sh) shell script will
+> use the default message "docs(api): auto-generate api docs and complexity report".
+> The script can accept an alternate commit message, but that's not available from
+> the `npm-script btp`, yet. If you want add that, submit a pull request :v:.
+
+### 3.4. Package all `apiproxy` artifacts
+
+Finally, you can update the repository's `apiproxy` -- your final build -- by running:
+
+```bash
+
+$ npm run apigee:apiproxy:update
+```
+
+This uses [`openapi2apigee`][openapi2apigee-url] behind the scenes to update the `apiproxy` artifacts
+and generate an `apiproxy.zip` file in your project's root directory.
+
+### 3.5. Package and **deploy** `apiproxy` artifacts
+
+Run:
+
+```bash
+
+$ npm run apigee:apiproxy:deploy
+
+```
+
+This not only generates `apiproxy` artifacts, but also deploys to an Apigee EDGE host of your choosing.
 
 ## 4. Quality gates and tests
 

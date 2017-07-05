@@ -34,26 +34,26 @@ module.exports=[{
 },{}],2:[function(require,module,exports){
 'use strict';
 
-var email = void 0;
+var email = {};
 (function (email) {
     email.WORK_EXTERNAL = 0;
     email[email.WORK_EXTERNAL] = 'WORK_EXTERNAL';
     email.WORK_INTERNAL = 1;
     email[email.WORK_INTERNAL] = 'WORK_INTERNAL';
-})(email || (email = {}));
-var geographic = void 0;
+})(email);
+var geographic = {};
 (function (geographic) {
     geographic.WORK = 0;
     geographic[geographic.WORK] = 'WORK';
-})(geographic || (geographic = {}));
-var telecom = void 0;
+})(geographic);
+var telecom = {};
 (function (telecom) {
     telecom.WORK = 0;
     telecom[telecom.WORK] = 'WORK';
     telecom.MOBILE = 1;
     telecom[telecom.MOBILE] = 'MOBILE';
-})(telecom || (telecom = {}));
-var url = void 0;
+})(telecom);
+var url = {};
 (function (url) {
     url.E_DIRECTORY_PROFILE = 0;
     url[url.E_DIRECTORY_PROFILE] = 'E_DIRECTORY_PROFILE';
@@ -67,13 +67,13 @@ var url = void 0;
     url[url.ONE_STASH_PROFILE] = 'ONE_STASH_PROFILE';
     url.PROFILE_PICTURE_IMG = 5;
     url[url.PROFILE_PICTURE_IMG] = 'PROFILE_PICTURE_IMG';
-})(url || (url = {}));
-var category = void 0;
+})(url);
+var category = {};
 (function (category) {
     category.WORK = 0;
     category[category.WORK] = 'WORK';
-})(category || (category = {}));
-var id = void 0;
+})(category);
+var id = {};
 (function (id) {
     id.ENTERPRISE_ID = 0;
     id[id.ENTERPRISE_ID] = 'ENTERPRISE_ID';
@@ -91,12 +91,12 @@ var id = void 0;
     id[id.ONE_WORLD_NUMBER] = 'ONE_WORLD_NUMBER';
     id.BADGE_ID = 7;
     id[id.BADGE_ID] = 'BADGE_ID';
-})(id || (id = {}));
-var org = void 0;
+})(id);
+var org = {};
 (function (org) {
     org.WORK = 0;
     org[org.WORK] = 'WORK';
-})(org || (org = {}));
+})(org);
 /**
  * An enum that specificies the kinds of contact information and avoids
  * "magic numbers" during interface adaption/transformation. Note that
@@ -187,7 +187,8 @@ module.exports = cordovaContactType;
 'use strict';
 
 /**
- * #### :abcd: :arrow_right: :iphone: Provide one's own Verizon employee contact information using the [Cordova Contacts API](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html).
+ * #### :abcd: :arrow_right: :iphone: Provide one's own Verizon employee contact
+ * information using the [Cordova Contacts API](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html).
  *
  * The Verizon Profile Pantry is a Web service that returns a cached flat-map of
  * employee attributes that have been
@@ -356,10 +357,12 @@ var nullCordovaContact = require('./null-cordova-contact.json');
  * @property {string} formatted The full address formatted for display.
  * @property {string} locality The city or locality.
  * @property {string} postalCode The zip or postal code.
- * @property {boolean} pref Set to true if this ContactAddress contains the user's preferred value.
+ * @property {boolean} pref Set to true if this ContactAddress contains the
+ * user's preferred value.
  * @property {string} region The state or region.
  * @property {string} streetAddress The full street address.
- * @property {string} type A string indicating what type of field this is, e.g., "work".
+ * @property {string} type A string indicating what type of field this is,
+ * e.g., "work".
  * @protected
  * @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html#contactaddress
  */
@@ -380,9 +383,12 @@ var ContactAddress = {};
  * the value contains a base64-encoded image string.
  *
  * @kind ContactField
- * @property {boolean} pref Set to `true` if this `ContactField` contains the user's preferred value.
- * @property {string} type A string that indicates what type of field this is, e.g., "work".
- * @property {string} value The value of the field, such as a phone number or email address.
+ * @property {boolean} pref Set to `true` if this `ContactField` contains the
+ * user's preferred value.
+ * @property {string} type A string that indicates what type of field this is,
+ * e.g., "work".
+ * @property {string} value The value of the field, such as a phone number or
+ * email address.
  * @protected
  * @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html#contactfield
  */
@@ -395,8 +401,10 @@ var ContactField = {};
  * @property {string} familyName The contact's last name/surname.
  * @property {string} formatted The complete name of the contact.
  * @property {string} givenName The contact's first name/forename.
- * @property {string} honorificPrefix The contact's prefix (example _Ms._ or _Dr._).
- * @property {string} honorificSuffix The contact's suffix (example Esq. or _III_).
+ * @property {string} honorificPrefix The contact's prefix,
+ * e.g.,  _Ms._ or _Dr._.
+ * @property {string} honorificSuffix The contact's suffix,
+ * e.g., _Esq._ or _III_).
  * @property {string} middleName The contact's middle name.
  * @protected
  * @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html#contactname
@@ -411,9 +419,11 @@ var ContactName = {};
  * @kind ContactOrganization
  * @property {string} department The department the contract works for.
  * @property {string} name The name of the organization.
- * @property {boolean} pref Set to true if this ContactOrganization contains the user's preferred value.
+ * @property {boolean} pref Set to true if this ContactOrganization contains the
+ * user's preferred value.
  * @property {string} title The contact's title at the organization.
- * @property {string} type A string that indicates what type of field this is, e.g., "work".
+ * @property {string} type A string that indicates what type of field this is,
+ * e.g., "work".
  * @protected
  * @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html#contactorganization
  */
@@ -437,7 +447,9 @@ var ContactOrganization = {};
  * <br>
  * <br>
  * **:warning: `birthday` does not include the birth year.**
- * @property {array.<ContactField>} categories An array of all the user-defined categories associated with the contact. The Verizon implementation displays the Verizon Enterprise ID of the:
+ * @property {array.<ContactField>} categories An array of all the user-defined
+ * categories associated with the contact. The Verizon implementation displays
+ * the Verizon Enterprise ID of the:
  * <br>
  * <ul>
  * <li> `Contact` itself;
@@ -445,15 +457,22 @@ var ContactOrganization = {};
  * <li> `Contact`'s supervisor.
  * <br>
  * <br>
- * @property {string} displayName The name of this Contact, suitable for display to end users.
- * @property {array.<ContactField>} emails An array of all the contact's email addresses.
- * @property {array.<ContactField>} ims An array of all the contact's Instant Message (IM) addresses.
- * @property {ContactName} name An object containing all components of a persons name.
+ * @property {string} displayName The name of this Contact, suitable for display
+ * to end users.
+ * @property {array.<ContactField>} emails An array of all the contact's email
+ * addresses.
+ * @property {array.<ContactField>} ims An array of all the contact's Instant
+ * Message (IM) addresses.
+ * @property {ContactName} name An object containing all components of a persons
+ * name.
  * @property {string} nickname A casual name by which to address the contact.
  * @property {string} note A note/bio about the contact.
- * @property {array.<ContactOrganization>} organizations An array of all the contact's organizations.
- * @property {array.<ContactField>} phoneNumbers An array of all the contact's phone numbers.
- * @property {array.<ContactField>} urls An array of web pages associated with the contact.
+ * @property {array.<ContactOrganization>} organizations An array of all the
+ * contact's organizations.
+ * @property {array.<ContactField>} phoneNumbers An array of all the contact's
+ * phone numbers.
+ * @property {array.<ContactField>} urls An array of web pages associated with
+ * the contact.
  * @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html#contact
  */
 var Contact = {};

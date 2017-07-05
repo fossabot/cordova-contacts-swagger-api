@@ -1,6 +1,6 @@
 ---
 
-###### Menu: [Swagger](SWAGGER.md) | [Javascript callout API docs](README.md) | [Javascript callout Complexity Report](COMPLEXITY.md) | [Terms of Service](../TERMS_OF_SERVICE.md)
+###### Menu: [Swagger](SWAGGER.md) | [Javascript callout API docs](README.md) | [Javascript callout Complexity Report](COMPLEXITY.md) | [Terms of Service](TERMS_OF_SERVICE.md)
 
 ---
 # Complexity report, 7/5/2017
@@ -19,8 +19,8 @@
 * Physical LOC: 148
 * Logical LOC: 72
 * Mean parameter count: 1
-* Cyclomatic complexity: 8
-* Cyclomatic complexity density: 11.11111111111111%
+* Cyclomatic complexity: 1
+* Cyclomatic complexity density: 1.3888888888888888%
 * Maintainability index: 122.12802381286843
 * Dependency count: 0
 * Function: **&lt;anonymous>**
@@ -106,7 +106,7 @@
 
 ## lib/null-cordova-contact.js
 
-* Physical LOC: 114
+* Physical LOC: 132
 * Logical LOC: 7
 * Mean parameter count: 0
 * Cyclomatic complexity: 1
@@ -116,7 +116,7 @@
 
 ## lib/profile-pantry-to-cordova-contact.js
 
-* Physical LOC: 209
+* Physical LOC: 210
 * Logical LOC: 15
 * Mean parameter count: 0
 * Cyclomatic complexity: 1

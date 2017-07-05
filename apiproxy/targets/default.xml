@@ -1,22 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0"?>
 <TargetEndpoint name="default">
-    <Description/>
-    <FaultRules/>
-    <PreFlow name="PreFlow">
-        <Request/>
-        <Response>
-            <Step>
-                <Name>add-cors</Name>
-            </Step>
-        </Response>
-    </PreFlow>
-    <PostFlow name="PostFlow">
-        <Request/>
-        <Response/>
-    </PostFlow>
-    <Flows/>
-    <HTTPTargetConnection>
-        <Properties/>
-        <URL>https://api.usergrid.com/cordova/v6/</URL>
-    </HTTPTargetConnection>
+  <Description>Cordova Contacts</Description>
+  <PreFlow name="PreFlow">
+    <Request/>
+    <Response/>
+  </PreFlow>
+  <Flows/>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+  <HTTPTargetConnection>
+    <URL>http://api.swindle.net/cordova/v6/contacts</URL>
+  </HTTPTargetConnection>
 </TargetEndpoint>

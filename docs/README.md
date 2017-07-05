@@ -1,6 +1,6 @@
 ---
 
-###### Menu: [Swagger](SWAGGER.md) | [Javascript callout API docs](README.md) | [Javascript callout Complexity Report](COMPLEXITY.md) | [Terms of Service](../TERMS_OF_SERVICE.md)
+###### Menu: [Swagger](SWAGGER.md) | [Javascript callout API docs](README.md) | [Javascript callout Complexity Report](COMPLEXITY.md) | [Terms of Service](TERMS_OF_SERVICE.md)
 
 ---
 # Javascript callout API docs
@@ -17,7 +17,8 @@
 
 <dl>
 <dt><code><a href="#module_cordova-contacts">cordova-contacts</a></code></dt>
-<dd><h4 id="-abcd-arrow_right-iphone-provide-one-s-own-verizon-employee-contact-information-using-the-cordova-contacts-api-https-cordova-apache-org-docs-en-latest-reference-cordova-plugin-contacts-index-html-">:abcd: :arrow_right: :iphone: Provide one&#39;s own Verizon employee contact information using the <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html">Cordova Contacts API</a>.</h4>
+<dd><h4 id="-abcd-arrow_right-iphone-provide-one-s-own-verizon-employee-contact">:abcd: :arrow_right: :iphone: Provide one&#39;s own Verizon employee contact</h4>
+<p>information using the <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html">Cordova Contacts API</a>.</p>
 <p>The Verizon Profile Pantry is a Web service that returns a cached flat-map of
 employee attributes that have been</p>
 <ol>
@@ -53,7 +54,8 @@ from a mobile device&#39;s native contacts database.</p>
 <a name="module_cordova-contacts"></a>
 
 <h3><code>cordova-contacts</code></h3>
-#### :abcd: :arrow_right: :iphone: Provide one's own Verizon employee contact information using the [Cordova Contacts API](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html).
+#### :abcd: :arrow_right: :iphone: Provide one's own Verizon employee contact
+information using the [Cordova Contacts API](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html).
 
 The Verizon Profile Pantry is a Web service that returns a cached flat-map of
 employee attributes that have been
@@ -142,8 +144,8 @@ Contains different kinds of information about a `Contact` object's name.
 | familyName | <code>string</code> | The contact's last name/surname. |
 | formatted | <code>string</code> | The complete name of the contact. |
 | givenName | <code>string</code> | The contact's first name/forename. |
-| honorificPrefix | <code>string</code> | The contact's prefix (example _Ms._ or _Dr._). |
-| honorificSuffix | <code>string</code> | The contact's suffix (example Esq. or _III_). |
+| honorificPrefix | <code>string</code> | The contact's prefix, e.g.,  _Ms._ or _Dr._. |
+| honorificSuffix | <code>string</code> | The contact's suffix, e.g., _Esq._ or _III_). |
 | middleName | <code>string</code> | The contact's middle name. |
 
 
