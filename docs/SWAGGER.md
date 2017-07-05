@@ -1,3 +1,8 @@
+---
+
+###### Menu: [Swagger](SWAGGER.md) | [Javascript callout API docs](README.md) | [Javascript callout Complexity Report](COMPLEXITY.md) | [Terms of Service](../TERMS_OF_SERVICE.md)
+
+---
 Cordova Contacts
 ================
 [![Swagger Validity](https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.json.svg)](http://online.swagger.io/validator/debug?url=http://api.swindle.net/cordova/v6/contacts/openapi.json)
