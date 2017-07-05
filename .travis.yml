@@ -24,6 +24,7 @@ node_js:
   - 6
   - node
 before_script:
+  - chmod +x .github/assets/prepend-header.sh
   - npm prune
 script:
   - npm run build
@@ -32,7 +33,8 @@ script:
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 after_success:
-  # - npm run semantic-release
+  - npm run docs
+  - .github/assets/prepend-header.sh
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
