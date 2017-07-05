@@ -113,8 +113,8 @@ $ npm run swagger:lint
 
 * **Valid:**
     * [![Swagger Validity][swagger-validity-img]][swagger-validity-url] `cordova-contacts.swagger.yaml`
-    * [![Swagger Validity](http://online.swagger.io/validator?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.json)]((http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.json) `cordova-contacts.swagger.json`
-* **Invalid:**<br>[![Swagger Validity](http://online.swagger.io/validator?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/README.md)](http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/README.md)
+    * [![Swagger Validity](https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.json.svg)]((http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.json) `cordova-contacts.swagger.json`
+* **Invalid:**<br>[![Swagger Validity](https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.md.svg)](http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/README.md)
 
 
 ### 4.2. Javascript callout source code analysis
@@ -269,7 +269,7 @@ Please review Verizon's [Terms of Service](./docs/TERMS_OF_SERVICE.md).
 [swagger-io-url]: http://swagger.io
 [swagger-logo-20-img]: ./.github/assets/img/swagger-logo-20.png
 [swagger-markdown-url]: https://github.com/syroegkin/swagger-markdown
-[swagger-validity-img]: http://online.swagger.io/validator?url=http://api.swindle.net/cordova/v6/contacts/openapi.json
+[swagger-validity-img]: https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.json.svg
 [swagger-validity-url]: http://online.swagger.io/validator/debug?url=http://api.swindle.net/cordova/v6/contacts/openapi.json
 [travis-ci-img]: https://travis-ci.org/gregswindle/cordova-contacts-swagger-api.svg?branch=master
 [travis-ci-url]:  https://travis-ci.org/gregswindle/cordova-contacts-swagger-api

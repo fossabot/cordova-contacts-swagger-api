@@ -1,6 +1,11 @@
+---
+
+###### Menu: [Swagger](SWAGGER.md) | [Javascript callout API docs](README.md) | [Javascript callout Complexity Report](COMPLEXITY.md) | [Terms of Service](../TERMS_OF_SERVICE.md)
+
+---
 Cordova Contacts
 ================
-[![Swagger Validity](http://online.swagger.io/validator?url=http://api.swindle.net/cordova/v6/contacts/openapi.json)](http://online.swagger.io/validator/debug?url=http://api.swindle.net/cordova/v6/contacts/openapi.json)
+[![Swagger Validity](https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.json.svg)](http://online.swagger.io/validator/debug?url=http://api.swindle.net/cordova/v6/contacts/openapi.json)
 
 The `Contact` object represents a user's contact information that the [`cordova-plugin-contacts`](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html) can use to _create_, _store_, or _remove_ from a mobile device's contacts database.
 
