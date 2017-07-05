@@ -73,66 +73,113 @@ var category = void 0;
     category.WORK = 0;
     category[category.WORK] = 'WORK';
 })(category || (category = {}));
-var identifier = void 0;
-(function (identifier) {
-    identifier.ENTERPRISE_ID = 0;
-    identifier[identifier.ENTERPRISE_ID] = 'ENTERPRISE_ID';
-    identifier.ENTERPRISE_ID_MANAGER = 1;
-    identifier[identifier.ENTERPRISE_ID_MANAGER] = 'ENTERPRISE_ID_MANAGER';
-    identifier.ENTERPRISE_ID_DIRECT_REPORTS = 2;
-    identifier[identifier.ENTERPRISE_ID_DIRECT_REPORTS] = 'ENTERPRISE_ID_DIRECT_REPORTS';
-    identifier.VZID = 3;
-    identifier[identifier.VZID] = 'VZID';
-    identifier.EMPLOYEE_ID = 4;
-    identifier[identifier.EMPLOYEE_ID] = 'EMPLOYEE_ID';
-    identifier.ONE_WORLD_ID = 5;
-    identifier[identifier.ONE_WORLD_ID] = 'ONE_WORLD_ID';
-    identifier.ONE_WORLD_NUMBER = 6;
-    identifier[identifier.ONE_WORLD_NUMBER] = 'ONE_WORLD_NUMBER';
-    identifier.BADGE_ID = 7;
-    identifier[identifier.BADGE_ID] = 'BADGE_ID';
-})(identifier || (identifier = {}));
-var organization = void 0;
-(function (organization) {
-    organization.WORK = 0;
-    organization[organization.WORK] = 'WORK';
-})(organization || (organization = {}));
+var id = void 0;
+(function (id) {
+    id.ENTERPRISE_ID = 0;
+    id[id.ENTERPRISE_ID] = 'ENTERPRISE_ID';
+    id.ENTERPRISE_ID_MANAGER = 1;
+    id[id.ENTERPRISE_ID_MANAGER] = 'ENTERPRISE_ID_MANAGER';
+    id.ENTERPRISE_ID_DIRECT_REPORTS = 2;
+    id[id.ENTERPRISE_ID_DIRECT_REPORTS] = 'ENTERPRISE_ID_DIRECT_REPORTS';
+    id.VZID = 3;
+    id[id.VZID] = 'VZID';
+    id.EMPLOYEE_ID = 4;
+    id[id.EMPLOYEE_ID] = 'EMPLOYEE_ID';
+    id.ONE_WORLD_ID = 5;
+    id[id.ONE_WORLD_ID] = 'ONE_WORLD_ID';
+    id.ONE_WORLD_NUMBER = 6;
+    id[id.ONE_WORLD_NUMBER] = 'ONE_WORLD_NUMBER';
+    id.BADGE_ID = 7;
+    id[id.BADGE_ID] = 'BADGE_ID';
+})(id || (id = {}));
+var org = void 0;
+(function (org) {
+    org.WORK = 0;
+    org[org.WORK] = 'WORK';
+})(org || (org = {}));
 /**
- * An enum that specificies the kinds of contact information and avoids "magic numbers" during interface adaption/transformation.
+ * An enum that specificies the kinds of contact information and avoids
+ * "magic numbers" during interface adaption/transformation. Note that
+ * `cordovaContactType` provides both numeric and string values, which is
+ * useful for JSON serialization and human comprehension:
+ * @example <caption>Using numeric and string enumerators</caption>
+ * // 1. Get a contact's JIRA Profile URL
+ * console.log(cordovaContactType.url.ONE_JIRA_PROFILE);
+ * // => 2
+ * // 2. Get the human readable string for the enum ONE_JIRA_PROFILE
+ * console.log(cordovaContactType.url[cordovaContactType.url.ONE_JIRA_PROFILE]);
+ * // => 'ONE_JIRA_PROFILE'
+ * // 3. Example (2) above is equivalent to
+ * console.log(cordovaContactType.url[2]);
+ * // => 'ONE_JIRA_PROFILE'
  *
  * @readonly
  * @alias cordova-contacts/cordovaContactType
  * @enum {number|string}
- * @property {number} addr.email.WORK_EXTERNAL=0
- * @property {number} addr.email.WORK_INTERNAL=1
- * @property {number} addr.geographic.WORK=0
- * @property {number} addr.telecom.WORK=0
- * @property {number} addr.telecom.MOBILE=1
- * @property {number} addr.url.E_DIRECTORY_PROFILE=0
- * @property {number} addr.url.CROWD_AROUND_PROFILE=1
- * @property {number} addr.url.ONE_JIRA_PROFILE=2
- * @property {number} addr.url.ONE_CONFLUENCE_PROFILE=3
- * @property {number} addr.url.ONE_STASH_PROFILE=4
- * @property {number} addr.url.PROFILE_PICTURE_IMG=5
- * @property {number} category.PROFILE_PICTURE_IMG=5
+ * @property {number} cordovaContactType.email.WORK_EXTERNAL=0
+ * @property {string} cordovaContactType.email[0]='WORK_EXTERNAL'
+ * @property {number} cordovaContactType.email.WORK_INTERNAL=1
+ * @property {string} cordovaContactType.email[1]=WORK_INTERNAL
+ * @property {number} cordovaContactType.geographic.WORK=0
+ * @property {string} cordovaContactType.geographic[0]=WORK
+ * @property {number} cordovaContactType.telecom.WORK=0
+ * @property {string} cordovaContactType.telecom[0]=WORK
+ * @property {number} cordovaContactType.telecom.MOBILE=1
+ * @property {string} cordovaContactType.telecom[1]=MOBILE
+ * @property {number} cordovaContactType.url.E_DIRECTORY_PROFILE=0
+ * @property {string} cordovaContactType.url[0]=E_DIRECTORY_PROFILE
+ * @property {number} cordovaContactType.url.CROWD_AROUND_PROFILE=1
+ * @property {string} cordovaContactType.url[1]=CROWD_AROUND_PROFILE
+ * @property {number} cordovaContactType.url.ONE_JIRA_PROFILE=2
+ * @property {string} cordovaContactType.url[2]=ONE_JIRA_PROFILE
+ * @property {number} cordovaContactType.url.ONE_CONFLUENCE_PROFILE=3
+ * @property {string} cordovaContactType.url[3]=ONE_CONFLUENCE_PROFILE
+ * @property {number} cordovaContactType.url.ONE_STASH_PROFILE=4
+ * @property {string} cordovaContactType.url[4]=ONE_STASH_PROFILE
+ * @property {number} cordovaContactType.url.PROFILE_PICTURE_IMG=5
+ * @property {string} cordovaContactType.url[5]=PROFILE_PICTURE_IMG
+ * @property {number} cordovaContactType.category.WORK=0
+ * @property {string} cordovaContactType.category[0]=WORK
+ * @property {number} cordovaContactType.id.ENTERPRISE_ID=0;
+ * @property {string} cordovaContactType.id[0]=ENTERPRISE_ID;
+ * @property {number} cordovaContactType.id.ENTERPRISE_ID_MANAGER=1;
+ * @property {string} cordovaContactType.id[1]=ENTERPRISE_ID_MANAGER;
+ * @property {number} cordovaContactType.id.ENTERPRISE_ID_DIRECT_REPORTS=2;
+ * @property {string} cordovaContactType.id[2]=ENTERPRISE_ID_DIRECT_REPORTS;
+ * @property {number} cordovaContactType.id.VZID=3;
+ * @property {string} cordovaContactType.id[3]=VZID;
+ * @property {number} cordovaContactType.id.EMPLOYEE_ID=4;
+ * @property {string} cordovaContactType.id[4]=EMPLOYEE_ID;
+ * @property {number} cordovaContactType.id.ONE_WORLD_ID=5;
+ * @property {string} cordovaContactType.id[5]=ONE_WORLD_ID;
+ * @property {number} cordovaContactType.id.ONE_WORLD_NUMBER=6;
+ * @property {string} cordovaContactType.id[6]=ONE_WORLD_NUMBER;
+ * @property {number} cordovaContactType.id.BADGE_ID=7;
+ * @property {string} cordovaContactType.id[7]=BADGE_ID;
+ * @property {number} cordovaContactType.url.E_DIRECTORY_PROFILE=0;
+ * @property {string} cordovaContactType.url[0]=E_DIRECTORY_PROFILE;
+ * @property {number} cordovaContactType.url.CROWD_AROUND_PROFILE=1;
+ * @property {string} cordovaContactType.url[1]=CROWD_AROUND_PROFILE;
+ * @property {number} cordovaContactType.url.ONE_JIRA_PROFILE=2;
+ * @property {string} cordovaContactType.url[2]=ONE_JIRA_PROFILE;
+ * @property {number} cordovaContactType.url.ONE_CONFLUENCE_PROFILE=3;
+ * @property {string} cordovaContactType.url[3]=ONE_CONFLUENCE_PROFILE;
+ * @property {number} cordovaContactType.url.ONE_STASH_PROFILE=4;
+ * @property {string} cordovaContactType.url[4]=ONE_STASH_PROFILE;
+ * @property {number} cordovaContactType.url.PROFILE_PICTURE_IMG=5;
+ * @property {string} cordovaContactType.url[5]=PROFILE_PICTURE_IMG;
+ * @property {number} cordovaContactType.org.WORK=0;
+ * @property {string} cordovaContactType.org[org.WORK]=WORK;
  */
-var cordovaContactType = function () {
-    function cordovaContactType() {
-        throw new Error('cordovaContactType is "static," and has no valid constructor');
-    }
-    cordovaContactType = {
-        addr: {
-            email: email,
-            geographic: geographic,
-            telecom: telecom,
-            url: url
-        },
-        category: category,
-        id: identifier,
-        org: organization
-    };
-    return cordovaContactType;
-}();
+var cordovaContactType = {
+    email: email,
+    geographic: geographic,
+    telecom: telecom,
+    url: url,
+    category: category,
+    id: id,
+    org: org
+};
 
 module.exports = cordovaContactType;
 
@@ -436,14 +483,15 @@ var contactUrls = require('./contact-urls');
  * @returns {void}
  */
 var assignAddresses = function assignAddresses(contact, profilePantry) {
-    contact.addresses[cordovaContactType.addr.geograpic.WORK].type = WORK;
-    contact.addresses[cordovaContactType.addr.geograpic.WORK].country = profilePantry.workCountry;
-    contact.addresses[cordovaContactType.addr.geograpic.WORK].formatted = profilePantry.workStreet + ' ' + profilePantry.mailCode + ', ' + profilePantry.workCity + ', ' + profilePantry.workState + ' ' + profilePantry.workPostalCode + ' ' + profilePantry.workCountry;
-    contact.addresses[cordovaContactType.addr.geograpic.WORK].locality = profilePantry.workCity;
-    contact.addresses[cordovaContactType.addr.geograpic.WORK].postalCode = profilePantry.workPostalCode;
-    contact.addresses[cordovaContactType.addr.geograpic.WORK].pref = true;
-    contact.addresses[cordovaContactType.addr.geograpic.WORK].region = profilePantry.workState;
-    contact.addresses[cordovaContactType.addr.geograpic.WORK].streetAddress = profilePantry.workStreet + ' ' + profilePantry.mailCode;
+    var GEO_ADDR_WORK = cordovaContactType.geographic.WORK;
+    contact.addresses[GEO_ADDR_WORK].type = cordovaContactType.geographic[cordovaContactType.geographic.WORK];
+    contact.addresses[GEO_ADDR_WORK].country = profilePantry.workCountry;
+    contact.addresses[GEO_ADDR_WORK].formatted = profilePantry.workStreet + ' ' + profilePantry.mailCode + ', ' + profilePantry.workCity + ', ' + profilePantry.workState + ' ' + profilePantry.workPostalCode + ' ' + profilePantry.workCountry;
+    contact.addresses[GEO_ADDR_WORK].locality = profilePantry.workCity;
+    contact.addresses[GEO_ADDR_WORK].postalCode = profilePantry.workPostalCode;
+    contact.addresses[GEO_ADDR_WORK].pref = true;
+    contact.addresses[GEO_ADDR_WORK].region = profilePantry.workState;
+    contact.addresses[GEO_ADDR_WORK].streetAddress = profilePantry.workStreet + ' ' + profilePantry.mailCode;
 };
 
 /**
@@ -456,13 +504,16 @@ var assignAddresses = function assignAddresses(contact, profilePantry) {
  * @returns {void}
  */
 var assignCategories = function assignCategories(contact, profilePantry) {
-    contact.categories[cordovaContactType.id.VZEID].pref = true;
-    contact.categories[cordovaContactType.id.VZEID].type = 'id:vzeid';
-    contact.categories[cordovaContactType.id.VZEID].value = profilePantry.vzeid;
-    contact.categories[cordovaContactType.id.VZEID_MANAGER].type = 'id:vzeid:manager';
-    contact.categories[cordovaContactType.id.VZEID_MANAGER].value = profilePantry.managerEid;
-    contact.categories[cordovaContactType.id.VZEID_DIRECT_REPORTS].type = 'id:vzeid:direct-reports';
-    contact.categories[cordovaContactType.id.VZEID_DIRECT_REPORTS].value = profilePantry.directReportsEIDs;
+    var EID = cordovaContactType.id.ENTERPRISE_ID;
+    var EID_MANAGER = cordovaContactType.id.ENTERPRISE_ID_MANAGER;
+    var EID_DIRECT_REPORTS = cordovaContactType.id.ENTERPRISE_ID_DIRECT_REPORTS;
+    contact.categories[EID].pref = true;
+    contact.categories[EID].type = cordovaContactType.id[EID];
+    contact.categories[EID].value = profilePantry.vzeid;
+    contact.categories[EID_MANAGER].type = cordovaContactType.id[EID_MANAGER];
+    contact.categories[EID_MANAGER].value = profilePantry.managerEid;
+    contact.categories[EID_DIRECT_REPORTS].type = cordovaContactType.id[EID_DIRECT_REPORTS];
+    contact.categories[EID_DIRECT_REPORTS].value = profilePantry.directReportsEIDs || [];
 };
 
 /**
@@ -475,11 +526,13 @@ var assignCategories = function assignCategories(contact, profilePantry) {
  * @returns {void}
  */
 var assignEmails = function assignEmails(contact, profilePantry) {
-    contact.emails[cordovaContactType.addr.email.WORK_INTERNAL].type = 'work:internal';
-    contact.emails[cordovaContactType.addr.email.WORK_INTERNAL].value = profilePantry.internalEmail;
-    contact.emails[cordovaContactType.addr.email.WORK_EXTERNAL].pref = true;
-    contact.emails[cordovaContactType.addr.email.WORK_EXTERNAL].type = 'work:external';
-    contact.emails[cordovaContactType.addr.email.WORK_EXTERNAL].value = profilePantry.externalEmail;
+    var INTERNAL = cordovaContactType.email.WORK_INTERNAL;
+    var EXTERNAL = cordovaContactType.email.WORK_EXTERNAL;
+    contact.emails[INTERNAL].type = cordovaContactType.email[INTERNAL];
+    contact.emails[INTERNAL].value = profilePantry.internalEmail;
+    contact.emails[EXTERNAL].pref = true;
+    contact.emails[EXTERNAL].type = cordovaContactType.email[EXTERNAL];
+    contact.emails[EXTERNAL].value = profilePantry.externalEmail;
 };
 
 /**
@@ -507,11 +560,12 @@ var assignName = function assignName(contact, profilePantry) {
  * @returns {void}
  */
 var assignOrganizations = function assignOrganizations(contact, profilePantry) {
-    contact.organizations[cordovaContactType.org.WORK].department = startCase(toLower(profilePantry.financeLobName));
-    contact.organizations[cordovaContactType.org.WORK].name = profilePantry.treeLobName + ', ' + profilePantry.organization;
-    contact.organizations[cordovaContactType.org.WORK].pref = true;
-    contact.organizations[cordovaContactType.org.WORK].title = profilePantry.jobTitle;
-    contact.organizations[cordovaContactType.org.WORK].type = CATEGORY_WORK;
+    var WORK_ORG = cordovaContactType.org.WORK;
+    contact.organizations[WORK_ORG].department = startCase(toLower(profilePantry.financeLobName));
+    contact.organizations[WORK_ORG].name = profilePantry.treeLobName + ', ' + profilePantry.organization;
+    contact.organizations[WORK_ORG].pref = true;
+    contact.organizations[WORK_ORG].title = profilePantry.jobTitle;
+    contact.organizations[WORK_ORG].type = cordovaContactType.org[WORK_ORG];
 };
 
 /**
@@ -524,11 +578,13 @@ var assignOrganizations = function assignOrganizations(contact, profilePantry) {
  * @returns {void}
  */
 var assignPhoneNumbers = function assignPhoneNumbers(contact, profilePantry) {
-    contact.phoneNumbers[cordovaContactType.addr.telecom.WORK].pref = true;
-    contact.phoneNumbers[cordovaContactType.addr.telecom.WORK].type = CATEGORY_WORK;
-    contact.phoneNumbers[cordovaContactType.addr.telecom.WORK].value = profilePantry.officePhoneNumber;
-    contact.phoneNumbers[cordovaContactType.addr.telecom.MOBILE].type = 'mobile';
-    contact.phoneNumbers[cordovaContactType.addr.telecom.MOBILE].value = profilePantry.mobile;
+    var WORK_PHONE = cordovaContactType.telecom.WORK;
+    var MOBILE_PHONE = cordovaContactType.telecom.MOBILE;
+    contact.phoneNumbers[WORK_PHONE].pref = true;
+    contact.phoneNumbers[WORK_PHONE].type = cordovaContactType.telecom[WORK_PHONE];
+    contact.phoneNumbers[WORK_PHONE].value = profilePantry.officePhoneNumber;
+    contact.phoneNumbers[MOBILE_PHONE].type = cordovaContactType.telecom[MOBILE_PHONE];
+    contact.phoneNumbers[MOBILE_PHONE].value = profilePantry.mobile;
 };
 
 /**
