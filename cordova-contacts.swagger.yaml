@@ -2,6 +2,8 @@
 swagger:                 '2.0'
 info:
   description:           |-
+    [![Swagger Validity](https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.json.svg)](http://online.swagger.io/validator/debug?url=http://api.swindle.net/cordova/v6/contacts/openapi.json)
+
     The `Contact` object represents a user's contact information that the [`cordova-plugin-contacts`](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html) can use to _create_, _store_, or _remove_ from a mobile device's contacts database.
 
     **:rotating_light:   IMPORTANT Privacy Considerations**
@@ -14,8 +16,8 @@ info:
   license:
     name:                Apache 2.0
     url:                 http://www.apache.org/licenses/LICENSE-2.0.html
-host:                    digitalvzfabricproxy-dev.ebiz.verizon.com:443
-basePath:                "/cordova/v6"
+host:                    api.swindle.net
+basePath:                "/cordova/v6/contacts"
 tags:
 - name:                  cordova-plugin-contacts
   description:           The official Apache Cordova documentation
@@ -23,9 +25,10 @@ tags:
     description:         Read the cordova-plugin-contacts docs
     url:                 https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html
 schemes:
+- http
 - https
 paths:
-  "/contacts/me":
+  "/me":
     get:
       tags:
       - contacts
@@ -45,7 +48,7 @@ paths:
             "$ref":      "#/definitions/ErrorResponse"
       security:
       - api_key:         []
-  "/contacts/{id}":
+  "/{id}":
     get:
       tags:
       - contacts

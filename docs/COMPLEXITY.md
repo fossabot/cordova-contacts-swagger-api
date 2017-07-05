@@ -1,4 +1,9 @@
-# Complexity report, 7/2/2017
+---
+
+###### Menu: [Swagger](SWAGGER.md) | [Javascript callout API docs](README.md) | [Javascript callout Complexity Report](COMPLEXITY.md) | [Terms of Service](../TERMS_OF_SERVICE.md)
+
+---
+# Complexity report, 7/5/2017
 
 * Mean per-function logical LOC: 10.25
 * Mean per-function parameter count: 0.25

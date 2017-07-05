@@ -1,9 +1,8 @@
 ---
 
-###### Menu: [Javascript callout API docs](README.md) | [Javascript callout Complexity Report](COMPLEXITY.md) | [Swagger](SWAGGER.md) | [Terms of Service](../TERMS_OF_SERVICE.md)
+###### Menu: [Swagger](SWAGGER.md) | [Javascript callout API docs](README.md) | [Javascript callout Complexity Report](COMPLEXITY.md) | [Terms of Service](../TERMS_OF_SERVICE.md)
 
 ---
-
 # Javascript callout API docs
 [![Quality Gate][sonar-gate-img]][sonar-gate-url] [![Security][sonar-security-img]][sonar-security-url] [![Code smells][sonar-code-smells-img]][sonar-code-smells-url] [![Sonar coverage][sonar-coverage-img]][sonar-coverage-url] [![Duplications][sonar-duplications-img]][sonar-duplications-url]
 <br>[![Technical debt][sonar-tech-debt-img]][sonar-tech-debt-url] [![Reliability][sonar-reliability-img]][sonar-reliability-url]  [![Maintainability][sonar-maintainability-img]][sonar-maintainability-url] [![Complexity][sonar-complexity-img]][sonar-complexity-url] [![Cognitive complexity][sonar-cognitive-img]][sonar-cognitive-url] [![Issues][sonar-issues-img]][sonar-issues-url]

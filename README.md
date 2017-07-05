@@ -113,8 +113,8 @@ $ npm run swagger:lint
 
 * **Valid:**
     * [![Swagger Validity][swagger-validity-img]][swagger-validity-url] `cordova-contacts.swagger.yaml`
-    * [![Swagger Validity](http://online.swagger.io/validator?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.json)]((http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.json) `cordova-contacts.swagger.json`
-* **Invalid:**<br>[![Swagger Validity](http://online.swagger.io/validator?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/README.md)](http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/README.md)
+    * [![Swagger Validity](https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.json.svg)]((http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.json) `cordova-contacts.swagger.json`
+* **Invalid:**<br>[![Swagger Validity](https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.md.svg)](http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/README.md)
 
 
 ### 4.2. Javascript callout source code analysis
@@ -210,7 +210,7 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 
 ## 6. Terms of service
 
-Please review Verizon's [Terms of Service](TERMS_OF_SERVICE.md).
+Please review Verizon's [Terms of Service](./docs/TERMS_OF_SERVICE.md).
 
 ## 7. License
 
@@ -220,8 +220,6 @@ Please review Verizon's [Terms of Service](TERMS_OF_SERVICE.md).
 
 [![Greenkeeper badge][greenkeeper-img]][greenkeeper-url] [![StackShare][stackshare-img]][stackshare-url]
 
-[swagger-validity-img]: http://online.swagger.io/validator?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.yaml
-[swagger-validity-url]: http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.yaml
 [author-url]: https://github.com/gregswindle
 [bithound-dep-img]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/badges/dependencies.svg
 [bithound-dep-url]: https://www.bithound.io/github/gregswindle/cordova-contacts-swagger-api/master/dependencies/npm
@@ -240,12 +238,11 @@ Please review Verizon's [Terms of Service](TERMS_OF_SERVICE.md).
 [inch-ci-url]: http://inch-ci.org/github/gregswindle/cordova-contacts-swagger-api
 [issues-new-url]: https://github.com/gregswindle/cordova-contacts-swagger-api/issues/new
 [issues-url]: https://github.com/gregswindle/cordova-contacts-swagger-api/issues
-[js-callout-docs-url]: ./lib/README.md
+[js-callout-docs-url]: ./docs/README.md
 [jsdoc-url]: http://usejsdoc.org/
 [jsdoc2md-url]: https://github.com/jsdoc2md/jsdoc-to-markdown
 [license-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square
 [license-url]: ./LICENSE
-[swagger-api-docs-url]: ./lib/SWAGGER.md
 [nsp-img]: https://nodesecurity.io/orgs/gregswindle/projects/a3912719-529f-457f-9ff6-53fa70d8f475/badge
 [nsp-url]: https://nodesecurity.io/orgs/gregswindle/projects/a3912719-529f-457f-9ff6-53fa70d8f475
 [pr-url]: https://github.com/gregswindle/cordova-contacts-swagger-api/pulls
@@ -267,9 +264,12 @@ Please review Verizon's [Terms of Service](TERMS_OF_SERVICE.md).
 [sonar-tech-debt-url]: https://sonarcloud.io/component_measures/metric/sqale_index/list?id=gregswindle-cordova-contacts-swagger-api
 [stackshare-img]: https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat
 [stackshare-url]: https://stackshare.io/gregswindle/cordova-contacts-swagger-api
+[swagger-api-docs-url]: ./docs/SWAGGER.md
 [swagger-cli-url]: https://github.com/BigstickCarpet/swagger-cli
 [swagger-io-url]: http://swagger.io
 [swagger-logo-20-img]: ./.github/assets/img/swagger-logo-20.png
 [swagger-markdown-url]: https://github.com/syroegkin/swagger-markdown
+[swagger-validity-img]: https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.json.svg
+[swagger-validity-url]: http://online.swagger.io/validator/debug?url=http://api.swindle.net/cordova/v6/contacts/openapi.json
 [travis-ci-img]: https://travis-ci.org/gregswindle/cordova-contacts-swagger-api.svg?branch=master
 [travis-ci-url]:  https://travis-ci.org/gregswindle/cordova-contacts-swagger-api

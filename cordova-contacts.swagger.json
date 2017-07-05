@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "The `Contact` object represents a user's contact information that the [`cordova-plugin-contacts`](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html) can use to _create_, _store_, or _remove_ from a mobile device's contacts database.\n\n**:rotating_light:   IMPORTANT Privacy Considerations**\n> Collection and use of contact data raises important privacy issues. Your app's privacy policy should declare how it uses contact data and whether it is shared with any other parties. Contact information is considered sensitive because it reveals the people with whom a person communicates. Therefore, in addition to the app's privacy policy, you should strongly consider providing a just-in-time notice before the app accesses or uses contact data, if the device operating system doesn't do so already. That notice should provide the same information noted above, as well as obtaining the user's permission (e.g., by presenting choices for \"I agree\" and \"I decline\"). Note that some app marketplaces may require the app to provide a just-in-time notice and obtain the user's permission before accessing contact data. A clear and easy-to-understand user experience surrounding the use of contact data helps avoid user confusion and perceived misuse of contact data.",
+        "description": "[![Swagger Validity]https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.json.svg)](http://online.swagger.io/validator/debug?url=http://api.swindle.net/cordova/v6/contacts/openapi.json)\n\nThe `Contact` object represents a user's contact information that the [`cordova-plugin-contacts`](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html) can use to _create_, _store_, or _remove_ from a mobile device's contacts database.\n\n**:rotating_light:   IMPORTANT Privacy Considerations**\n> Collection and use of contact data raises important privacy issues. Your app's privacy policy should declare how it uses contact data and whether it is shared with any other parties. Contact information is considered sensitive because it reveals the people with whom a person communicates. Therefore, in addition to the app's privacy policy, you should strongly consider providing a just-in-time notice before the app accesses or uses contact data, if the device operating system doesn't do so already. That notice should provide the same information noted above, as well as obtaining the user's permission (e.g., by presenting choices for \"I agree\" and \"I decline\"). Note that some app marketplaces may require the app to provide a just-in-time notice and obtain the user's permission before accessing contact data. A clear and easy-to-understand user experience surrounding the use of contact data helps avoid user confusion and perceived misuse of contact data.",
         "version": "1.0.0",
         "title": "Cordova Contacts",
         "termsOfService": "https://github.com/gregswindle/cordova-contacts-swagger-api/blob/master/TERMS_OF_SERVICE.md",
@@ -13,8 +13,8 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
-    "host": "digitalvzfabricproxy-dev.ebiz.verizon.com:443",
-    "basePath": "/cordova/v6",
+    "host": "api.swindle.net",
+    "basePath": "/cordova/v6/contacts",
     "tags": [{
         "name": "cordova-plugin-contacts",
         "description": "The official Apache Cordova documentation",
@@ -24,19 +24,20 @@
         }
     }],
     "schemes": [
+        "http",
         "https"
     ],
     "paths": {
-        "/contacts/me": {
+        "/me": {
             "get": {
                 "tags": [
                     "contacts"
                 ],
                 "summary": "Retrieve one's own Contact information.",
                 "description": "Returns one's own Contact information.",
-                "operationId": "getMe",
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/xml"
                 ],
                 "responses": {
                     "200": {
@@ -53,13 +54,11 @@
                     }
                 },
                 "security": [{
-                    "api_key": [
-
-                    ]
+                    "api_key": []
                 }]
             }
         },
-        "/contacts/{id}": {
+        "/{id}": {
             "get": {
                 "tags": [
                     "contacts"
@@ -67,9 +66,17 @@
                 "summary": "Retrieve an active Verizon employee's Contact information.",
                 "description": "Retrieve an active Verizon employee's Contact information by a (registered) identifier.",
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/xml"
                 ],
                 "parameters": [{
+                        "in": "path",
+                        "name": "id",
+                        "description": "A registered identifier value for an active Verizon employee.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "in": "query",
                         "name": "type",
                         "type": "string",
@@ -81,13 +88,6 @@
                             "emplid",
                             "vzid"
                         ]
-                    },
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "A registered identifier value for an active Verizon employee.",
-                        "required": true,
-                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -105,9 +105,7 @@
                     }
                 },
                 "security": [{
-                    "api_key": [
-
-                    ]
+                    "api_key": []
                 }]
             }
         }

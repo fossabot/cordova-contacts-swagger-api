@@ -1,6 +1,13 @@
+---
+
+###### Menu: [Swagger](SWAGGER.md) | [Javascript callout API docs](README.md) | [Javascript callout Complexity Report](COMPLEXITY.md) | [Terms of Service](../TERMS_OF_SERVICE.md)
+
+---
 Cordova Contacts
 ================
-[![Swagger Validity](http://online.swagger.io/validator?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.yaml)](http://online.swagger.io/validator/debug?url=https://raw.githubusercontent.com/gregswindle/cordova-contacts-swagger-api/master/cordova-contacts.swagger.yaml) The `Contact` object represents a user's contact information that the [`cordova-plugin-contacts`](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html) can use to _create_, _store_, or _remove_ from a mobile device's contacts database.
+[![Swagger Validity](https://img.shields.io/swagger/valid/2.0/http/api.swindle.net/cordova/v6/contacts/openapi.json.svg)](http://online.swagger.io/validator/debug?url=http://api.swindle.net/cordova/v6/contacts/openapi.json)
+
+The `Contact` object represents a user's contact information that the [`cordova-plugin-contacts`](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html) can use to _create_, _store_, or _remove_ from a mobile device's contacts database.
 
 **:rotating_light:   IMPORTANT Privacy Considerations**
 > Collection and use of contact data raises important privacy issues. Your app's privacy policy should declare how it uses contact data and whether it is shared with any other parties. Contact information is considered sensitive because it reveals the people with whom a person communicates. Therefore, in addition to the app's privacy policy, you should strongly consider providing a just-in-time notice before the app accesses or uses contact data, if the device operating system doesn't do so already. That notice should provide the same information noted above, as well as obtaining the user's permission (e.g., by presenting choices for "I agree" and "I decline"). Note that some app marketplaces may require the app to provide a just-in-time notice and obtain the user's permission before accessing contact data. A clear and easy-to-understand user experience surrounding the use of contact data helps avoid user confusion and perceived misuse of contact data.
@@ -34,7 +41,7 @@ oneapi-team@verizon.com
 |Name|api_key|
 |In|header|
 
-### /contacts/me
+### /me
 ---
 ##### ***GET***
 **Summary:** Retrieve one's own Contact information.
@@ -54,7 +61,7 @@ oneapi-team@verizon.com
 | --- | --- |
 | api_key | |
 
-### /contacts/{id}
+### /{id}
 ---
 ##### ***GET***
 **Summary:** Retrieve an active Verizon employee's Contact information.
@@ -65,8 +72,8 @@ oneapi-team@verizon.com
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| type | query | The specific kind of identifier provided. If omitted, `type` defaults to `eid` (Enterprise ID). Otherwise you can specify `emplid` (Employee ID) or `vzid` (Verizon ID). | No | string |
 | id | path | A registered identifier value for an active Verizon employee. | Yes | string |
+| type | query | The specific kind of identifier provided. If omitted, `type` defaults to `eid` (Enterprise ID). Otherwise you can specify `emplid` (Employee ID) or `vzid` (Verizon ID). | No | string |
 
 **Responses**
 
