@@ -29,7 +29,12 @@
     "docs:swagger": "./node_modules/.bin/swagger-markdown -i *.swagger.yaml -o docs/SWAGGER.md",
     "build-test-push": "npm run build && npm test && npm run docs && .github/assets/prepend-header.sh --push github",
     "btp": "npm run build-test-push",
-    "apigee:apiproxy:deploy": "npm run apigee:deploy-api && npm run apigee:update:policies && npm run apigee:update:proxies && npm run apigee:update:resources:jsc && npm run apigee:update:resources:openapi && npm run apigee:update:targets && npm run apigee:update:zip && rm -rf .tmp"
+    "apigee:apiproxy:deploy": "npm run apigee:deploy-api && npm run apigee:update:policies && npm run apigee:update:proxies && npm run apigee:update:resources:jsc && npm run apigee:update:resources:openapi && npm run apigee:update:targets && npm run apigee:update:zip && rm -rf .tmp",
+    "file-version-bump": [
+      "README.md",
+      "sonar-project.properties"
+    ],
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -65,7 +70,7 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.5.2",
+    "babel-preset-env": "^1.6.0",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
     "commitplease": "^2.7.10",
@@ -76,6 +81,7 @@
     "eslint-plugin-filenames": "^1.2.0",
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-security": "^1.4.0",
+    "file-version-bump": "0.0.2",
     "jest": "^20.0.4",
     "jsdoc-to-markdown": "^3.0.0",
     "nsp": "^2.6.3",
@@ -84,7 +90,7 @@
     "standard-version": "^4.2.0",
     "swagger-cli": "^1.0.0-beta.2",
     "swagger-markdown": "^1.1.1",
-    "uglify-js": "^3.0.20"
+    "uglify-js": "^3.0.23"
   },
   "commitplease": {
     "style": "angular",
@@ -101,8 +107,7 @@
       "style",
       "test"
     ],
-    "scope": "\\S+.*",
-    "subjectPattern": "{semver-level} {1* ,[\\x20]? components}: {message}"
+    "scope": "\\S+.*"
   },
   "eslintConfig": {
     "extends": "xo-space",
