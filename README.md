@@ -3,7 +3,7 @@
 >
 > * Demonstrates best practices for CI/CD;
 > * Provides mock data for automated content publication in the Apigee Developer Portal; and
-> * :rocket: **Automates, build, lint, test, API documentation, `apiproxy` packaging, and deployment to Apigee EDGE.**
+> * :rocket: **Automates build, lint, test, API documentation, `apiproxy` packaging, and deployment to Apigee EDGE.**
 
 [![Build Status][travis-ci-img]][travis-ci-url] [![Sonar coverage][sonar-coverage-img]][sonar-coverage-url] [![Quality Gate][sonar-gate-img]][sonar-gate-url] [![Complexity][sonar-complexity-img]][sonar-complexity-url]<br>
 [![NSP Status][nsp-img]][nsp-url] [![bitHound Dependencies][bithound-dep-img]][bithound-dep-url] [![bitHound Dev Dependencies][bithound-dev-dep-img]][bithound-dev-dep-url]<br>[![License][license-image]][license-url]  [![Readme Score][readme-score-img]][readme-score-url] [![Inline docs][inch-ci-img]][inch-ci-url]
@@ -14,19 +14,19 @@
 - [1. Table of contents](#1-table-of-contents)
 - [2. Installation](#2-installation)
 - [3. Usage](#3-usage)
-	- [3.1. Design-first with Swagger/OpenAPI documents](#31-design-first-with-swaggeropenapi-documents)
-	- [3.2. Create/edit Swagger/OpenAPI documents](#32-createedit-swaggeropenapi-documents)
-	- [3.3. Build, test, generate API docs, and push to Git](#33-build-test-generate-api-docs-and-push-to-git)
-	- [3.4. Package all `apiproxy` artifacts](#34-package-all-apiproxy-artifacts)
-	- [3.5. Package and **deploy** `apiproxy` artifacts](#35-package-and-deploy-apiproxy-artifacts)
+	- [3.1. Design your API with Swagger](#31-design-your-api-with-swagger)
+	- [3.2. Build, test, document, and push to Git](#32-build-test-document-and-push-to-git)
+	- [3.3. Package all `apiproxy` artifacts](#33-package-all-apiproxy-artifacts)
+	- [3.4. Package and **deploy** `apiproxy` artifacts](#34-package-and-deploy-apiproxy-artifacts)
 - [4. Quality gates and tests](#4-quality-gates-and-tests)
 	- [4.1. Swagger validation and badge](#41-swagger-validation-and-badge)
 	- [4.2. Javascript callout source code analysis](#42-javascript-callout-source-code-analysis)
 	- [4.3. Javascript callout test execution and code coverage](#43-javascript-callout-test-execution-and-code-coverage)
 	- [4.4. API documentation and complexity reports](#44-api-documentation-and-complexity-reports)
-- [5. Contributions](#5-contributions)
-- [6. Terms of service](#6-terms-of-service)
-- [7. License](#7-license)
+- [5. Version and CHANGELOGs](#5-version-and-changelogs)
+- [6. Contributions](#6-contributions)
+- [7. Terms of service](#7-terms-of-service)
+- [8. License](#8-license)
 
 <!-- /TOC -->
 
@@ -50,20 +50,23 @@ $ git clone ssh://git@onestash.verizon.com:7999/gtsap/cordova-contacts-swagger-a
 
 ## 3. Usage
 
-`cordova-contacts-swagger-api` is _reference_ Apigee API Proxy implementation that:
+`cordova-contacts-swagger-api` is _reference_ Apigee API Proxy that builds, lints, tests, documents, bundles, and deploys APIs.
 
-* Demonstrates best practices, and
-* Provides an API Proxy for automated Apigee API Developer Portal content publication.
+`cordova-contacts-swagger-api` follows a repeatable, testable, and measurable process that lets you focus on innovation without sacrificing quality or extensibility.
 
-### 3.1. Design-first with Swagger/OpenAPI documents
+> ### :thought_balloon: Design-thinking with Swagger/OpenAPI
+>
+When exposing APIs in Apigee, try to avoid the "lift-and-shift" mentality, and _start_ your work with a Swagger document. When you're done, you can upload your swagger doc when you create an API Proxy.
+>
+> <p align="center">
+![API Proxy workflow](.github/assets/img/apiproxy-process.png)
+</p>
+> This "outside-in" approach provides three benefits:
+> 1. **User-centered approach**: your API contract is your user experience (UX). Better UX means greater consumption.
+> 2. **Auto-generated client SDKs**: [`Swagger Codegen`](http://swagger.io/swagger-codegen/) will automatically generate an SDK for 38 clients. This vastly broadens your potential market share.
+> 3. **Auto-generated, interactive documentation**: Swagger docs are interactive. Moreover, they're **required** before you can publish to the Apigee Developer Portal.
 
-When exposing APIs in Apigee, try to avoid the "lift-and-shift" mentality, and _start_ your work with a Swagger document. When you're done, you can upload your swagger doc when you create an API Proxy. This "outside-in" approach provides three benefits:
-
-1. **User-centered approach**: your API contract is your user experience (UX). Better UX means greater consumption.
-2. **Auto-generated client SDKs**: [`Swagger Codegen`](http://swagger.io/swagger-codegen/) will automatically generate an SDK for 38 clients. This vastly broadens your potential market share.
-3. **Auto-generated, interactive documentation**: Swagger docs are interactive. Moreover, they're **required** before you can publish to the Apigee Developer Portal.
-
-### 3.2. Create/edit Swagger/OpenAPI documents
+### 3.1. Design your API with Swagger
 
 1. Go to the [online Swagger Editor](http://editor.swagger.io/#/).
 2. Copy the contents of [`cordova-contacts.swagger.yaml`](cordova-contacts.swagger.yaml) to your clipboard.
@@ -72,7 +75,7 @@ When exposing APIs in Apigee, try to avoid the "lift-and-shift" mentality, and _
 5. Select "Generate Client" on the Swagger Editor top-level navigation bar.
 6. Marvel at the SDK options presented before you!
 
-### 3.3. Build, test, generate API docs, and push to Git
+### 3.2. Build, test, document, and push to Git
 
 If you're a lazy programmer like me, you can run:
 
@@ -110,7 +113,7 @@ This will execute a:
 > The script can accept an alternate commit message, but that's not available from
 > the `npm-script btp`, yet. If you want add that, submit a pull request :v:.
 
-### 3.4. Package all `apiproxy` artifacts
+### 3.3. Package all `apiproxy` artifacts
 
 Finally, you can update the repository's `apiproxy` -- your final build -- by running:
 
@@ -122,7 +125,7 @@ $ npm run apigee:apiproxy:update
 This uses [`openapi2apigee`][openapi2apigee-url] behind the scenes to update the `apiproxy` artifacts
 and generate an `apiproxy.zip` file in your project's root directory.
 
-### 3.5. Package and **deploy** `apiproxy` artifacts
+### 3.4. Package and **deploy** `apiproxy` artifacts
 
 Run:
 
@@ -267,18 +270,22 @@ $ npm run docs:api && npm run docs:complexity && npm run docs:swagger
 
 ```
 
-## 5. Contributions
-:family: We warmly welcome contributors. Check out the guidelines for [Contributing to `cordova-contacts-swagger-api`](./.github/CONTRIBUTING.md) and our [Contributor Covenant Code of Conduct][code-of-conduct-url].
+## 5. Version and CHANGELOGs
+
+The latest version of `cordova-contacts-swagger-api` is `v1.0.0`. View the [CHANGELOG])(./CHANGELOG.md) for details.
+
+## 6. Contributions
+:family: We welcome contributors and pull requests. Check out the guidelines for [contributing to `cordova-contacts-swagger-api`](./.github/CONTRIBUTING.md) and our [Contributor Covenant Code of Conduct][code-of-conduct-url].
 
 Contributions are stories with a beginning, a middle, and an end, all told through issues and pull requests.
  * [Peruse open issues][issues-url] or
  * [Open a new pull request (PR)][pr-url]
 
-## 6. Terms of service
+## 7. Terms of service
 
 Please review Verizon's [Terms of Service](./docs/TERMS_OF_SERVICE.md).
 
-## 7. License
+## 8. License
 
 [Apache 2.0][license-url] :copyright: [Greg Swindle][author-url].
 
@@ -307,7 +314,7 @@ Please review Verizon's [Terms of Service](./docs/TERMS_OF_SERVICE.md).
 [js-callout-docs-url]: ./docs/README.md
 [jsdoc-url]: http://usejsdoc.org/
 [jsdoc2md-url]: https://github.com/jsdoc2md/jsdoc-to-markdown
-[license-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square
+[license-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat
 [license-url]: ./LICENSE
 [nsp-img]: https://nodesecurity.io/orgs/gregswindle/projects/a3912719-529f-457f-9ff6-53fa70d8f475/badge
 [nsp-url]: https://nodesecurity.io/orgs/gregswindle/projects/a3912719-529f-457f-9ff6-53fa70d8f475
