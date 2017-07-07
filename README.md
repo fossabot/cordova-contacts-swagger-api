@@ -1,5 +1,6 @@
 # `cordova-contacts-swagger-api`
-> **[![Swagger Validity][swagger-validity-img]][swagger-validity-url] A reference Apigee API Proxy that**
+> **[![Swagger Validity][swagger-validity-img]][swagger-validity-url] [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fcordova-contacts-swagger-api.svg?type=shield)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fcordova-contacts-swagger-api?ref=badge_shield)
+A reference Apigee API Proxy that**
 >
 > * Demonstrates best practices for CI/CD;
 > * Provides mock data for automated content publication in the Apigee Developer Portal; and
@@ -346,3 +347,6 @@ Please review Verizon's [Terms of Service](./docs/TERMS_OF_SERVICE.md).
 [swagger-validity-url]: http://online.swagger.io/validator/debug?url=http://api.swindle.net/cordova/v6/contacts/openapi.json
 [travis-ci-img]: https://travis-ci.org/gregswindle/cordova-contacts-swagger-api.svg?branch=master
 [travis-ci-url]:  https://travis-ci.org/gregswindle/cordova-contacts-swagger-api
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fcordova-contacts-swagger-api.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgregswindle%2Fcordova-contacts-swagger-api?ref=badge_large)
